@@ -1,0 +1,134 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body{
+    background: url('/images/back.png') repeat scroll 0 0 transparent;
+    width: 100%
+}
+.separator{
+    background: url('/images/sep_nav.png') no-repeat scroll right center transparent;
+    display: block;
+    float: left;
+    height: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0px 18px;
+}
+.nav-bg{
+    background: #9db22b;
+}
+.w-h-78{
+    width: 78px;
+    height: 78px;
+}
+.f-size-11{
+    font-size: 11px;
+    margin-top: 4px;
+    margin-left: 5px;
+}
+.f-size-16{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.border-dashed{
+    border-right: 1px dashed gray;
+}
+.borded{
+    border-top: 3px solid #9db22b;
+}
+.w-40{
+    width: 260px;
+    font-size: 11px;
+    color: #9db22b;
+    font-family: arial;
+    height: 24px;
+    background: #f5f5f5;
+    border: 1px solid #cccccc;
+}
+.w-10{
+    width: 50px;
+    font-size: 11px;
+    color: #9db22b;
+    font-family: arial;
+    height: 24px;
+    background: #f5f5f5;
+    border: 1px solid #cccccc;
+}
+.w-20{
+    width: 100px;
+    font-size: 11px;
+    color: #9db22b;
+    font-family: arial;
+    height: 24px;
+    background: #f5f5f5;
+    border: 1px solid #cccccc;
+}
+.w-area{
+    width: 260px;
+    font-size: 11px;
+    color: #9db22b;
+    font-family: arial;
+    background: #f5f5f5;
+    border: 1px solid #cccccc;
+}
+.text-green{
+    color: #9db22b;
+}
+.title{
+    width: 182px;
+    font-size: 12px;
+    color: #666666;
+    font-family: arial;
+    padding-top: 8px;
+}
+.ml-72{
+    margin-left: 71px;
+}
+.avatar{
+    width: 78px;
+    height: 78px;
+}
+.bord-dash{
+    float: left;
+    width: 207px;
+    height: 148px;
+    padding-left: 9px;
+    padding-top: 20px;
+    margin-left: 20px;
+    border:3px solid #eaeaea;
+}
+.atelier li{
+    list-style: none;
+}
+.atelier a{
+    color: #999999;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-top: 5px;
+}
+.atelier a:hover{
+    color: #999999;
+    text-decoration: none;
+}
+.rounded-half{
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    height: 32px;
+    box-shadow: 1px 3px #9db22b;
+}
+.text-grey{
+    font-size: 18px;
+    color: #666666;
+    font-weight: normal;
+
+}
+.rounded-top-right{
+    border-top-right-radius: 32px;
+}
