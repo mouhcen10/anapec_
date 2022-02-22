@@ -117,7 +117,7 @@
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                   <label class="form-check-label" for="exampleRadios2">
-                    Employeur
+                    Professionnel
                   </label>
                 </div>
               </div>
@@ -135,8 +135,8 @@
                   </div>
               </form>
               <div class="d-flex flex-column align-items-center">
-                  <a href="/candidat" style="width: 240px;" class="btn btn-info mb-1 rounded-pill">Créer votre espace candidat</a>
-                  <a href="/candidat" style="width: 240px;" class="btn btn-primary mb-1 rounded-pill">Créer votre espace employeur</a>
+                  <a href="/candidat" style="width: 240px;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
+                  <a href="/candidat" style="width: 240px;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
               </div>
               <x-slider></x-slider>
           </div>

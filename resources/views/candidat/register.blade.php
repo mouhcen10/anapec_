@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container p-0">
+<div class="container">
     <div class="col-md-12 d-flex flex-row p-0">
-        <div class="col-md-3 border-1 rounded-0 bg-white shadow-sm p-0">
-            <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white mt-3">
+        <div class="row">
+        <!--Connexion-->
+        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+            <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
                 <img class="mx-3" src="images/arrow.png" alt="">
                 Connexion
             </div>
@@ -77,7 +79,9 @@
                 </li>
             </div>
         </div>
+        <!--/Connexion-->
         <div class="col-md-9 pr-0">
+            <!--Identification-->
             <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-0">
                 <div class="rounded-0 m-3 d-flex justify-content-start align-items-center">
                   <img class="mx-2" src="images/arrow.png" alt="">
@@ -233,6 +237,294 @@
                     </div>
                 </form>
             </div>
+            <!--/Identification-->
+
+            <!--Formation-->
+            <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-0 mt-3">
+                <div class="rounded-0 m-3 d-flex justify-content-start align-items-center">
+                  <img class="mx-2" src="images/arrow.png" alt="">
+                  <span class="text-grey">Formation</span>
+                </div>
+                <form class="d-flex flex-column p-4">
+                    <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
+                        <div class="d-flex flex-row justify-content-around align-items-center">
+                            <label class="title" for="">Diplôme :</label>
+                            <div class="d-flex flex-column">
+                                <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
+                                <select class="rounded-0 w-40 my-2" name="dip_type">
+                                    <option>[Type de diplome]</option>
+                                    <option>Bac +2</option>
+                                    <option>Bac +3</option>
+                                </select>
+                                <select class="rounded-0 w-40 my-2" name="specialite">
+                                    <option>[Spécialistes]</option>
+                                    <option>Développement Informatique</option>
+                                    <option>Graphic Design</option>
+                                </select>
+                                <select class="rounded-0 w-40 my-2" name="option">
+                                    <option>[Option]</option>
+                                    <option>Développement Informatique</option>
+                                    <option>Graphic Design</option>
+                                </select>
+                                <div class="d-flex flex-row justify-content-around align-items-center">
+                                    <select class="rounded-0 w-40" name="grp_etab">
+                                        <option>[Groupe d'établissement]</option>
+                                        <option>OFPPT</option>
+                                        <option>ENCG</option>
+                                        <option>EMSI</option>
+                                    </select>
+                                    <select class="rounded-0 w-40 mx-2" name="etab">
+                                        <option>[Etablissement]</option>
+                                        <option>Institut Spécialisé des Technologies Appliquées</option>
+                                        <option>IGA</option>
+                                        <option>Lycée</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row  justify-content-around align-items-start my-2">
+                            <label class="title" for="">Année d’obtention :</label>
+                            <select class="rounded-0 w-40" name="anne_obt">
+                                <option>[Choisissez]</option>
+                                <option>2000</option>
+                                <option>2001</option>
+                                <option>2002</option>
+                                <option>2003</option>
+                            </select>
+                        </div>
+                        <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                            <label class="title" for="">Commentaire :</label>
+                            <textarea class="w-area" name="comment" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!--/Formation-->
+
+            <!--Expériences-->
+            <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-0 mt-3">
+                <div class="rounded-0 m-3 d-flex justify-content-start align-items-center">
+                  <img class="mx-2" src="images/arrow.png" alt="">
+                  <span class="text-grey">Expérience</span>
+                </div>
+                <form class="d-flex flex-column p-4">
+                    <div class="d-flex flex-row">
+                        <div class="d-flex flex-column justify-content-between align-items-center">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <label class="title" for="">Date début :</label>
+                                <input type="date" name="date_debut" class="rounded-0 w-40">
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <label class="title" for="">Date fin :</label>
+                                <input type="date" name="date_fin" class="rounded-0 w-40">
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <label class="title" for="">Entreprise :</label>
+                                <input type="text" name="entreprise" class="rounded-0 w-40">
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <label class="title" for="">Intitulé du poste :</label>
+                                <input type="text" name="intitule" class="rounded-0 w-40">
+                            </div>
+                            <div class="d-flex flex-row justify-content-between align-items-center my-1">
+                                <label class="title" for="">Description :</label>
+                                <textarea class="w-area" name="description" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!--/Expériences-->
+
+            <!--Compétences-->
+            <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-0 mt-3">
+                <div class="rounded-0 m-3 d-flex justify-content-start align-items-center">
+                  <img class="mx-2" src="images/arrow.png" alt="">
+                  <span class="text-grey">Compétences</span>
+                </div>
+                <form class="d-flex flex-column p-4">
+                    <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
+                        <div class="d-flex flex-row justify-content-around align-items-center">
+                            <label class="title" for="">Langue :</label>
+                            <div class="d-flex flex-column">
+                                <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                    <select class="rounded-0 w-40" name="grp_etab">
+                                        <option>[Langue]</option>
+                                        <option>Arabe</option>
+                                        <option>Français</option>
+                                        <option>Anglais</option>
+                                    </select>
+                                    <select class="rounded-0 w-40 mx-2" name="etab">
+                                        <option>[Niveau langue]</option>
+                                        <option>Langue maternelle</option>
+                                        <option>Courant</option>
+                                        <option>Bon</option>
+                                        <option>Moyen</option>
+                                        <option>Notions</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                    <select class="rounded-0 w-40" name="grp_etab">
+                                        <option>[Langue]</option>
+                                        <option>Arabe</option>
+                                        <option>Français</option>
+                                        <option>Anglais</option>
+                                    </select>
+                                    <select class="rounded-0 w-40 mx-2" name="etab">
+                                        <option>[Niveau langue]</option>
+                                        <option>Langue maternelle</option>
+                                        <option>Courant</option>
+                                        <option>Bon</option>
+                                        <option>Moyen</option>
+                                        <option>Notions</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                    <select class="rounded-0 w-40" name="grp_etab">
+                                        <option>[Langue]</option>
+                                        <option>Arabe</option>
+                                        <option>Français</option>
+                                        <option>Anglais</option>
+                                    </select>
+                                    <select class="rounded-0 w-40 mx-2" name="etab">
+                                        <option>[Niveau langue]</option>
+                                        <option>Langue maternelle</option>
+                                        <option>Courant</option>
+                                        <option>Bon</option>
+                                        <option>Moyen</option>
+                                        <option>Notions</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                        </button>
+                    </div>
+                    <div class="d-flex flex-row justify-content-start align-items-center my-3">
+                        <label class="title" for="">Bureautique:</label>
+                        <div class="d-flex flex-column align-items-start">
+                            <span class="ml-4 small text-green">Word :</span>
+                            <span class="ml-4 small text-green">Excel :</span>
+                            <span class="ml-4 small text-green">Access :</span>
+                            <span class="ml-4 small text-green">PowerPoint :</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-start mx-3">
+                            <input class="mb-1" type="checkbox" name="word" id="">
+                            <input class="my-1" type="checkbox" name="excel" id="">
+                            <input class="my-1" type="checkbox" name="access" id="">
+                            <input class="my-1" type="checkbox" name="powerpoint" id="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-satrt align-items-center">
+                        <label class="title" for="">Compétences spécifiques :</label>
+                        <div class="d-flex flex-column ml-3 mt-3">
+                            <input type="text" name="competence" class="rounded-0 w-40">
+                            <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-start align-items-center my-4">
+                        <label class="title" for="">Permis de conduire :</label>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">A</span>
+                                <img src="images/a.jpg" alt="">
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">B</span>
+                                <img src="images/b.jpg" alt="">
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">C</span>
+                                <img src="images/c.jpg" alt="">
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">D</span>
+                                <img src="images/d.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column mx-5">
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">EB</span>
+                                <img src="images/eb.jpg" alt="">
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">EC</span>
+                                <img src="images/ec.jpg" alt="">
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <input class="" type="checkbox" name="word" id="">
+                                <span class="small text-green mx-2">ED</span>
+                                <img src="images/ed.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--/Compétences-->
+
+            <!--Activitées extra-->
+            <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-0 mt-3">
+                <div class="rounded-0 m-3 d-flex justify-content-start align-items-center">
+                  <img class="mx-2" src="images/arrow.png" alt="">
+                  <span class="text-grey">Activités extra-professionnelles</span>
+                </div>
+                <form class="d-flex flex-column p-4">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <textarea class="form-control w-50 rounded-0" name="activite_extra" rows="5"></textarea>
+                    </div>
+                </form>
+            </div>
+            <!--/Activitées extra-->
+
+            <!--Cv personnel-->
+            <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-0 mt-3">
+                <div class="rounded-0 m-3 d-flex justify-content-start align-items-center">
+                  <img class="mx-2" src="images/arrow.png" alt="">
+                  <span class="text-grey">CV personnel</span>
+                </div>
+                <form class="d-flex flex-column p-4">
+                    <div class="d-flex flex-column justify-content-start">
+                        <span class="small my-1">Joindre votre CV personnel :</span>
+                        <input class="form-control" type="file" name="cv">
+                    </div>
+                </form>
+            </div>
+            <!--/Cv personnel-->
+
+            <div class="d-flex justify-content-end">
+                <button class="btn-green btn-sm my-2">Valider</button>
+            </div>
+        </div>
         </div>
     </div>
   </div>

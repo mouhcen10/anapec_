@@ -10038,6 +10038,13 @@ body {
   padding: 0px 18px;
 }
 
+.btn-green {
+  background: #9db22b;
+  color: white;
+  border: none;
+  box-shadow: 2px black;
+}
+
 .nav-bg {
   background: #9db22b;
 }
