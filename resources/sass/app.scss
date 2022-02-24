@@ -27,7 +27,7 @@ body{
     box-shadow: 2px black;
 }
 .nav-bg{
-    background: #9db22b;
+    background: #9db22b !important;
 }
 .w-h-78{
     width: 78px;
@@ -94,7 +94,7 @@ body{
     padding-top: 8px;
 }
 .ml-72{
-    margin-left: 71px;
+    margin-left: 75px;
 }
 .avatar{
     width: 78px;
@@ -137,4 +137,7 @@ body{
 }
 .rounded-top-right{
     border-top-right-radius: 32px;
+}
+.shadow-xl{
+    box-shadow: 1px 1px rgb(58, 58, 58);
 }
