@@ -89,11 +89,11 @@
                             <img class="mx-2" src="images/arrow.png" alt="">
                             <span class="text-grey">Identification</span>
                         </div>
-                        <div class="col-md-8 d-flex flex-row justify-content-center m-4">
+                        {{-- <div class="col-md-8 d-flex flex-row justify-content-center m-4">
                             <div class="mr-3"><input type="radio" name="check_cin" id="" checked> cin</div>
                             <div><input type="radio" name="check_sejour" id=""> carte séjour</div>
-                        </div>
-                        <div class="d-flex flex-row mx-3">
+                        </div> --}}
+                        <div class="d-flex flex-row mt-5 mx-3">
                             <div class="d-flex flex-column justify-content-between align-items-center mb-1">
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">CIN :<span class="text-danger">*</span></label>
@@ -113,8 +113,8 @@
                                 </div>
                             </div>
                             <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
-                                <img class="avatar mx-5" accept="image/*" src="images/avatar.jpg" alt="" id="imgSelected">
-                                <input class="small" type="file" name="image" id="imgInp">
+                                <img class="avatar mx-5" src="images/avatar.jpg" alt="" id="imgSelected">
+                                <input class="small" type="file" name="picture" id="imgInp">
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
@@ -208,17 +208,23 @@
                                 <span class="ml-4 small text-green">Internationale :</span>
                             </div>
                             <div class="d-flex flex-column align-items-start">
-                                <input class="mb-1" type="checkbox" name="mobilite" id="">
-                                <input class="my-1" type="checkbox" name="regionale" id="">
-                                <input class="my-1" type="checkbox" name="nationale" id="">
-                                <input class="my-1" type="checkbox" name="international" id="">
+                                <input class="mb-1" type="checkbox" name="mobilite[]" value="Locale">
+                                <input class="my-1" type="checkbox" name="mobilite[]" value="Régionale">
+                                <input class="my-1" type="checkbox" name="mobilite[]" value="Nationale">
+                                <input class="my-1" type="checkbox" name="mobilite[]" value="Internationale">
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-row justify-content-between my-3">
                             <label class="title" for="">Handicap : </label>
                             <div class="d-flex flex-row align-items-center">
-                                <div class="mr-5"><span class="title">Oui </span><input type="radio" name="oui"></div>
-                                <div><span class="title">Non </span><input type="radio" name="non"></div>
+                                <div class="mr-5">
+                                    <span class="title">Oui </span>
+                                    <input type="radio" name="oui" value="true">
+                                </div>
+                                <div>
+                                    <span class="title">Non </span>
+                                    <input type="radio" name="non" value="false">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-row justify-content-between align-items-start">
@@ -277,17 +283,11 @@
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center my-2">
                                     <label class="title" for="">Année d’obtention :</label>
-                                    <select class="rounded-0 w-40" name="anne_obt">
-                                        <option>[Choisissez]</option>
-                                        <option>2000</option>
-                                        <option>2001</option>
-                                        <option>2002</option>
-                                        <option>2003</option>
-                                    </select>
+                                    <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1" value="2022" />
                                 </div>
                                 <div class="d-flex flex-row  justify-content-between align-items-center my-3">
                                     <label class="title" for="">Commentaire :</label>
-                                    <textarea class="w-area" name="comment" rows="4"></textarea>
+                                    <textarea class="w-area" name="commentaire" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -357,13 +357,13 @@
                                     <label class="title" for="">Langue :</label>
                                     <div class="d-flex flex-column">
                                         <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                            <select class="rounded-0 w-40" name="langue">
+                                            <select class="rounded-0 w-40" name="langue_1">
                                                 <option>[Langue]</option>
                                                 <option>Arabe</option>
                                                 <option>Français</option>
                                                 <option>Anglais</option>
                                             </select>
-                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue">
+                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
                                                 <option>[Niveau langue]</option>
                                                 <option>Langue maternelle</option>
                                                 <option>Courant</option>
@@ -373,13 +373,13 @@
                                             </select>
                                         </div>
                                         <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                            <select class="rounded-0 w-40" name="langue">
+                                            <select class="rounded-0 w-40" name="langue_2">
                                                 <option>[Langue]</option>
                                                 <option>Arabe</option>
                                                 <option>Français</option>
                                                 <option>Anglais</option>
                                             </select>
-                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue">
+                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
                                                 <option>[Niveau langue]</option>
                                                 <option>Langue maternelle</option>
                                                 <option>Courant</option>
@@ -389,13 +389,13 @@
                                             </select>
                                         </div>
                                         <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                            <select class="rounded-0 w-40" name="langue">
+                                            <select class="rounded-0 w-40" name="langue_3">
                                                 <option>[Langue]</option>
                                                 <option>Arabe</option>
                                                 <option>Français</option>
                                                 <option>Anglais</option>
                                             </select>
-                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue">
+                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
                                                 <option>[Niveau langue]</option>
                                                 <option>Langue maternelle</option>
                                                 <option>Courant</option>
@@ -424,17 +424,17 @@
                                     <span class="ml-4 small text-green">PowerPoint :</span>
                                 </div>
                                 <div class="d-flex flex-column align-items-start mx-3">
-                                    <input class="mb-1" type="checkbox" name="word" id="">
-                                    <input class="my-1" type="checkbox" name="excel" id="">
-                                    <input class="my-1" type="checkbox" name="access" id="">
-                                    <input class="my-1" type="checkbox" name="powerpoint" id="">
+                                    <input class="mb-1" type="checkbox" name="bureautique[]" value="Word">
+                                    <input class="my-1" type="checkbox" name="bureautique[]" value="Excel">
+                                    <input class="my-1" type="checkbox" name="bureautique[]" value="Access">
+                                    <input class="my-1" type="checkbox" name="bureautique[]" value="PowerPoint">
                                 </div>
                             </div>
                             <hr>
                             <div class="d-flex flex-row justify-content-satrt align-items-center">
                                 <label class="title" for="">Compétences spécifiques :</label>
                                 <div class="d-flex flex-column ml-3 mt-3">
-                                    <input type="text" name="competence" class="rounded-0 w-40">
+                                    <input type="text" name="comp_specifiques" class="rounded-0 w-40">
                                     <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
                                 </div>
                             </div>
@@ -443,39 +443,39 @@
                                 <label class="title" for="">Permis de conduire :</label>
                                 <div class="d-flex flex-column">
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="A">
                                         <span class="small text-green mx-2">A</span>
                                         <img src="images/a.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="B">
                                         <span class="small text-green mx-2">B</span>
                                         <img src="images/b.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="C">
                                         <span class="small text-green mx-2">C</span>
                                         <img src="images/c.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="D">
                                         <span class="small text-green mx-2">D</span>
                                         <img src="images/d.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column mx-5">
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="EB">
                                         <span class="small text-green mx-2">EB</span>
                                         <img src="images/eb.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="EC">
                                         <span class="small text-green mx-2">EC</span>
                                         <img src="images/ec.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="word" id="">
+                                        <input class="" type="checkbox" name="permis_conduire[]" value="ED">
                                         <span class="small text-green mx-2">ED</span>
                                         <img src="images/ed.jpg" alt="">
                                     </div>
@@ -493,7 +493,7 @@
                         </div>
                         <div class="d-flex flex-column p-4">
                             <div class="d-flex flex-row justify-content-center align-items-center">
-                                <textarea class="form-control w-50 rounded-0" name="activite_extra" rows="5"></textarea>
+                                <textarea class="form-control w-50 rounded-0" name="title" rows="5"></textarea>
                             </div>
                         </div>
                     </div>

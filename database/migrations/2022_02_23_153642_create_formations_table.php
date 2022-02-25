@@ -15,11 +15,13 @@ class CreateFormationsTable extends Migration
     {
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
-            $table->string('diplome');
-            $table->string('specialite');
-            $table->string('option');
-            $table->string('grp_etab');
-            $table->string('etab');
+            $table->string('diplome')->nullable();
+            $table->string('specialite')->nullable();
+            $table->string('option')->nullable();
+            $table->string('grp_etab')->nullable();
+            $table->string('etab')->nullable();
+            $table->integer('annee_obt')->nullable();
+            $table->string('commentaire')->nullable();
             $table->timestamps();
         });
     }

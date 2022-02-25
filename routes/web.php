@@ -20,7 +20,11 @@ Route::get('/', function () {
 
 Route::get('/candidat', function () {
     return view('candidat.register');
-});
+})->name('candidat');
+
+Route::get('/profile', function () {
+    return view('candidat.profile');
+})->name('profile');
 
 Auth::routes();
 

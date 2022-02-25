@@ -15,11 +15,15 @@ class CreateCompetencesTable extends Migration
     {
         Schema::create('competences', function (Blueprint $table) {
             $table->id();
-            $table->string('langue');
-            $table->string('niveau_langue');
-            $table->string('bureautique');
-            $table->string('comp_specifiques');
-            $table->string('permis_conduire');
+            $table->string('langue_1')->nullable();
+            $table->string('niveau_langue_1')->nullable();
+            $table->string('langue_2')->nullable();
+            $table->string('niveau_langue_2')->nullable();
+            $table->string('langue_3')->nullable();
+            $table->string('niveau_langue_3')->nullable();
+            $table->string('bureautique')->nullable();
+            $table->string('comp_specifiques')->nullable();
+            $table->string('permis_conduire')->nullable();
             $table->timestamps();
         });
     }

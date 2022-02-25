@@ -24,7 +24,20 @@ class Candidate extends Model
         'gsm_1',
         'situation_prof',
     ];
+    
+    public function setMobiliteAttribute($value)
+    {
+        $this->attributes['mobilite'] = json_encode($value);
+    }
 
+    public function getMobiliteAttribute($value)
+    {
+        return $this->attributes['mobilite'] = json_decode($value);
+    }
+
+    public function image(){
+        return $this->hasOne(Image::class);
+    }
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -37,8 +50,8 @@ class Candidate extends Model
     public function competences() {
         return $this->hasMany(Competence::class);
     }
-    public function activites_extra() {
-        return $this->hasMany(ActiviteExtra::class);
+    public function activities() {
+        return $this->hasMany(Activity::class);
     }
     public function cvs() {
         return $this->hasMany(Cv::class);

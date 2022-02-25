@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCandidateToActivitesExtraTable extends Migration
+class AddCandidateToActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddCandidateToActivitesExtraTable extends Migration
      */
     public function up()
     {
-        Schema::table('activites_extra', function (Blueprint $table) {
+        Schema::table('activities', function (Blueprint $table) {
             $table->foreignId('candidate_id')->after('id')->constrained();
         });
     }
@@ -25,8 +25,8 @@ class AddCandidateToActivitesExtraTable extends Migration
      */
     public function down()
     {
-        Schema::table('activites_extra', function (Blueprint $table) {
-            $table->dropForeign('activites_extra_candidate_id_foreign');
+        Schema::table('activities', function (Blueprint $table) {
+            $table->dropForeign('activities_candidate_id_foreign');
         });
     }
 }

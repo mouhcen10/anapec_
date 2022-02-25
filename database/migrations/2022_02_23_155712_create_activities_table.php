@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExperiencesTable extends Migration
+class CreateActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateExperiencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('experiences', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->date('date_debut')->nullable();
-            $table->date('date_fin')->nullable();
-            $table->string('entreprise')->nullable();
-            $table->string('intitule_poste')->nullable();
-            $table->string('description')->nullable();
+            $table->text('title')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateExperiencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('experiences');
+        Schema::dropIfExists('activities');
     }
 }

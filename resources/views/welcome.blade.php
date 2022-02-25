@@ -107,7 +107,7 @@
                 <img class="mx-3" src="images/arrow.png" alt="">
                 Connexion
               </div>
-              <div class="d-flex flex-row justify-content-around align-items-center mt-3 mx-2">
+              {{-- <div class="d-flex flex-row justify-content-around align-items-center mt-3 mx-2">
                 <div class="form-check mx-2">
                   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                   <label class="form-check-label" for="exampleRadios1">
@@ -120,19 +120,35 @@
                     Professionnel
                   </label>
                 </div>
-              </div>
-              <form class="card-body py-2 px-4">
+              </div> --}}
+              <form method="POST" action="{{ route('login') }}" class="card-body pt-5 px-4">
+                  @csrf
                   <div class="form-group">
-                    <input type="email" name="cin" class="form-control rounded-0 h-25" placeholder="CIN">
+                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror rounded-0 h-25" placeholder="Email" required autocomplete="email" autofocus>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" class="form-control rounded-0 h-25" placeholder="Password">
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror rounded-0 h-25" placeholder="Password" required autocomplete="current-password">
+                      @error('password')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
                   </div>
                   <div class="form-group d-flex justify-content-between align-items-center">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
                     <button style="background: var(--bg-green);" type="submit" class="btn btn-sm text-white">Ok</button>
                   </div>
+                  @if (Route::has('password.request'))
+                      <a class="btn btn-link" href="{{ route('password.request') }}">
+                          {{ __('Mot de passe oublié ?') }}
+                      </a>
+                  @endif
               </form>
               <div class="d-flex flex-column align-items-center">
                   <a href="/candidat" style="width: 240px;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
