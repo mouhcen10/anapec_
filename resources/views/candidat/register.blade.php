@@ -3,11 +3,10 @@
 @section('content')
 <div class="container p-0">
     <div class="col-md-12 d-flex flex-row p-0">
-        {{-- <div class="row"> --}}
             <!--Connexion-->
             <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
                 <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                    <img class="mx-3" src="images/arrow.png" alt="">
+                    <img class="mx-3" src="/storage/images/arrow.png" alt="">
                     Connexion
                 </div>
                 <div class="d-flex flex-row justify-content-around align-items-center mt-4 mx-2">
@@ -38,7 +37,7 @@
                     </div>
                 </form>
                 <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white mt-3">
-                    <img class="mx-3" src="images/arrow.png" alt="">
+                    <img class="mx-3" src="/storage/images/arrow.png" alt="">
                     Atelier
                 </div>
                 <div class="atelier m-2 p-2">
@@ -86,7 +85,7 @@
                     <!--Identification-->
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="images/arrow.png" alt="">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Identification</span>
                         </div>
                         {{-- <div class="col-md-8 d-flex flex-row justify-content-center m-4">
@@ -113,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
-                                <img class="avatar mx-5" src="images/avatar.jpg" alt="" id="imgSelected">
+                                <img class="avatar mx-5" src="/storage/images/avatar.jpg" alt="" id="imgSelected">
                                 <input class="small" type="file" name="picture" id="imgInp">
                             </div>
                         </div>
@@ -243,7 +242,7 @@
                     <!--Formation-->
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="images/arrow.png" alt="">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Formation</span>
                         </div>
                         <div class="d-flex flex-column p-4">
@@ -305,7 +304,7 @@
                     <!--Expériences-->
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="images/arrow.png" alt="">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Expérience</span>
                         </div>
                         <div class="d-flex flex-column p-4">
@@ -348,7 +347,7 @@
                     <!--Compétences-->
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="images/arrow.png" alt="">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Compétences</span>
                         </div>
                         <div class="d-flex flex-column p-4">
@@ -445,39 +444,39 @@
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="A">
                                         <span class="small text-green mx-2">A</span>
-                                        <img src="images/a.jpg" alt="">
+                                        <img src="/storage/images/a.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="B">
                                         <span class="small text-green mx-2">B</span>
-                                        <img src="images/b.jpg" alt="">
+                                        <img src="/storage/images/b.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="C">
                                         <span class="small text-green mx-2">C</span>
-                                        <img src="images/c.jpg" alt="">
+                                        <img src="/storage/images/c.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="D">
                                         <span class="small text-green mx-2">D</span>
-                                        <img src="images/d.jpg" alt="">
+                                        <img src="/storage/images/d.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column mx-5">
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="EB">
                                         <span class="small text-green mx-2">EB</span>
-                                        <img src="images/eb.jpg" alt="">
+                                        <img src="/storage/images/eb.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="EC">
                                         <span class="small text-green mx-2">EC</span>
-                                        <img src="images/ec.jpg" alt="">
+                                        <img src="/storage/images/ec.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
                                         <input class="" type="checkbox" name="permis_conduire[]" value="ED">
                                         <span class="small text-green mx-2">ED</span>
-                                        <img src="images/ed.jpg" alt="">
+                                        <img src="/storage/images/ed.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -488,7 +487,7 @@
                     <!--Activitées extra-->
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="images/arrow.png" alt="">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Activités extra-professionnelles</span>
                         </div>
                         <div class="d-flex flex-column p-4">
@@ -502,7 +501,7 @@
                     <!--Cv personnel-->
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="images/arrow.png" alt="">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">CV personnel</span>
                         </div>
                         <div class="d-flex flex-column p-4">
@@ -519,7 +518,6 @@
                     </div>
                 </form>
             </div>
-        {{-- </div> --}}
     </div>
   </div>
 @endsection

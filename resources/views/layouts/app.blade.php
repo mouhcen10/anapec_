@@ -23,13 +23,13 @@
         <div id="carouselExampleControls" class="carousel slide py-2 px-lg-5" data-ride="carousel">
             <div class="carousel-inner" style="height: 100px;">
               <div class="carousel-item active">
-                <img style="height: 100px;" src="images/img4.png" class="d-block w-100" alt="...">
+                <img style="height: 100px;" src="/storage/images/img4.png" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img style="height: 100px;" src="images/img5.jpg" class="d-block w-100" alt="...">
+                <img style="height: 100px;" src="/storage/images/img5.jpg" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img style="height: 100px;" src="images/img6.jpg" class="d-block w-100" alt="...">
+                <img style="height: 100px;" src="/storage/images/img6.jpg" class="d-block w-100" alt="...">
               </div>
             </div>
            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
@@ -76,7 +76,7 @@
                 <div class="d-flex flex-column justify-content-between align-items-center">
                     <div id="logofoot">
                         <a class="nav-link" href="#">
-                            <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
+                            <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
                         </a>
                     </div>
                     <span class="copy">Copyrights © 2022</span>

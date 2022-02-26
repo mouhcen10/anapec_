@@ -11,6 +11,7 @@ use App\Models\Formation;
 use App\Models\Image;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,7 +24,11 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        return view('candidat.profile');
+        // return view('candidat.profile');
+        $candidates = Candidate::all();
+        return view('candidat.profile', [
+            'candidates' => $candidates
+        ]);
     }
 
     /**
@@ -155,7 +160,7 @@ class CandidateController extends Controller
                 $activity->save();
             }
 
-            if ($request->title != null) {
+            if ($request->cv != null) {
 
                 $cv = new Cv();
                 $cv->candidate_id = $candidate->id;
@@ -163,10 +168,7 @@ class CandidateController extends Controller
                 $cv->save();
             }
 
-            return redirect()->route('candidates.index');
-        }
-        else{
-            return 'failed';
+            return redirect()->route('profile', ['candidate' => $candidate->id]);
         }
 
     }
@@ -177,9 +179,12 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate)
+    public function show($id)
     {
-        //
+        $candidate = Candidate::findOrFail($id);
+        return view('candidat.profile', [
+            'candidate' => $candidate
+        ]);
     }
 
     /**

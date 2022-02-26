@@ -22,12 +22,14 @@ Route::get('/candidat', function () {
     return view('candidat.register');
 })->name('candidat');
 
-Route::get('/profile', function () {
-    return view('candidat.profile');
-})->name('profile');
+// Route::get('/profile', function () {
+//     return view('candidat.profile');
+// })->name('profile');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/profile/{id}', [App\Http\Controllers\CandidateController::class, 'show'])->name('profile');
+Route::post('/candidates', [App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
 Route::resource('candidates', CandidateController::class);

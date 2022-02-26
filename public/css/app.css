@@ -10024,12 +10024,12 @@ h3 {
   }
 }
 body {
-  background: url("/images/back.png") repeat scroll 0 0 transparent;
+  background: url("/storage/images/back.png") repeat scroll 0 0 transparent;
   width: 100%;
 }
 
 .separator {
-  background: url("/images/sep_nav.png") no-repeat scroll right center transparent;
+  background: url("/storage/images/sep_nav.png") no-repeat scroll right center transparent;
   display: block;
   float: left;
   height: 100%;
@@ -10179,4 +10179,26 @@ body {
 
 .shadow-xl {
   box-shadow: 1px 1px #3a3a3a;
+}
+
+.bg-green-light {
+  background-color: #e9f0c6;
+}
+
+.border-b-dashed {
+  border-bottom: 2px dashed #fff;
+}
+
+.bloc-bienvenue {
+  background: url("/storage/images/bg-repeat.jpg") repeat-x center #fff;
+  border: 2px solid #e0dfdf;
+  width: 696px !important;
+  border-top: 0px;
+  border-radius: 50px;
+  box-shadow: 4px 0px 3px #9db22b;
+}
+
+.f-90 {
+  font-size: 12px;
+  font-weight: 500;
 }

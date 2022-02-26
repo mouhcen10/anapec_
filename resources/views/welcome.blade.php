@@ -6,7 +6,7 @@
           <div class="col-md-9 pl-0">
             <div class="d-flex flex-column bg-white rounded-top-right p-0 shadow-sm">
                 <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                  <img class="mx-3" src="images/arrow.png" alt="">
+                  <img class="mx-3" src="/storage/images/arrow.png" alt="">
                   Trouver un emploi
                 </div>
                 <div class="d-flex flex-row my-3">
@@ -48,31 +48,31 @@
                       </div>
                   </form>
                   <div class="p-2">
-                      <img src="images/map.png" alt="map">
+                      <img src="/storage/images/map.png" alt="map">
                   </div>
                 </div>
               </div>
               <div class="d-flex flex-row justify-content-between mt-4">
                   <div class="col-md-5 p-0 bg-white rounded-top-right shadow-sm">
                     <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                      <img class="mx-3" src="images/arrow.png" alt="">
+                      <img class="mx-3" src="/storage/images/arrow.png" alt="">
                       Les entreprises qui recrutent
                     </div>
                     <div class="d-flex flex-row flex-wrap justify-content-between p-3">
-                      <img class="w-h-78 m-2" src="images/img1.png" alt="">
-                      <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img1.png" alt="">
-                      <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
                     </div>
                   </div>
                   <div class="col-md-6 p-0 bg-white rounded-top-right shadow-sm">
                     <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                      <img class="mx-3" src="images/arrow.png" alt="">
+                      <img class="mx-3" src="/storage/images/arrow.png" alt="">
                       Les dernières offres
                     </div>
                     <div>
@@ -104,7 +104,7 @@
           </div>
           <div class="col-md-3 bg-white p-0 rounded-top-right shadow-sm">
               <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                <img class="mx-3" src="images/arrow.png" alt="">
+                <img class="mx-3" src="/storage/images/arrow.png" alt="">
                 Connexion
               </div>
               {{-- <div class="d-flex flex-row justify-content-around align-items-center mt-3 mx-2">
@@ -121,7 +121,7 @@
                   </label>
                 </div>
               </div> --}}
-              <form method="POST" action="{{ route('login') }}" class="card-body pt-5 px-4">
+              <form method="POST" action="{{ route('login') }}" class="card-body pt-4 px-4">
                   @csrf
                   <div class="form-group">
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror rounded-0 h-25" placeholder="Email" required autocomplete="email" autofocus>
@@ -139,20 +139,20 @@
                           </span>
                       @enderror
                   </div>
-                  <div class="form-group d-flex justify-content-between align-items-center">
+                  <div class="form-group d-flex justify-content-between align-items-center pl-3">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
                     <button style="background: var(--bg-green);" type="submit" class="btn btn-sm text-white">Ok</button>
                   </div>
                   @if (Route::has('password.request'))
-                      <a class="btn btn-link" href="{{ route('password.request') }}">
+                      <a class="nav-link text-grey small p-0" href="{{ route('password.request') }}">
                           {{ __('Mot de passe oublié ?') }}
                       </a>
                   @endif
               </form>
               <div class="d-flex flex-column align-items-center">
-                  <a href="/candidat" style="width: 240px;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
-                  <a href="/candidat" style="width: 240px;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
+                  <a href="/candidat" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
+                  <a href="/candidat" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
               </div>
               <x-slider></x-slider>
           </div>
