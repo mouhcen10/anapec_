@@ -133,7 +133,12 @@ body{
     font-size: 18px;
     color: #666666;
     font-weight: normal;
-
+}
+.list-group>.text-grey:hover{
+    color: #000;
+}
+.nav-link:hover{
+    color: #000;
 }
 .rounded-top-right{
     border-top-right-radius: 32px;
@@ -142,7 +147,7 @@ body{
     box-shadow: 1px 1px rgb(58, 58, 58);
 }
 .bg-green-light{
-    background-color: #e9f0c6;
+    background-color: #e9f0c6 !important;
 }
 
 .border-b-dashed {
@@ -155,9 +160,14 @@ body{
     width: 696px!important;
     border-top: 0px;
     border-radius: 50px;
-    box-shadow: 4px 0px 3px #9db22b;
+    box-shadow: 1px 0px 4px#9db22b;
 }
 .f-90{
     font-size: 12px;
     font-weight: 500;
+}
+.f-13{
+    color: #666666;
+    font-size: 13px;
+    font-weight: bold;
 }

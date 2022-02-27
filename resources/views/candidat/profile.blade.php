@@ -7,38 +7,52 @@
         <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
             <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
                 <img class="mx-3" src="/storage/images/arrow.png" alt="">
-                Connexion
+                Votre espace personnel
             </div>
-            <div class="d-flex flex-row justify-content-around align-items-center mt-4 mx-2">
-            <div class="form-check mx-2">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                Candidat
-                </label>
+            <div class="d-flex flex-row justify-content-start align-items-start mt-4">
+                <ul class="list-group w-100">
+                    <div>
+                        <a class="nav-link text-grey rounded-0 border-0 bg-green-light small" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-right text-grey" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                            Recherche des offres
+                        </a>
+                        <div class="collapse p-2" id="navbarToggleExternalContent">
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Consulter la banque d'offres</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Consulter les offres International</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Offres correspandant à votre profil</a></li>
+                        </div>
+                    </div>
+                    <div class="my-1">
+                        <a class="nav-link text-grey rounded-0 border-0 bg-green-light small" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent1" aria-controls="navbarToggleExternalContent1" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-right text-grey" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                            Vos alertes aux offres
+                        </a>
+                        <div class="collapse p-2" id="navbarToggleExternalContent1">
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Créer alertes</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Gérer les alertes</a></li>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="nav-link text-grey rounded-0 border-0 bg-green-light small" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent2" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-right text-grey" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                            Votre Historique
+                        </a>
+                        <div class="collapse p-2" id="navbarToggleExternalContent2">
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Vos candidatures</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Offres mémorisées</a></li>
+                        </div>
+                    </div>
+                </ul>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                Employeur
-                </label>
-            </div>
-            </div>
-            <form class="card-body py-2 px-4">
-                <div class="form-group">
-                <input type="email" name="cin" class="form-control rounded-0 h-25" placeholder="CIN">
-                </div>
-                <div class="form-group">
-                <input type="password" name="password" class="form-control rounded-0 h-25" placeholder="Password">
-                </div>
-                <div class="form-group d-flex  justify-content-between align-items-start align-items-center">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
-                <button style="background: var(--bg-green);" type="submit" class="btn btn-sm text-white">Ok</button>
-                </div>
-            </form>
             <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white mt-3">
                 <img class="mx-3" src="/storage/images/arrow.png" alt="">
-                Atelier
+                Ateliers
             </div>
             <div class="atelier m-2 p-2">
                 <li class="d-flex flex-row justify-content-between align-items-start">
@@ -85,6 +99,7 @@
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
+                    <img class="pb-1" src="/storage/images/logout.png" alt="">
                     {{ __('Déconnexion') }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -146,10 +161,11 @@
                         </ul>
                     </div>
                 </div><div class="d-flex justify-content-end">
-                    <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white">Visualiser votre cv</button>
+                    <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white" data-toggle="modal" data-target="#staticBackdrop">Visualiser votre cv</button>
                     <button type="submit" class="btn m-2 btn-secondary border-0 btn-sm shadow">Actualiser votre cv</button>
                     <button type="submit" class="btn m-2 btn-warning border-0 btn-sm text-white shadow">Actualiser votre situation</button>
                 </div>
+                @include('candidat.modal')
             </div>
             <!--/Informations-->
             
@@ -163,7 +179,7 @@
                         </div>
                         <img class="mx-2" src="/storage/images/statistique.png" alt="">
                     </div>
-                    <ul class="list-group d-flex flex-column mt-4">
+                    <ul class="list-group d-flex flex-column mt-3">
                         <div class="d-flex flex-row justify-content-between bg-green-light p-2">
                             <span class="text-grey small">Postulations effectuées</span>
                             <span class="f-90">17</span>
@@ -199,11 +215,11 @@
                         <img class="mx-2" src="/storage/images/dernier_offre.png" alt="">
                     </div>
                     <div>
-                        <table class="table my-4">
+                        <table class="table table-sm table-bordred my-4">
                             <thead class="bg-green-light text-secondary">
-                                <th>Date</th>
-                                <th>Référence</th>
-                                <th>Entreprise</th>
+                                <th class="text-center f-13">Date</th>
+                                <th class="text-center f-13">Référence</th>
+                                <th class="text-center f-13">Entreprise</th>
                             </thead>
                             <tbody>
                                 <tr class="text-center">
@@ -220,12 +236,15 @@
             
             <!--Dernières offres-->
             <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                    <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                    <span class="text-grey">Les dernières offres qui correspondent à votre profil</span>
+                <div class="rounded-0 mx-2 d-flex justify-content-between align-items-center">
+                    <div>
+                        <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                        <span class="text-grey">Les dernières offres qui correspondent à votre profil</span>
+                    </div>
+                    <img class="mx-2" src="/storage/images/candidature.png" alt="">
                 </div>
                 <div>
-                    <table class="table my-4">
+                    <table class="table table-sm my-4">
                         <thead class="nav-bg text-white small">
                             <th>Référence de l'offre</th>
                             <th>Date de l'offre</th>
@@ -236,6 +255,9 @@
                         <tbody>
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-end my-3">
+                        <a class="btn nav-bg border-0 btn-sm shadow-xl text-white" href="#">Voir toutes les offres</a>
+                    </div>
                 </div>
             </div>
             <!--/Dernières offres-->
