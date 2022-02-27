@@ -12,6 +12,6 @@ class Image extends Model
     protected $fillable = ['path'];
 
     public function candidate(){
-        return $this->hasOne(Candidate::class);
+        return $this->belongsTo(Candidate::class);
     }
 }

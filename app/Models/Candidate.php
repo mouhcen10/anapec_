@@ -36,7 +36,7 @@ class Candidate extends Model
     }
 
     public function image(){
-        return $this->belongsTo(Image::class);
+        return $this->hasOne(Image::class);
     }
     public function user() {
         return $this->belongsTo(User::class);

@@ -32,4 +32,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/profile/{id}', [App\Http\Controllers\CandidateController::class, 'show'])->name('profile');
 Route::post('/candidates', [App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
-Route::resource('candidates', CandidateController::class);
+// Route::resource('candidates', CandidateController::class);
