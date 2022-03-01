@@ -71,8 +71,8 @@
         </main>
         
         <!--/Footer-->
-        <div class="container d-flex flex-row bg-dark justify-content-around p-0">
-            <div class="col-md-4 border-dashed text-white pt-4">
+        <div class="footer container d-flex flex-row bg-dark justify-content-around p-0">
+            <div class="one col-md-4 border-dashed text-white pt-4">
                 <div class="d-flex flex-column justify-content-between align-items-center">
                     <div id="logofoot">
                         <a class="nav-link" href="#">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 border-dashed text-white pt-4 d-flex flex-column align-items-center">
+            <div class="two col-md-4 border-dashed text-white pt-4 d-flex flex-column align-items-center">
                 <span class="f-size-16 ml-3">Chercheurs d'emploi</span>
                 <ul>
                     <li class="f-size-11">Créer votre espace</li>
@@ -113,7 +113,7 @@
                     <li class="f-size-11">Offres mémorisées</li>
                 </ul>
             </div>
-            <div class="col-md-4 text-white pt-4 d-flex flex-column align-items-center">
+            <div class="three col-md-4 text-white pt-4 d-flex flex-column align-items-center">
                 <span class="f-size-16">Employeurs</span>
                 <ul>
                     <li class="f-size-11">Créer votre espace</li>
