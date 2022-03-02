@@ -10231,6 +10231,7 @@ body {
 
   .second {
     order: -1;
+    margin-right: 15px !important;
   }
 
   .search, .entreprise {
@@ -10263,10 +10264,116 @@ body {
     flex-wrap: wrap !important;
     justify-content: space-between !important;
     align-items: center !important;
-    margin-left: 7.5px !important;
+    margin-left: 8px !important;
+    margin-right: 8px !important;
   }
 
   .one, .two, .three {
     border-top: 1px dashed #cccccc;
+    border-right: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .principal {
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 15px;
+    padding: 10px !important;
+  }
+
+  .second {
+    order: -1;
+  }
+
+  .col-md-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .col-md-9 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .search, .entreprise {
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px;
+  }
+
+  .slider-2 {
+    display: none !important;
+  }
+
+  .frm-search {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .col-md-5 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .col-md-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .map {
+    order: -1;
+    padding: 0 !important;
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .one, .two, .three {
+    border-right: 1px dashed #cccccc;
+  }
+}
+@media (max-width: 992px) {
+  .entreprise {
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px;
+  }
+
+  .col-md-5 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  .col-md-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (min-width: 1200px) {
+  .one, .two, .three {
+    border-right: 1px dashed #cccccc !important;
   }
 }

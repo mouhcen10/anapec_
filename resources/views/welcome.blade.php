@@ -58,7 +58,7 @@
                       <img class="mx-3" src="/storage/images/arrow.png" alt="">
                       Les entreprises qui recrutent
                     </div>
-                    <div class="d-flex flex-row flex-wrap justify-content-between p-3">
+                    <div class="ste d-flex flex-row flex-wrap justify-content-between p-3">
                       <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
                       <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
                       <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">

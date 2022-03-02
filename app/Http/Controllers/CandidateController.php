@@ -193,9 +193,12 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Candidate $candidate)
+    public function edit($id)
     {
-        //
+        $candidate = Candidate::findOrFail($id);
+        return view('candidat.edit', [
+            'candidate' => $candidate
+        ]);
     }
 
     /**

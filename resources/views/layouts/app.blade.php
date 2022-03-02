@@ -44,7 +44,7 @@
         <!--/Slider-->
         <!--Navbar-->
         <nav class="shadow-sm nav-bg">
-            {{-- <button class="navbar-toggler shadow-lg w-10 px-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            {{-- <button class="navbar-toggler shadow-lg w-10 px-2 float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon d-flex align-items-center pl-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -59,7 +59,7 @@
                     <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Conseils et infos</a></li>
                     <li class="nav-item last separator"><a class="nav-link text-white" href="mailto:econtact@anapec.org">Contact</a></li>
                     <li class="nav-item">
-                        <a class="btn btn-light btn-sm shadow-sm mx-3" href="#" 1="">Accès Employeurs</a>
+                        <a class="btn btn-light btn-sm shadow-sm mx-3" href="#" 1="">Accès Professionnel</a>
                     </li>
                 </ul>
             </div>
@@ -114,7 +114,7 @@
                 </ul>
             </div>
             <div class="three col-md-4 text-white pt-4 d-flex flex-column align-items-center">
-                <span class="f-size-16">Employeurs</span>
+                <span class="f-size-16">Professionnels</span>
                 <ul>
                     <li class="f-size-11">Créer votre espace</li>
                     <li class="f-size-11">Accéder à votre espace</li>
