@@ -25,10 +25,10 @@ class CandidateController extends Controller
     public function index()
     {
         // return view('candidat.profile');
-        $candidates = Candidate::all();
-        return view('candidat.profile', [
-            'candidates' => $candidates
-        ]);
+        // $candidates = Candidate::all();
+        // return view('candidat.profile', [
+        //     'candidates' => $candidates
+        // ]);
     }
 
     /**
@@ -168,7 +168,7 @@ class CandidateController extends Controller
                 $cv->save();
             }
 
-            return redirect()->route('profile', ['candidate' => $candidate->id]);
+            return redirect()->route('profile', ['id' => $candidate->id]);
         }
 
     }
@@ -176,11 +176,13 @@ class CandidateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Candidate  $candidate
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
+        //->pluck('nom','prenom','email','gsm_1','updated_at','province')->all();
         $candidate = Candidate::findOrFail($id);
         return view('candidat.profile', [
             'candidate' => $candidate
@@ -195,7 +197,7 @@ class CandidateController extends Controller
      */
     public function edit($id)
     {
-        $candidate = Candidate::findOrFail($id);
+        $candidate = Candidate::with('formations','experiences','competences','activities','cvs')->where('id',$id)->first();
         return view('candidat.edit', [
             'candidate' => $candidate
         ]);

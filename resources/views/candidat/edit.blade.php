@@ -159,7 +159,7 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start my-3">
                         <label class="title" for="">Adresse :<span class="text-danger">*</span></label>
-                        <textarea class="w-area" name="adress" rows="4" value="{{ old('adress', $candidate->adress ?? null) }}"></textarea>
+                        <textarea class="w-area" name="adress" rows="4" value="{{ old('adress', $candidate->adress ?? null) }}">{{ old('adress', $candidate->adress ?? null) }}</textarea>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Province ou préfecture : <span class="text-danger">*</span></label>
@@ -174,7 +174,7 @@
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Commune : <span class="text-danger">*</span></label>
                         <select class="rounded-0 w-40" name="commune">
-                            <option value="{{ old('commune', $candidate->commune ?? null) }}">{{ old('password', $candidate->password ?? null) }}</option>
+                            <option value="{{ old('commune', $candidate->commune ?? null) }}">{{ old('commune', $candidate->commune ?? null) }}</option>
                         </select>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
@@ -209,7 +209,7 @@
                         <label class="title" for="">Au chômage depuis :</label>
                         <input type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}">
                     </div>
-                    <div class="col-md-8 d-flex flex-row justify-content-between align-items-start my-3">
+                    {{-- <div class="col-md-8 d-flex flex-row justify-content-between align-items-start my-3">
                         <label class="title" for="">Mobilité </label>
                         <div class="d-flex flex-column align-items-start">
                             <span class="ml-4 small text-green">Locale :</span>
@@ -223,18 +223,29 @@
                             <input class="my-1" type="checkbox" name="mobilite[]"  value="{{ old('mobilite', $candidate->mobilite ?? null) }}">
                             <input class="my-1" type="checkbox" name="mobilite[]"  value="{{ old('mobilite', $candidate->mobilite ?? null) }}">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-8 d-flex flex-row justify-content-between my-3">
                         <label class="title" for="">Handicap : </label>
                         <div class="d-flex flex-row align-items-center">
-                            <div class="mr-5">
-                                <span class="title">Oui </span>
-                                <input type="radio" name="oui" value="true" value="{{ old('handicap', $candidate->handicap ?? null) }}">
-                            </div>
-                            <div>
-                                <span class="title">Non </span>
-                                <input type="radio" name="non" value="false" value="{{ old('handicap', $candidate->handicap ?? null) }}">
-                            </div>
+                            @if($candidate->handicap == false)
+                                <div class="mr-5">
+                                    <span class="title">Oui </span>
+                                    <input type="radio" name="oui" value="false">
+                                </div>
+                                <div>
+                                    <span class="title">Non </span>
+                                    <input type="radio" name="non" value="true" checked>
+                                </div>
+                            @else
+                                <div class="mr-5">
+                                    <span class="title">Oui </span>
+                                    <input type="radio" name="oui" value="true" checked>
+                                </div>
+                                <div>
+                                    <span class="title">Non </span>
+                                    <input type="radio" name="non" value="false">
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-8 d-flex flex-row justify-content-between align-items-start">
@@ -257,34 +268,35 @@
                         <span class="text-grey">Formation</span>
                     </div>
                     <div class="d-flex flex-column p-4">
+                        @foreach ($candidate->formations as $formation)
                         <div class="d-flex flex-column  justify-content-between align-items-start">
                             <div class="d-flex flex-row justify-content-around align-items-center">
                                 <label class="title" for="">Diplôme :</label>
                                 <div class="d-flex flex-column">
                                     <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
                                     <select class="rounded-0 w-40 my-2" name="diplome">
-                                        <option value="{{ old('diplome', $candidate->formations->diplome ?? null) }}">{{ old('diplome', $candidate->formations->diplome ?? null) }}</option>
+                                        <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
                                         <option>Bac +2</option>
                                         <option>Bac +3</option>
                                     </select>
                                     <select class="rounded-0 w-40 my-2" name="specialite">
-                                        <option value="{{ old('specialite', $candidate->specialite ?? null) }}">{{ old('specialite', $candidate->formations->specialite ?? null) }}</option>
+                                        <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
                                         <option>Développement Informatique</option>
                                         <option>Graphic Design</option>
                                     </select>
                                     <select class="rounded-0 w-40 my-2" name="option">
-                                        <option value="{{ old('option', $candidate->formations->option ?? null) }}">{{ old('option', $candidate->formations->option ?? null) }}</option>
+                                        <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
                                         <option>Développement Informatique</option>
                                         <option>Graphic Design</option>
                                     </select>
                                     <select class="rounded-0 w-40 my-2" name="grp_etab">
-                                        <option value="{{ old('grp_etab', $candidate->formations->grp_etab ?? null) }}">{{ old('grp_etab', $candidate->formations->grp_etab ?? null) }}</option>
+                                        <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
                                         <option>OFPPT</option>
                                         <option>ENCG</option>
                                         <option>EMSI</option>
                                     </select>
                                     <select class="rounded-0 w-40 my-2" name="etab">
-                                        <option value="{{ old('etab', $candidate->formations->etab ?? null) }}">{{ old('etab', $candidate->formations->etab ?? null) }}</option>
+                                        <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
                                         <option>Institut Spécialisé des Technologies Appliquées</option>
                                         <option>IGA</option>
                                         <option>Lycée</option>
@@ -293,13 +305,14 @@
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center my-2">
                                 <label class="title" for="">Année d’obtention :</label>
-                                <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ old('annee_obt', $candidate->formations->annee_obt ?? null) }}" />
+                                <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
                             </div>
                             <div class="d-flex flex-row  justify-content-between align-items-center my-3">
                                 <label class="title" for="">Commentaire :</label>
-                                <textarea class="w-area" name="commentaire" rows="4" value="{{ old('commentaire', $candidate->formations->commentaire ?? null) }}"></textarea>
+                                <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
                             </div>
                         </div>
+                        @endforeach
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
@@ -320,28 +333,30 @@
                     </div>
                     <div class="d-flex flex-column p-4">
                         <div class="d-flex flex-row">
+                            @foreach ($candidate->experiences as $experience)
                             <div class="d-flex flex-column justify-content-between align-items-center">
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Date début :</label>
-                                    <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $candidate->experiences->date_debut ?? null) }}">
+                                    <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ $experience->date_debut ?? null }}">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Date fin :</label>
-                                    <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $candidate->experiences->date_fin ?? null) }}">
+                                    <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ $experience->date_fin ?? null }}">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Entreprise :</label>
-                                    <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $candidate->experiences->entreprise ?? null) }}">
+                                    <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ $experience->entreprise ?? null }}">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Intitulé du poste :</label>
-                                    <input type="text" name="intitule" class="rounded-0 w-40" value="{{ old('intitule', $candidate->experiences->intitule ?? null) }}">
+                                    <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ $experience->intitule_poste ?? null }}">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                     <label class="title" for="">Description :</label>
-                                    <textarea class="w-area" name="description" rows="4" value="{{ old('description', $candidate->experiences->description ?? null) }}"></textarea>
+                                    <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ $experience->description ?? null }}</textarea>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-sm">
@@ -362,19 +377,20 @@
                         <span class="text-grey">Compétences</span>
                     </div>
                     <div class="d-flex flex-column p-4">
+                        @foreach ($candidate->competences as $competence)
                         <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
                             <div class="d-flex flex-row justify-content-around align-items-center">
                                 <label class="title" for="">Langue :</label>
                                 <div class="d-flex flex-column">
                                     <div class="d-flex flex-row justify-content-around align-items-center my-2">
                                         <select class="rounded-0 w-40" name="langue_1">
-                                            <option value="{{ old('langue_1', $candidate->competences->langue_1 ?? null) }}">{{ old('langue_1', $candidate->competences->langue_1 ?? null) }}</option>
+                                            <option value="{{ $competence->langue_1 ?? null }}">{{ $competence->langue_1 ?? null }}</option>
                                             <option>Arabe</option>
                                             <option>Français</option>
                                             <option>Anglais</option>
                                         </select>
                                         <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
-                                            <option value="{{ old('niveau_langue_2', $candidate->competences->niveau_langue_1 ?? null) }}">{{ old('niveau_langue_1', $candidate->competences->niveau_langue_1 ?? null) }}</option>
+                                            <option value="{{ $competence->niveau_langue_1 ?? null }}">{{ $competence->niveau_langue_1 ?? null }}</option>
                                             <option>Langue maternelle</option>
                                             <option>Courant</option>
                                             <option>Bon</option>
@@ -384,13 +400,13 @@
                                     </div>
                                     <div class="d-flex flex-row justify-content-around align-items-center my-2">
                                         <select class="rounded-0 w-40" name="langue_2">
-                                            <option value="{{ old('langue_2', $candidate->competences->langue_1 ?? null) }}">{{ old('langue_2', $candidate->competences->langue_2 ?? null) }}</option>
+                                            <option value="{{ $competence->langue_2 ?? null }}">{{ $competence->langue_2 ?? null }}</option>
                                             <option>Arabe</option>
                                             <option>Français</option>
                                             <option>Anglais</option>
                                         </select>
                                         <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
-                                            <option value="{{ old('niveau_langue_2', $candidate->competences->niveau_langue_2 ?? null) }}">{{ old('niveau_langue_2', $candidate->competences->niveau_langue_2 ?? null) }}</option>
+                                            <option value="{{ $competence->niveau_langue_2 ?? null }}">{{ $competence->niveau_langue_2 ?? null }}</option>
                                             <option>Langue maternelle</option>
                                             <option>Courant</option>
                                             <option>Bon</option>
@@ -400,13 +416,13 @@
                                     </div>
                                     <div class="d-flex flex-row justify-content-around align-items-center my-2">
                                         <select class="rounded-0 w-40" name="langue_3">
-                                            <option value="{{ old('langue_3', $candidate->competences->langue_3 ?? null) }}">{{ old('langue_3', $candidate->competences->langue_3 ?? null) }}</option>
+                                            <option value="{{ $competence->langue_3 ?? null }}">{{ $competence->langue_3 ?? null }}</option>
                                             <option>Arabe</option>
                                             <option>Français</option>
                                             <option>Anglais</option>
                                         </select>
                                         <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
-                                            <option value="{{ old('niveau_langue_3', $candidate->competences->niveau_langue_3 ?? null) }}">{{ old('niveau_langue_3', $candidate->competences->niveau_langue_3 ?? null) }}</option>
+                                            <option value="{{ $competence->niveau_langue_3 ?? null }}">{{ $competence->niveau_langue_3 ?? null }}</option>
                                             <option>Langue maternelle</option>
                                             <option>Courant</option>
                                             <option>Bon</option>
@@ -425,7 +441,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="d-flex flex-row justify-content-start align-items-center my-3">
+                        {{-- <div class="d-flex flex-row justify-content-start align-items-center my-3">
                             <label class="title" for="">Bureautique:</label>
                             <div class="d-flex flex-column align-items-start">
                                 <span class="ml-4 small text-green">Word :</span>
@@ -434,63 +450,64 @@
                                 <span class="ml-4 small text-green">PowerPoint :</span>
                             </div>
                             <div class="d-flex flex-column align-items-start mx-3">
-                                <input class="mb-1" type="checkbox" name="bureautique[]" value="{{ old('bureautique', $candidate->competences->bureautique ?? null) }}">
-                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ old('bureautique', $candidate->competences->bureautique ?? null) }}">
-                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ old('bureautique', $candidate->competences->bureautique ?? null) }}">
-                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ old('bureautique', $candidate->competences->bureautique ?? null) }}">
+                                <input class="mb-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
+                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
+                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
+                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
                             </div>
-                        </div>
+                        </div> --}}
                         <hr>
                         <div class="d-flex flex-row justify-content-satrt align-items-center">
                             <label class="title" for="">Compétences spécifiques :</label>
                             <div class="d-flex flex-column ml-3 mt-3">
-                                <input type="text" name="comp_specifiques" class="rounded-0 w-40" value="{{ old('comp_specifiques', $candidate->competences->comp_specifiques ?? null) }}">
+                                <input type="text" name="comp_specifiques" class="rounded-0 w-40" value="{{ $competence->comp_specifiques ?? null }}">
                                 <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
                             </div>
                         </div>
                         <hr>
-                        <div class="d-flex flex-row justify-content-start align-items-center my-4">
+                        {{-- <div class="d-flex flex-row justify-content-start align-items-center my-4">
                             <label class="title" for="">Permis de conduire :</label>
                             <div class="d-flex flex-column">
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">A</span>
                                     <img src="/storage/images/a.jpg" alt="">
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">B</span>
                                     <img src="/storage/images/b.jpg" alt="">
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">C</span>
                                     <img src="/storage/images/c.jpg" alt="">
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">D</span>
                                     <img src="/storage/images/d.jpg" alt="">
                                 </div>
                             </div>
                             <div class="d-flex flex-column mx-5">
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">EB</span>
                                     <img src="/storage/images/eb.jpg" alt="">
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">EC</span>
                                     <img src="/storage/images/ec.jpg" alt="">
                                 </div>
                                 <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ old('permis_conduire', $candidate->competences->permis_conduire ?? null) }}">
+                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
                                     <span class="small text-green mx-2">ED</span>
                                     <img src="/storage/images/ed.jpg" alt="">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        @endforeach
                     </div>
                 </div>
                 <!--/Compétences-->
@@ -503,7 +520,9 @@
                     </div>
                     <div class="d-flex flex-column p-4">
                         <div class="d-flex flex-row justify-content-center align-items-center">
-                            <textarea class="form-control w-50 rounded-0" name="title" rows="5"value="{{ old('title', $candidate->activities->title ?? null) }}"></textarea>
+                            @foreach ($candidate->activities as $activity)
+                                <textarea class="form-control w-50 rounded-0" name="title" rows="5" value="{{ $activity->title }}">{{ $activity->title }}</textarea>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -516,10 +535,12 @@
                         <span class="text-grey">CV personnel</span>
                     </div>
                     <div class="d-flex flex-column p-4">
+                        @foreach($candidate->cvs as $cv)
                         <div class="d-flex flex-column justify-content-start">
                             <span class="small my-1">Joindre votre CV personnel :</span>
-                            <input class="form-control" type="file" name="cv"value="{{ old('file', $candidate->cvs->file ?? null) }}">
+                            <input class="form-control" type="file" name="cv" value="{{ $cv->file ?? null }}">
                         </div>
+                        @endforeach
                     </div>
                 </div>
                 <!--/Cv personnel-->
