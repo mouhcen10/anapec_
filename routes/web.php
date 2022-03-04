@@ -26,10 +26,10 @@ Route::get('/candidat', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/profile/{id}', [App\Http\Controllers\CandidateController::class, 'show'])->name('profile');
-Route::get('/candidates/{id}/edit', [App\Http\Controllers\CandidateController::class, 'edit'])->name('candidates.edit');
-Route::put('/candidates/{id}/update', [App\Http\Controllers\CandidateController::class, 'update'])->name('candidates.update');
-Route::post('/candidates', [App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
+// Route::get('/profile/{id}', [App\Http\Controllers\CandidateController::class, 'show'])->name('profile');
+// Route::get('/candidates/{id}/edit', [App\Http\Controllers\CandidateController::class, 'edit'])->name('candidates.edit');
+// Route::patch('/candidates/{id}/edit', [App\Http\Controllers\CandidateController::class, 'update'])->name('candidates.update');
+// Route::post('/candidates', [App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
 Route::resource('candidates', CandidateController::class);
 
 Auth::routes();

@@ -94,7 +94,7 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
-            <form method="POST" action="{{ route('candidates.update',['candidate' => $candidate->id]) }}" enctype="multipart/form-data" class="d-flex flex-column">
+            <form method="POST" action="{{ route('candidates.update', ['candidate' => $candidate->id]) }}" enctype="multipart/form-data" class="d-flex flex-column">
                 @csrf
                 @method('PUT')
                 <!--Identification-->
@@ -123,7 +123,11 @@
                             </div>
                         </div>
                         <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
+                            @if($candidate->image)
+                            <img class="avatar mx-5" src="{{ Storage::url($candidate->image->path) }}" alt="" id="imgSelected">
+                            @else
                             <img class="avatar mx-5" src="/storage/images/avatar.jpg" alt="" id="imgSelected">
+                            @endif
                             <input class="small" type="file" name="picture" id="imgInp">
                         </div>
                     </div>
@@ -209,7 +213,7 @@
                         <label class="title" for="">Au chômage depuis :</label>
                         <input type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}">
                     </div>
-                    {{-- <div class="col-md-8 d-flex flex-row justify-content-between align-items-start my-3">
+                    <div class="col-md-8 d-flex flex-row justify-content-between align-items-start my-3">
                         <label class="title" for="">Mobilité </label>
                         <div class="d-flex flex-column align-items-start">
                             <span class="ml-4 small text-green">Locale :</span>
@@ -218,331 +222,605 @@
                             <span class="ml-4 small text-green">Internationale :</span>
                         </div>
                         <div class="d-flex flex-column align-items-start">
-                            <input class="mb-1" type="checkbox" name="mobilite[]"  value="{{ old('mobilite', $candidate->mobilite ?? null) }}">
-                            <input class="my-1" type="checkbox" name="mobilite[]"  value="{{ old('mobilite', $candidate->mobilite ?? null) }}">
-                            <input class="my-1" type="checkbox" name="mobilite[]"  value="{{ old('mobilite', $candidate->mobilite ?? null) }}">
-                            <input class="my-1" type="checkbox" name="mobilite[]"  value="{{ old('mobilite', $candidate->mobilite ?? null) }}">
+                            <input class="mb-1" type="checkbox" name="mobilite_locale" value="mobilite_locale" @if($candidate->locale) checked @endif/>
+                            <input class="my-1" type="checkbox" name="mobilite_regionale" value="mobilite_regionale" @if($candidate->regionale) checked @endif/>
+                            <input class="my-1" type="checkbox" name="mobilite_nationale" value="mobilite_nationale" @if($candidate->nationale) checked @endif/>
+                            <input class="my-1" type="checkbox" name="mobilite_internationale" value="mobilite_internationale" @if($candidate->internationale) checked @endif/>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-md-8 d-flex flex-row justify-content-between my-3">
                         <label class="title" for="">Handicap : </label>
                         <div class="d-flex flex-row align-items-center">
                             @if($candidate->handicap == false)
                                 <div class="mr-5">
                                     <span class="title">Oui </span>
-                                    <input type="radio" name="oui" value="false">
+                                    <input type="radio" id="handicap" name="oui" value="false">
                                 </div>
                                 <div>
                                     <span class="title">Non </span>
-                                    <input type="radio" name="non" value="true" checked>
+                                    <input type="radio" id="nonHandicap" name="non" value="true" checked>
                                 </div>
                             @else
                                 <div class="mr-5">
                                     <span class="title">Oui </span>
-                                    <input type="radio" name="oui" value="true" checked>
+                                    <input type="radio" id="handicap" name="oui" value="true" checked>
                                 </div>
                                 <div>
                                     <span class="title">Non </span>
-                                    <input type="radio" name="non" value="false">
+                                    <input type="radio" id="nonHandicap" name="non" value="false">
                                 </div>
                             @endif
                         </div>
                     </div>
                     <div class="col-md-8 d-flex flex-row justify-content-between align-items-start">
                         <label class="title" for="">Nature du handicap</label>
-                        <select class="rounded-0 w-40" name="situation_prof" disabled>
-                            <option value="{{ old('nature_handicap', $candidate->nature_handicap ?? null) }}">{{ old('nature_handicap', $candidate->nature_handicap ?? null) }}</option>
-                            <option>Aveugle</option>
-                            <option>Moteur</option>
-                            <option>Sourd muet</option>
-                            <option>Mental</option>
-                        </select>
+                        @if($candidate->handicap == true)
+                            <select id="nature" class="rounded-0 w-40" name="situation_prof">
+                                <option value="{{ old('nature_handicap', $candidate->nature_handicap ?? null) }}">{{ old('nature_handicap', $candidate->nature_handicap ?? null) }}</option>
+                                <option>Aveugle</option>
+                                <option>Moteur</option>
+                                <option>Sourd muet</option>
+                                <option>Mental</option>
+                            </select>
+                        @endif
                     </div>
                 </div>
                 <!--/Identification-->
 
                 <!--Formation-->
-                <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                    <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                        <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                        <span class="text-grey">Formation</span>
-                    </div>
-                    <div class="d-flex flex-column p-4">
-                        @foreach ($candidate->formations as $formation)
-                        <div class="d-flex flex-column  justify-content-between align-items-start">
-                            <div class="d-flex flex-row justify-content-around align-items-center">
-                                <label class="title" for="">Diplôme :</label>
-                                <div class="d-flex flex-column">
-                                    <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
-                                    <select class="rounded-0 w-40 my-2" name="diplome">
-                                        <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
-                                        <option>Bac +2</option>
-                                        <option>Bac +3</option>
-                                    </select>
-                                    <select class="rounded-0 w-40 my-2" name="specialite">
-                                        <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
-                                        <option>Développement Informatique</option>
-                                        <option>Graphic Design</option>
-                                    </select>
-                                    <select class="rounded-0 w-40 my-2" name="option">
-                                        <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
-                                        <option>Développement Informatique</option>
-                                        <option>Graphic Design</option>
-                                    </select>
-                                    <select class="rounded-0 w-40 my-2" name="grp_etab">
-                                        <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
-                                        <option>OFPPT</option>
-                                        <option>ENCG</option>
-                                        <option>EMSI</option>
-                                    </select>
-                                    <select class="rounded-0 w-40 my-2" name="etab">
-                                        <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
-                                        <option>Institut Spécialisé des Technologies Appliquées</option>
-                                        <option>IGA</option>
-                                        <option>Lycée</option>
-                                    </select>
+                @if(\App\Models\Formation::where('candidate_id',$candidate->id)->count() != 0)
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Formation</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            @foreach ($candidate->formations as $formation)
+                            <div class="d-flex flex-column  justify-content-between align-items-start">
+                                <div class="d-flex flex-row justify-content-around align-items-center">
+                                    <label class="title" for="">Diplôme :</label>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
+                                        <select class="rounded-0 w-40 my-2" name="diplome">
+                                            <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
+                                            <option>Bac +2</option>
+                                            <option>Bac +3</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="specialite">
+                                            <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
+                                            <option>Développement Informatique</option>
+                                            <option>Graphic Design</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="option">
+                                            <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
+                                            <option>Développement Informatique</option>
+                                            <option>Graphic Design</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                            <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
+                                            <option>OFPPT</option>
+                                            <option>ENCG</option>
+                                            <option>EMSI</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="etab">
+                                            <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
+                                            <option>Institut Spécialisé des Technologies Appliquées</option>
+                                            <option>IGA</option>
+                                            <option>Lycée</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                    <label class="title" for="">Année d’obtention :</label>
+                                    <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
+                                </div>
+                                <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                    <label class="title" for="">Commentaire :</label>
+                                    <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row justify-content-between align-items-center my-2">
-                                <label class="title" for="">Année d’obtention :</label>
-                                <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
-                            </div>
-                            <div class="d-flex flex-row  justify-content-between align-items-center my-3">
-                                <label class="title" for="">Commentaire :</label>
-                                <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
-                            </div>
-                        </div>
-                        @endforeach
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg>
-                            </button>
+                            @endforeach
+                            {{-- <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div> --}}
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Formation</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="d-flex flex-column  justify-content-between align-items-start">
+                                <div class="d-flex flex-row justify-content-around align-items-center">
+                                    <label class="title" for="">Diplôme :</label>
+                                    <div class="d-flex flex-column">
+                                        <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
+                                        <select class="rounded-0 w-40 my-2" name="diplome">
+                                            <option>[Type de diplome]</option>
+                                            <option>Bac +2</option>
+                                            <option>Bac +3</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="specialite">
+                                            <option>[Spécialistes]</option>
+                                            <option>Développement Informatique</option>
+                                            <option>Graphic Design</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="option">
+                                            <option>[Option]</option>
+                                            <option>Développement Informatique</option>
+                                            <option>Graphic Design</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                            <option>[Groupe d'établissement]</option>
+                                            <option>OFPPT</option>
+                                            <option>ENCG</option>
+                                            <option>EMSI</option>
+                                        </select>
+                                        <select class="rounded-0 w-40 my-2" name="etab">
+                                            <option>[Etablissement]</option>
+                                            <option>Institut Spécialisé des Technologies Appliquées</option>
+                                            <option>IGA</option>
+                                            <option>Lycée</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                    <label class="title" for="">Année d’obtention :</label>
+                                    <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1" value="2022" />
+                                </div>
+                                <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                    <label class="title" for="">Commentaire :</label>
+                                    <textarea class="w-area" name="commentaire" rows="4"></textarea>
+                                </div>
+                            </div>
+                            {{-- <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div> --}}
+                        </div>
+                    </div>
+                @endif
                 <!--/Formation-->
 
                 <!--Expériences-->
-                <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                    <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                        <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                        <span class="text-grey">Expérience</span>
+                @if(\App\Models\Experience::where('candidate_id',$candidate->id)->count() != 0)
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Expérience</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="d-flex flex-row">
+                                @foreach ($candidate->experiences as $experience)
+                                <div class="d-flex flex-column justify-content-between align-items-center">
+                                    <div class="d-flex flex-row justify-content-between align-items-center">
+                                        <label class="title" for="">Date début :</label>
+                                        <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $experience->date_debut ?? null) }}">
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between align-items-center">
+                                        <label class="title" for="">Date fin :</label>
+                                        <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $experience->date_fin ?? null) }}">
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between align-items-center">
+                                        <label class="title" for="">Entreprise :</label>
+                                        <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $experience->entreprise ?? null) }}">
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between align-items-center">
+                                        <label class="title" for="">Intitulé du poste :</label>
+                                        <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ old('intitule_poste', $experience->intitule_poste ?? null) }}">
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between align-items-center my-1">
+                                        <label class="title" for="">Description :</label>
+                                        <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            {{-- <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div> --}}
+                        </div>
                     </div>
-                    <div class="d-flex flex-column p-4">
-                        <div class="d-flex flex-row">
-                            @foreach ($candidate->experiences as $experience)
-                            <div class="d-flex flex-column justify-content-between align-items-center">
+                @else
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Expérience</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="d-flex flex-column justify-content-between align-items-start">
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Date début :</label>
-                                    <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ $experience->date_debut ?? null }}">
+                                    <input type="date" name="date_debut" class="rounded-0 w-40">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Date fin :</label>
-                                    <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ $experience->date_fin ?? null }}">
+                                    <input type="date" name="date_fin" class="rounded-0 w-40">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Entreprise :</label>
-                                    <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ $experience->entreprise ?? null }}">
+                                    <input type="text" name="entreprise" class="rounded-0 w-40">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Intitulé du poste :</label>
-                                    <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ $experience->intitule_poste ?? null }}">
+                                    <input type="text" name="intitule" class="rounded-0 w-40">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                     <label class="title" for="">Description :</label>
-                                    <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ $experience->description ?? null }}</textarea>
+                                    <textarea class="w-area" name="description" rows="4"></textarea>
                                 </div>
                             </div>
-                            @endforeach
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg>
-                            </button>
+                            {{-- <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div> --}}
                         </div>
                     </div>
-                </div>
+                @endif
                 <!--/Expériences-->
 
                 <!--Compétences-->
-                <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                    <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                        <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                        <span class="text-grey">Compétences</span>
-                    </div>
-                    <div class="d-flex flex-column p-4">
-                        @foreach ($candidate->competences as $competence)
-                        <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
-                            <div class="d-flex flex-row justify-content-around align-items-center">
-                                <label class="title" for="">Langue :</label>
-                                <div class="d-flex flex-column">
-                                    <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                        <select class="rounded-0 w-40" name="langue_1">
-                                            <option value="{{ $competence->langue_1 ?? null }}">{{ $competence->langue_1 ?? null }}</option>
-                                            <option>Arabe</option>
-                                            <option>Français</option>
-                                            <option>Anglais</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
-                                            <option value="{{ $competence->niveau_langue_1 ?? null }}">{{ $competence->niveau_langue_1 ?? null }}</option>
-                                            <option>Langue maternelle</option>
-                                            <option>Courant</option>
-                                            <option>Bon</option>
-                                            <option>Moyen</option>
-                                            <option>Notions</option>
-                                        </select>
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                        <select class="rounded-0 w-40" name="langue_2">
-                                            <option value="{{ $competence->langue_2 ?? null }}">{{ $competence->langue_2 ?? null }}</option>
-                                            <option>Arabe</option>
-                                            <option>Français</option>
-                                            <option>Anglais</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
-                                            <option value="{{ $competence->niveau_langue_2 ?? null }}">{{ $competence->niveau_langue_2 ?? null }}</option>
-                                            <option>Langue maternelle</option>
-                                            <option>Courant</option>
-                                            <option>Bon</option>
-                                            <option>Moyen</option>
-                                            <option>Notions</option>
-                                        </select>
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                        <select class="rounded-0 w-40" name="langue_3">
-                                            <option value="{{ $competence->langue_3 ?? null }}">{{ $competence->langue_3 ?? null }}</option>
-                                            <option>Arabe</option>
-                                            <option>Français</option>
-                                            <option>Anglais</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
-                                            <option value="{{ $competence->niveau_langue_3 ?? null }}">{{ $competence->niveau_langue_3 ?? null }}</option>
-                                            <option>Langue maternelle</option>
-                                            <option>Courant</option>
-                                            <option>Bon</option>
-                                            <option>Moyen</option>
-                                            <option>Notions</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                @if(\App\Models\Competence::where('candidate_id',$candidate->id)->count() != 0)
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Compétences</span>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        {{-- <div class="d-flex flex-row justify-content-start align-items-center my-3">
-                            <label class="title" for="">Bureautique:</label>
-                            <div class="d-flex flex-column align-items-start">
-                                <span class="ml-4 small text-green">Word :</span>
-                                <span class="ml-4 small text-green">Excel :</span>
-                                <span class="ml-4 small text-green">Access :</span>
-                                <span class="ml-4 small text-green">PowerPoint :</span>
-                            </div>
-                            <div class="d-flex flex-column align-items-start mx-3">
-                                <input class="mb-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
-                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
-                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
-                                <input class="my-1" type="checkbox" name="bureautique[]" value="{{ $competence->bureautique ?? null }}">
-                            </div>
-                        </div> --}}
-                        <hr>
-                        <div class="d-flex flex-row justify-content-satrt align-items-center">
-                            <label class="title" for="">Compétences spécifiques :</label>
-                            <div class="d-flex flex-column ml-3 mt-3">
-                                <input type="text" name="comp_specifiques" class="rounded-0 w-40" value="{{ $competence->comp_specifiques ?? null }}">
-                                <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
-                            </div>
-                        </div>
-                        <hr>
-                        {{-- <div class="d-flex flex-row justify-content-start align-items-center my-4">
-                            <label class="title" for="">Permis de conduire :</label>
-                            <div class="d-flex flex-column">
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">A</span>
-                                    <img src="/storage/images/a.jpg" alt="">
+                        <div class="d-flex flex-column p-4">
+                            @foreach ($candidate->competences as $competence)
+                                <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
+                                    <div class="d-flex flex-row justify-content-around align-items-center">
+                                        <label class="title" for="">Langue :</label>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                                <select class="rounded-0 w-40" name="langue_1">
+                                                    <option value="{{ $competence->langue_1 ?? null }}">{{ old('langue_1', $competence->langue_1 ?? null) }}</option>
+                                                    <option>Arabe</option>
+                                                    <option>Français</option>
+                                                    <option>Anglais</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
+                                                    <option value="{{ $competence->niveau_langue_1 ?? null }}">{{ old('niveau_langue_1', $competence->niveau_langue_1 ?? null) }}</option>
+                                                    <option>Langue maternelle</option>
+                                                    <option>Courant</option>
+                                                    <option>Bon</option>
+                                                    <option>Moyen</option>
+                                                    <option>Notions</option>
+                                                </select>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                                <select class="rounded-0 w-40" name="langue_2">
+                                                    <option value="{{ $competence->langue_2 ?? null }}">{{ old('langue_2', $competence->langue_2 ?? null) }}</option>
+                                                    <option>Arabe</option>
+                                                    <option>Français</option>
+                                                    <option>Anglais</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
+                                                    <option value="{{ $competence->niveau_langue_2 ?? null }}">{{ old('niveau_langue_2', $competence->niveau_langue_2 ?? null) }}</option>
+                                                    <option>Langue maternelle</option>
+                                                    <option>Courant</option>
+                                                    <option>Bon</option>
+                                                    <option>Moyen</option>
+                                                    <option>Notions</option>
+                                                </select>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                                <select class="rounded-0 w-40" name="langue_3">
+                                                    <option value="{{ $competence->langue_3 ?? null }}">{{ old('langue_3', $competence->langue_3 ?? null) }}</option>
+                                                    <option>Arabe</option>
+                                                    <option>Français</option>
+                                                    <option>Anglais</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
+                                                    <option value="{{ $competence->niveau_langue_3 ?? null }}">{{ old('niveau_langue_3', $competence->niveau_langue_3 ?? null) }}</option>
+                                                    <option>Langue maternelle</option>
+                                                    <option>Courant</option>
+                                                    <option>Bon</option>
+                                                    <option>Moyen</option>
+                                                    <option>Notions</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">B</span>
-                                    <img src="/storage/images/b.jpg" alt="">
+                                {{-- <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                        </svg>
+                                    </button>
+                                </div> --}}
+                                <div class="d-flex flex-row justify-content-start align-items-center my-3">
+                                    <label class="title" for="">Bureautique:</label>
+                                    <div class="d-flex flex-column align-items-start">
+                                        <span class="ml-4 small text-green">Word :</span>
+                                        <span class="ml-4 small text-green">Excel :</span>
+                                        <span class="ml-4 small text-green">Access :</span>
+                                        <span class="ml-4 small text-green">PowerPoint :</span>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-start mx-3">
+                                        <input class="mb-1" type="checkbox" name="word" value="Word" @if($competence->word) checked @endif/>
+                                        <input class="my-1" type="checkbox" name="excel" value="Excel" @if($competence->excel) checked @endif/>
+                                        <input class="my-1" type="checkbox" name="access" value="Access" @if($competence->access) checked @endif/>
+                                        <input class="my-1" type="checkbox" name="powerpoint" value="PowerPoint" @if($competence->powerpoint) checked @endif/>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]" value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">C</span>
-                                    <img src="/storage/images/c.jpg" alt="">
+                                <hr>
+                                <div class="d-flex flex-row justify-content-satrt align-items-center">
+                                    <label class="title" for="">Compétences spécifiques :</label>
+                                    <div class="d-flex flex-column ml-3 mt-3">
+                                        <input type="text" name="comp_specifiques" class="rounded-0 w-40" value="{{ old('comp_specifiques', $competence->comp_specifiques ?? null) }}">
+                                        <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
+                                    </div>
                                 </div>
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">D</span>
-                                    <img src="/storage/images/d.jpg" alt="">
+                                <hr>
+                                <div class="d-flex flex-row justify-content-start align-items-center my-4">
+                                    <label class="title" for="">Permis de conduire :</label>
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_a" value="permis_conduire_a" @if($competence->permis_conduire_a) checked @endif>
+                                            <span class="small text-green mx-2">A</span>
+                                            <img src="/storage/images/a.jpg" alt="">
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_b" value="permis_conduire_b"  @if($competence->permis_conduire_b) checked @endif>
+                                            <span class="small text-green mx-2">B</span>
+                                            <img src="/storage/images/b.jpg" alt="">
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_c" value="permis_conduire_c" @if($competence->permis_conduire_c) checked @endif>
+                                            <span class="small text-green mx-2">C</span>
+                                            <img src="/storage/images/c.jpg" alt="">
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_d" value="permis_conduire_d" @if($competence->permis_conduire_d) checked @endif>
+                                            <span class="small text-green mx-2">D</span>
+                                            <img src="/storage/images/d.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column mx-5">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_eb" value="permis_conduire_eb" @if($competence->permis_conduire_eb) checked @endif>
+                                            <span class="small text-green mx-2">EB</span>
+                                            <img src="/storage/images/eb.jpg" alt="">
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_ec" value="permis_conduire_ec" @if($competence->permis_conduire_ec) checked @endif>
+                                            <span class="small text-green mx-2">EC</span>
+                                            <img src="/storage/images/ec.jpg" alt="">
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <input class="" type="checkbox" name="permis_conduire_ed" value="permis_conduire_ed" @if($competence->permis_conduire_ed) checked @endif>
+                                            <span class="small text-green mx-2">ED</span>
+                                            <img src="/storage/images/ed.jpg" alt="">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-flex flex-column mx-5">
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">EB</span>
-                                    <img src="/storage/images/eb.jpg" alt="">
-                                </div>
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">EC</span>
-                                    <img src="/storage/images/ec.jpg" alt="">
-                                </div>
-                                <div class="d-flex flex-row align-items-center">
-                                    <input class="" type="checkbox" name="permis_conduire[]"  value="{{ $competence->permis_conduire ?? null }}">
-                                    <span class="small text-green mx-2">ED</span>
-                                    <img src="/storage/images/ed.jpg" alt="">
-                                </div>
-                            </div>
-                        </div> --}}
-                        @endforeach
-                    </div>
-                </div>
-                <!--/Compétences-->
-
-                <!--Activitées extra-->
-                <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                    <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                        <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                        <span class="text-grey">Activités extra-professionnelles</span>
-                    </div>
-                    <div class="d-flex flex-column p-4">
-                        <div class="d-flex flex-row justify-content-center align-items-center">
-                            @foreach ($candidate->activities as $activity)
-                                <textarea class="form-control w-50 rounded-0" name="title" rows="5" value="{{ $activity->title }}">{{ $activity->title }}</textarea>
                             @endforeach
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Compétences</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
+                                <div class="d-flex flex-row justify-content-around align-items-center">
+                                    <label class="title" for="">Langue :</label>
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                            <select class="rounded-0 w-40" name="langue_1">
+                                                <option>[Langue]</option>
+                                                <option>Arabe</option>
+                                                <option>Français</option>
+                                                <option>Anglais</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
+                                                <option>[Niveau langue]</option>
+                                                <option>Langue maternelle</option>
+                                                <option>Courant</option>
+                                                <option>Bon</option>
+                                                <option>Moyen</option>
+                                                <option>Notions</option>
+                                            </select>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                            <select class="rounded-0 w-40" name="langue_2">
+                                                <option>[Langue]</option>
+                                                <option>Arabe</option>
+                                                <option>Français</option>
+                                                <option>Anglais</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
+                                                <option>[Niveau langue]</option>
+                                                <option>Langue maternelle</option>
+                                                <option>Courant</option>
+                                                <option>Bon</option>
+                                                <option>Moyen</option>
+                                                <option>Notions</option>
+                                            </select>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                            <select class="rounded-0 w-40" name="langue_3">
+                                                <option>[Langue]</option>
+                                                <option>Arabe</option>
+                                                <option>Français</option>
+                                                <option>Anglais</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
+                                                <option>[Niveau langue]</option>
+                                                <option>Langue maternelle</option>
+                                                <option>Courant</option>
+                                                <option>Bon</option>
+                                                <option>Moyen</option>
+                                                <option>Notions</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </button>
+                            </div> --}}
+                            <div class="d-flex flex-row justify-content-start align-items-center my-3">
+                                <label class="title" for="">Bureautique:</label>
+                                <div class="d-flex flex-column align-items-start">
+                                    <span class="ml-4 small text-green">Word :</span>
+                                    <span class="ml-4 small text-green">Excel :</span>
+                                    <span class="ml-4 small text-green">Access :</span>
+                                    <span class="ml-4 small text-green">PowerPoint :</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-start mx-3">
+                                    <input class="mb-1" type="checkbox" name="word">
+                                    <input class="my-1" type="checkbox" name="excel">
+                                    <input class="my-1" type="checkbox" name="access">
+                                    <input class="my-1" type="checkbox" name="powerpoint">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex flex-row justify-content-satrt align-items-center">
+                                <label class="title" for="">Compétences spécifiques :</label>
+                                <div class="d-flex flex-column ml-3 mt-3">
+                                    <input type="text" name="comp_specifiques" class="rounded-0 w-40">
+                                    <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex flex-row justify-content-start align-items-center my-4">
+                                <label class="title" for="">Permis de conduire :</label>
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_a" value="permis_conduire_a">
+                                        <span class="small text-green mx-2">A</span>
+                                        <img src="/storage/images/a.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_b" value="permis_conduire_b">
+                                        <span class="small text-green mx-2">B</span>
+                                        <img src="/storage/images/b.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_c" value="permis_conduire_c">
+                                        <span class="small text-green mx-2">C</span>
+                                        <img src="/storage/images/c.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_d" value="permis_conduire_d">
+                                        <span class="small text-green mx-2">D</span>
+                                        <img src="/storage/images/d.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column mx-5">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_eb" value="permis_conduire_eb">
+                                        <span class="small text-green mx-2">EB</span>
+                                        <img src="/storage/images/eb.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_ec" value="permis_conduire_ec">
+                                        <span class="small text-green mx-2">EC</span>
+                                        <img src="/storage/images/ec.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input class="" type="checkbox" name="permis_conduire_ed" value="permis_conduire_ed">
+                                        <span class="small text-green mx-2">ED</span>
+                                        <img src="/storage/images/ed.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <!--/Compétences-->
+
+                <!--Activitées extra-->
+                @if(\App\Models\Activity::where('candidate_id',$candidate->id)->count() != 0)
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Activités extra-professionnelles</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                @foreach ($candidate->activities as $activity)
+                                    <textarea class="form-control w-50 rounded-0" name="title" rows="5" value="{{ $activity->title }}">{{ $activity->title }}</textarea>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">Activités extra-professionnelles</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <textarea class="form-control w-50 rounded-0" name="title" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                @endif    
                 <!--/Activitées extra-->
 
                 <!--Cv personnel-->
-                <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                    <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                        <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                        <span class="text-grey">CV personnel</span>
-                    </div>
-                    <div class="d-flex flex-column p-4">
-                        @foreach($candidate->cvs as $cv)
-                        <div class="d-flex flex-column justify-content-start">
-                            <span class="small my-1">Joindre votre CV personnel :</span>
-                            <input class="form-control" type="file" name="cv" value="{{ $cv->file ?? null }}">
+                @if(\App\Models\Cv::where('candidate_id',$candidate->id)->count() != 0)
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">CV personnel</span>
                         </div>
-                        @endforeach
+                        <div class="d-flex flex-column p-4">
+                            @foreach($candidate->cvs as $cv)
+                            <div class="d-flex flex-column justify-content-start">
+                                <span class="small my-1">Joindre votre CV personnel :</span>
+                                <input class="form-control" type="file" name="cv" value="{{ $cv->file ?? null }}">
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                            <span class="text-grey">CV personnel</span>
+                        </div>
+                        <div class="d-flex flex-column p-4">
+                            <div class="d-flex flex-column justify-content-start">
+                                <span class="small my-1">Joindre votre CV personnel :</span>
+                                <input class="form-control" type="file" name="cv">
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <!--/Cv personnel-->
 
                 <div class="d-flex justify-content-end">
@@ -561,6 +839,19 @@
             if (file) {
                 imgSelected.src = URL.createObjectURL(file)
             }
-        }
+        };
+
+        let nature = document.getElementById('nature');
+        let nonHandicap = document.getElementById('nonHandicap');
+
+        handicap.addEventListener("click", function(){
+            nonHandicap.checked = false;
+            nature.disabled = false;
+        });
+
+        nonHandicap.addEventListener("click", function(){
+            handicap.checked = false;
+            nature.disabled = true;
+        });
     </script>
 @endsection

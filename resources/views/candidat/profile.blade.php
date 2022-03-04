@@ -96,6 +96,7 @@
         <div class="col-md-9 pr-0">
             <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3">Bienvenue {{ $candidate->prenom }} {{ $candidate->nom }}</span>
+                <a href="{{ route('candidates.edit', ['candidate' => $candidate->id]) }}" class="btn btn-primary btn-sm">
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -107,7 +108,7 @@
                 </form>
             </div>
             <!--Informations-->
-            <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2">
+            {{-- <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2">
                 <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
                     <img class="mx-2" src="/storage/images/arrow.png" alt="">
                     <span class="text-grey">Vos Informations personnelles</span>
@@ -166,7 +167,7 @@
                     <button type="submit" class="btn m-2 btn-warning border-0 btn-sm text-white shadow">Actualiser votre situation</button>
                 </div>
                 @include('candidat.modal')
-            </div>
+            </div> --}}
             <!--/Informations-->
             
             <!--/Statistiques-->

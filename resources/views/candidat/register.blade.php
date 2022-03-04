@@ -89,8 +89,12 @@
                             <span class="text-grey">Identification</span>
                         </div>
                         {{-- <div class="col-md-8 d-flex flex-row justify-content-center m-4">
-                            <div class="mr-3"><input type="radio" name="check_cin" id="" checked> cin</div>
-                            <div><input type="radio" name="check_sejour" id=""> carte séjour</div>
+                            <div class="mr-3">
+                                <input type="radio" name="check_cin" id="" checked> cin
+                            </div>
+                            <div>
+                                <input type="radio" name="check_sejour" id=""> carte séjour
+                            </div>
                         </div> --}}
                         <div class="d-flex flex-row mt-5 mx-3">
                             <div class="d-flex flex-column justify-content-between align-items-center mb-1">
@@ -207,10 +211,10 @@
                                 <span class="ml-4 small text-green">Internationale :</span>
                             </div>
                             <div class="d-flex flex-column align-items-start">
-                                <input class="mb-1" type="checkbox" name="mobilite[]" value="Locale">
-                                <input class="my-1" type="checkbox" name="mobilite[]" value="Régionale">
-                                <input class="my-1" type="checkbox" name="mobilite[]" value="Nationale">
-                                <input class="my-1" type="checkbox" name="mobilite[]" value="Internationale">
+                                <input class="mb-1" type="checkbox" name="mobilite_locale">
+                                <input class="my-1" type="checkbox" name="mobilite_regionale">
+                                <input class="my-1" type="checkbox" name="mobilite_nationale">
+                                <input class="my-1" type="checkbox" name="mobilite_internationale">
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-row justify-content-between my-3">
@@ -218,17 +222,17 @@
                             <div class="d-flex flex-row align-items-center">
                                 <div class="mr-5">
                                     <span class="title">Oui </span>
-                                    <input type="radio" name="oui" value="true">
+                                    <input type="radio" name="oui" id="handicap">
                                 </div>
                                 <div>
                                     <span class="title">Non </span>
-                                    <input type="radio" name="non" value="false">
+                                    <input type="radio" name="non" id="nonHandicap">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-8 d-flex flex-row justify-content-between align-items-start">
                             <label class="title" for="">Nature du handicap</label>
-                            <select class="rounded-0 w-40" name="situation_prof" disabled>
+                            <select id="nature" class="rounded-0 w-40" name="situation_prof" disabled>
                                 <option>[Choisissez la nature du handicap]</option>
                                 <option>Aveugle</option>
                                 <option>Moteur</option>
@@ -289,14 +293,14 @@
                                     <textarea class="w-area" name="commentaire" rows="4"></textarea>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
                                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                     </svg>
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!--/Formation-->
@@ -308,38 +312,36 @@
                             <span class="text-grey">Expérience</span>
                         </div>
                         <div class="d-flex flex-column p-4">
-                            <div class="d-flex flex-row">
-                                <div class="d-flex flex-column justify-content-between align-items-center">
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Date début :</label>
-                                        <input type="date" name="date_debut" class="rounded-0 w-40">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Date fin :</label>
-                                        <input type="date" name="date_fin" class="rounded-0 w-40">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Entreprise :</label>
-                                        <input type="text" name="entreprise" class="rounded-0 w-40">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Intitulé du poste :</label>
-                                        <input type="text" name="intitule" class="rounded-0 w-40">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center my-1">
-                                        <label class="title" for="">Description :</label>
-                                        <textarea class="w-area" name="description" rows="4"></textarea>
-                                    </div>
+                            <div class="d-flex flex-column justify-content-between align-items-start">
+                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <label class="title" for="">Date début :</label>
+                                    <input type="date" name="date_debut" class="rounded-0 w-40">
+                                </div>
+                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <label class="title" for="">Date fin :</label>
+                                    <input type="date" name="date_fin" class="rounded-0 w-40">
+                                </div>
+                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <label class="title" for="">Entreprise :</label>
+                                    <input type="text" name="entreprise" class="rounded-0 w-40">
+                                </div>
+                                <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <label class="title" for="">Intitulé du poste :</label>
+                                    <input type="text" name="intitule" class="rounded-0 w-40">
+                                </div>
+                                <div class="d-flex flex-row justify-content-between align-items-center my-1">
+                                    <label class="title" for="">Description :</label>
+                                    <textarea class="w-area" name="description" rows="4"></textarea>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-sm">
+                            {{-- <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
                                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                     </svg>
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!--/Expériences-->
@@ -406,14 +408,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
                                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                     </svg>
                                 </button>
-                            </div>
+                            </div> --}}
                             <div class="d-flex flex-row justify-content-start align-items-center my-3">
                                 <label class="title" for="">Bureautique:</label>
                                 <div class="d-flex flex-column align-items-start">
@@ -423,10 +425,10 @@
                                     <span class="ml-4 small text-green">PowerPoint :</span>
                                 </div>
                                 <div class="d-flex flex-column align-items-start mx-3">
-                                    <input class="mb-1" type="checkbox" name="bureautique[]" value="Word">
-                                    <input class="my-1" type="checkbox" name="bureautique[]" value="Excel">
-                                    <input class="my-1" type="checkbox" name="bureautique[]" value="Access">
-                                    <input class="my-1" type="checkbox" name="bureautique[]" value="PowerPoint">
+                                    <input class="mb-1" type="checkbox" name="word">
+                                    <input class="my-1" type="checkbox" name="excel">
+                                    <input class="my-1" type="checkbox" name="access">
+                                    <input class="my-1" type="checkbox" name="powerpoint">
                                 </div>
                             </div>
                             <hr>
@@ -442,39 +444,39 @@
                                 <label class="title" for="">Permis de conduire :</label>
                                 <div class="d-flex flex-column">
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="A">
+                                        <input class="" type="checkbox" name="permis_conduire_a" value="permis_conduire_a">
                                         <span class="small text-green mx-2">A</span>
                                         <img src="/storage/images/a.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="B">
+                                        <input class="" type="checkbox" name="permis_conduire_b" value="permis_conduire_b">
                                         <span class="small text-green mx-2">B</span>
                                         <img src="/storage/images/b.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="C">
+                                        <input class="" type="checkbox" name="permis_conduire_c" value="permis_conduire_c">
                                         <span class="small text-green mx-2">C</span>
                                         <img src="/storage/images/c.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="D">
+                                        <input class="" type="checkbox" name="permis_conduire_d" value="permis_conduire_d">
                                         <span class="small text-green mx-2">D</span>
                                         <img src="/storage/images/d.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column mx-5">
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="EB">
+                                        <input class="" type="checkbox" name="permis_conduire_eb" value="permis_conduire_eb">
                                         <span class="small text-green mx-2">EB</span>
                                         <img src="/storage/images/eb.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="EC">
+                                        <input class="" type="checkbox" name="permis_conduire_ec" value="permis_conduire_ec">
                                         <span class="small text-green mx-2">EC</span>
                                         <img src="/storage/images/ec.jpg" alt="">
                                     </div>
                                     <div class="d-flex flex-row align-items-center">
-                                        <input class="" type="checkbox" name="permis_conduire[]" value="ED">
+                                        <input class="" type="checkbox" name="permis_conduire_ed" value="permis_conduire_ed">
                                         <span class="small text-green mx-2">ED</span>
                                         <img src="/storage/images/ed.jpg" alt="">
                                     </div>
@@ -529,6 +531,21 @@
             if (file) {
                 imgSelected.src = URL.createObjectURL(file)
             }
-        }
+        };
+
+        let handicap = document.getElementById('handicap');
+        let nature = document.getElementById('nature');
+        let nonHandicap = document.getElementById('nonHandicap');
+
+        handicap.addEventListener("click", function(){
+            nonHandicap.checked = false;
+            nature.disabled = false;
+        });
+
+        nonHandicap.addEventListener("click", function(){
+            handicap.checked = false;
+            nature.disabled = true;
+        });
+        
     </script>
 @endsection

@@ -92,9 +92,33 @@ class CandidateController extends Controller
             $candidate->tel = $request->tel;
             $candidate->situation_prof = $request->situation_prof;
             $candidate->au_chomage = $request->au_chomage;
-            $candidate['mobilite'] = $request->mobilite;
-            $candidate->handicap = false;
-            $candidate->nature_handicap = $request->nature_handicap;
+
+            if($request->has('mobilite_locale')){
+                $candidate->mobilite_locale = true;
+            }else{
+                $candidate->mobilite_locale = false;
+            }
+            if($request->has('mobilite_regionale')){
+                $candidate->mobilite_regionale = true;
+            }else{
+                $candidate->mobilite_regionale = false;
+            }
+            if($request->has('mobilite_nationale')){
+                $candidate->mobilite_nationale = true;
+            }else{
+                $candidate->mobilite_nationale = false;
+            }
+            if($request->has('mobilite_internationale')){
+                $candidate->mobilite_internationale = true;
+            }else{
+                $candidate->mobilite_internationale = false;
+            }
+
+            if($request->handicap == 'oui'){
+                $candidate->handicap = true;
+            }else{
+                $candidate->handicap = false;
+            }
             $candidate->nature_handicap = $request->nature_handicap;
             $candidate->save();
 
@@ -146,9 +170,65 @@ class CandidateController extends Controller
                 $competence->niveau_langue_2 = $request->niveau_langue_2;
                 $competence->langue_3 = $request->langue_3;
                 $competence->niveau_langue_3 = $request->niveau_langue_3;
-                $competence['bureautique'] = $request->bureautique;
+
+                if($request->has('word')){
+                    $competence->word = true;
+                }else{
+                    $competence->word = false;
+                }
+                if($request->has('excel')){
+                    $competence->excel = true;
+                }else{
+                    $competence->excel = false;
+                }
+                if($request->has('access')){
+                    $competence->access = true;
+                }else{
+                    $competence->access = false;
+                }
+                if($request->has('powerpoint')){
+                    $competence->powerpoint = true;
+                }else{
+                    $competence->powerpoint = false;
+                }
+
                 $competence->comp_specifiques = $request->comp_specifiques;
-                $competence['permis_conduire'] = $request->permis_conduire;
+
+                if($request->has('permis_conduire_a')){
+                    $competence->permis_conduire_a = true;
+                }else{
+                    $competence->permis_conduire_a = false;
+                }
+                if($request->has('permis_conduire_b')){
+                    $competence->permis_conduire_b = true;
+                }else{
+                    $competence->permis_conduire_b = false;
+                }
+                if($request->has('permis_conduire_c')){
+                    $competence->permis_conduire_c = true;
+                }else{
+                    $competence->permis_conduire_c = false;
+                }
+                if($request->has('permis_conduire_d')){
+                    $competence->permis_conduire_d = true;
+                }else{
+                    $competence->permis_conduire_d = false;
+                }
+                if($request->has('permis_conduire_eb')){
+                    $competence->permis_conduire_eb = true;
+                }else{
+                    $competence->permis_conduire_eb = false;
+                }
+                if($request->has('permis_conduire_ec')){
+                    $competence->permis_conduire_ec = true;
+                }else{
+                    $competence->permis_conduire_ec = false;
+                }
+                if($request->has('permis_conduire_ed')){
+                    $competence->permis_conduire_ed = true;
+                }else{
+                    $competence->permis_conduire_ed = false;
+                }
                 $competence->save();
             }
 
@@ -210,9 +290,211 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'cin' => 'required',
+            'password' => 'required',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'sexe' => 'required',
+            'situation_f' => 'required',
+            'date_nais' => 'required',
+            'adress' => 'required',
+            'province' => 'required',
+            'commune' => 'required',
+            'email' => 'required|email|unique:candidates',
+            'gsm_1' => 'required',
+            'situation_prof' => 'required'
+        ]);
+
+        $candidate = Candidate::findOrFail($id);
+
+        if ($validated) {
+            $candidate->user_id = Auth::user()->id;
+            $candidate->cin = $request->cin;
+            $candidate->password = Hash::make($request->password);
+            $candidate->nom = $request->nom;
+            $candidate->prenom = $request->prenom;
+            $candidate->sexe = $request->sexe;
+            $candidate->situation_f = $request->situation_f;
+            $candidate->date_nais = $request->date_nais;
+            $candidate->adress = $request->adress;
+            $candidate->province = $request->province;
+            $candidate->commune = $request->commune;
+            $candidate->email = $request->email;
+            $candidate->gsm_1 = $request->gsm_1;
+            $candidate->gsm_2 = $request->gsm_2;
+            $candidate->tel = $request->tel;
+            $candidate->situation_prof = $request->situation_prof;
+            $candidate->au_chomage = $request->au_chomage;
+
+            if($request->has('mobilite_locale')){
+                $candidate->mobilite_locale = true;
+            }else{
+                $candidate->mobilite_locale = false;
+            }
+            if($request->has('mobilite_regionale')){
+                $candidate->mobilite_regionale = true;
+            }else{
+                $candidate->mobilite_regionale = false;
+            }
+            if($request->has('mobilite_nationale')){
+                $candidate->mobilite_nationale = true;
+            }else{
+                $candidate->mobilite_nationale = false;
+            }
+            if($request->has('mobilite_internationale')){
+                $candidate->mobilite_internationale = true;
+            }else{
+                $candidate->mobilite_internationale = false;
+            }
+
+            if($request->handicap == 'oui'){
+                $candidate->handicap = true;
+            }else{
+                $candidate->handicap = false;
+            }
+            $candidate->nature_handicap = $request->nature_handicap;
+            $candidate->save();
+
+            // Upload Picture for current Candidate
+            if($request->hasFile('picture')) {
+            
+                $path = $request->file('picture')->store('thumbnails');
+
+                if($candidate->image) {
+                    Storage::delete($candidate->image->path);
+                    $candidate->image->path = $path;
+                    $candidate->image->save();
+                }
+                else {
+                    $candidate->image()->save(Image::make(['path' => $path]));
+                }
+            }
+
+            if ($request->diplome !='[Type de diplome]') {
+
+                foreach($candidate->formations as $formation){
+                    $formation->candidate_id = $candidate->id;
+                    $formation->diplome = $request->diplome;
+                    $formation->specialite = $request->specialite;
+                    $formation->option = $request->option;
+                    $formation->grp_etab = $request->grp_etab;
+                    $formation->etab = $request->etab;
+                    $formation->annee_obt = $request->annee_obt;
+                    $formation->commentaire = $request->commentaire;
+                    $formation->save();
+                }
+            }
+
+            if ($request->date_debut != null) {
+
+                foreach($candidate->experiences as $experience){
+                    $experience->candidate_id = $candidate->id;
+                    $experience->date_debut = $request->date_debut;
+                    $experience->date_fin = $request->date_fin;
+                    $experience->entreprise = $request->entreprise;
+                    $experience->intitule_poste = $request->intitule;
+                    $experience->description = $request->description;
+                    $experience->save();
+                }
+            }
+
+            if ($request->langue != '[Langue]') {
+
+                foreach($candidate->competences as $competence){
+                    $competence->candidate_id = $candidate->id;
+                    $competence->langue_1 = $request->langue_1;
+                    $competence->niveau_langue_1 = $request->niveau_langue_1;
+                    $competence->langue_2 = $request->langue_2;
+                    $competence->niveau_langue_2 = $request->niveau_langue_2;
+                    $competence->langue_3 = $request->langue_3;
+                    $competence->niveau_langue_3 = $request->niveau_langue_3;
+
+                    if($request->has('word')){
+                        $competence->word = true;
+                    }else{
+                        $competence->word = false;
+                    }
+                    if($request->has('excel')){
+                        $competence->excel = true;
+                    }else{
+                        $competence->excel = false;
+                    }
+                    if($request->has('access')){
+                        $competence->access = true;
+                    }else{
+                        $competence->access = false;
+                    }
+                    if($request->has('powerpoint')){
+                        $competence->powerpoint = true;
+                    }else{
+                        $competence->powerpoint = false;
+                    }
+
+                    $competence->comp_specifiques = $request->comp_specifiques;
+
+                    if($request->has('permis_conduire_a')){
+                        $competence->permis_conduire_a = true;
+                    }else{
+                        $competence->permis_conduire_a = false;
+                    }
+                    if($request->has('permis_conduire_b')){
+                        $competence->permis_conduire_b = true;
+                    }else{
+                        $competence->permis_conduire_b = false;
+                    }
+                    if($request->has('permis_conduire_c')){
+                        $competence->permis_conduire_c = true;
+                    }else{
+                        $competence->permis_conduire_c = false;
+                    }
+                    if($request->has('permis_conduire_d')){
+                        $competence->permis_conduire_d = true;
+                    }else{
+                        $competence->permis_conduire_d = false;
+                    }
+                    if($request->has('permis_conduire_eb')){
+                        $competence->permis_conduire_eb = true;
+                    }else{
+                        $competence->permis_conduire_eb = false;
+                    }
+                    if($request->has('permis_conduire_ec')){
+                        $competence->permis_conduire_ec = true;
+                    }else{
+                        $competence->permis_conduire_ec = false;
+                    }
+                    if($request->has('permis_conduire_ed')){
+                        $competence->permis_conduire_ed = true;
+                    }else{
+                        $competence->permis_conduire_ed = false;
+                    }
+                    $competence->save();
+                }
+            }
+
+            if ($request->title != null) {
+
+                foreach($candidate->activities as $activity){
+                    $activity->candidate_id = $candidate->id;
+                    $activity->title = $request->title;
+                    $activity->save();
+                }
+            }
+
+            if ($request->cv != null) {
+
+                foreach($candidate->cvs as $cv){
+                    $cv->candidate_id = $candidate->id;
+                    $cv->file = $request->cv;
+                    $cv->save();
+                }
+            }
+
+        }
+        $request->session()->flash('status', 'Candidate was updated!');
+        return redirect()->route('candidates.show', ['candidate' => $candidate->id]);
     }
 
     /**

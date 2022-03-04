@@ -31,7 +31,10 @@ class CreateCandidatesTable extends Migration
             $table->string('tel')->nullable();
             $table->string('situation_prof');
             $table->date('au_chomage')->nullable();
-            $table->string('mobilite')->nullable();
+            $table->boolean('mobilite_locale')->default(false)->nullable();
+            $table->boolean('mobilite_regionale')->default(false)->nullable();
+            $table->boolean('mobilite_nationale')->default(false)->nullable();
+            $table->boolean('mobilite_internationale')->default(false)->nullable();
             $table->boolean('handicap')->default(false);
             $table->string('nature_handicap')->nullable();
             $table->timestamps();
