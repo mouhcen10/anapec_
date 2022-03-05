@@ -107,19 +107,21 @@
                         <div class="d-flex flex-column justify-content-between align-items-center mb-1">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">CIN :<span class="text-danger">*</span></label>
-                                <input type="text" name="cin" class="rounded-0 w-40 ml-72" value="{{ old('cin', $candidate->cin ?? null) }}">
+                                <input id="cin" type="text" name="cin" class="rounded-0 w-40 ml-72" value="{{ old('cin', $candidate->cin ?? null) }}" disabled>
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">Confirmation CIN:<span class="text-danger">*</span></label>
-                                <input type="text" name="cin" class="rounded-0 w-40 ml-72" value="{{ old('cin', $candidate->cin ?? null) }}">
+                                <input type="text" name="confrmCin" class="rounded-0 w-40 ml-72" value="{{ old('cin', $candidate->cin ?? null) }}" disabled>
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">Mot de passe :<span class="text-danger">*</span></label>
-                                <input type="password" name="password" class="rounded-0 w-40 ml-72" value="{{ old('password', $candidate->password ?? null) }}">
+                                <?php use Illuminate\Support\Facades\Crypt;?>
+                                <?php $password = Crypt::decrypt($candidate->password);?>
+                                <input type="password" name="password" class="rounded-0 w-40 ml-72" value="{{ $password }}">
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">Confirmation Mot de passe :<span class="text-danger">*</span></label>
-                                <input type="password" name="password" class="rounded-0 w-40 ml-72" value="{{ old('password', $candidate->password ?? null) }}">
+                                <input type="password" name="confrmPass" class="rounded-0 w-40 ml-72" value="{{ $password }}">
                             </div>
                         </div>
                         <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
@@ -142,7 +144,7 @@
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Sexe :<span class="text-danger">*</span></label>
                         <select class="rounded-0 w-40" name="sexe">
-                            <option value="{{ old('sexe', $candidate->sexe ?? null) }}">{{ old('sexe', $candidate->sexe ?? null) }}"</option>
+                            <option value="{{ $candidate->sexe }}">{{ old('sexe', $candidate->sexe ?? null) }}</option>
                             <option>Masculin</option>
                             <option>Féminin</option>
                         </select>
@@ -150,7 +152,7 @@
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Situation familiale :<span class="text-danger">*</span></label>
                         <select class="rounded-0 w-40" name="situation_f">
-                            <option value="{{ old('cin', $candidate->cin ?? null) }}">{{ old('cin', $candidate->cin ?? null) }}"</option>
+                            <option value="{{ $candidate->situation_f }}">{{ old('situation_f', $candidate->situation_f ?? null) }}</option>
                             <option>Célibataire</option>
                             <option>Marié(e)</option>
                             <option>Divorcé(e)</option>
@@ -167,7 +169,7 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Province ou préfecture : <span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="province">
+                        <select id="province" class="rounded-0 w-40" name="province" disabled>
                             <option value="{{ old('province', $candidate->province ?? null) }}">{{ old('province', $candidate->province ?? null) }}</option>
                             <option>Agadir</option>
                             <option>Rabat</option>
@@ -177,17 +179,17 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Commune : <span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="commune">
+                        <select id="commune" class="rounded-0 w-40" name="commune" disabled>
                             <option value="{{ old('commune', $candidate->commune ?? null) }}">{{ old('commune', $candidate->commune ?? null) }}</option>
                         </select>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Email :<span class="text-danger">*</span></label>
-                        <input type="email" name="email" class="rounded-0 w-40" value="{{ old('email', $candidate->email ?? null) }}">
+                        <input id="email" type="email" name="email" class="rounded-0 w-40" value="{{ old('email', $candidate->email ?? null) }}" disabled>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Confirmation Email :<span class="text-danger">*</span></label>
-                        <input type="email" name="confirmEmail" class="rounded-0 w-40" value="{{ old('email', $candidate->email ?? null) }}">
+                        <input type="email" name="confirmEmail" class="rounded-0 w-40" value="{{ old('email', $candidate->email ?? null) }}" disabled>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">GSM 1 :<span class="text-danger">*</span></label>
@@ -203,15 +205,19 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Situation actuelle :<span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="situation_prof">
-                            <option value="{{ old('situation_prof', $candidate->situation_prof ?? null) }}">{{ old('situation_prof', $candidate->situation_prof ?? null) }}</option>
+                        <select id="situation" class="rounded-0 w-40" name="situation_prof">
+                            <option value="{{ $candidate->situation_prof }}">{{ old('situation_prof', $candidate->situation_prof ?? null) }}</option>
                             <option>Avec emploi</option>
                             <option>Sans emploi</option>
                         </select>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Au chômage depuis :</label>
-                        <input type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}">
+                        @if($candidate->situation_prof != 'Sans emploi')
+                            <input id="au_chomage" type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}" disabled>
+                        @else
+                            <input id="au_chomage" type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}">
+                        @endif
                     </div>
                     <div class="col-md-8 d-flex flex-row justify-content-between align-items-start my-3">
                         <label class="title" for="">Mobilité </label>
@@ -222,41 +228,38 @@
                             <span class="ml-4 small text-green">Internationale :</span>
                         </div>
                         <div class="d-flex flex-column align-items-start">
-                            <input class="mb-1" type="checkbox" name="mobilite_locale" value="mobilite_locale" @if($candidate->locale) checked @endif/>
-                            <input class="my-1" type="checkbox" name="mobilite_regionale" value="mobilite_regionale" @if($candidate->regionale) checked @endif/>
-                            <input class="my-1" type="checkbox" name="mobilite_nationale" value="mobilite_nationale" @if($candidate->nationale) checked @endif/>
-                            <input class="my-1" type="checkbox" name="mobilite_internationale" value="mobilite_internationale" @if($candidate->internationale) checked @endif/>
+                            <input class="mb-1" type="checkbox" name="mobilite_locale" value="mobilite_locale" @if($candidate->mobilite_locale) checked @endif/>
+                            <input class="my-1" type="checkbox" name="mobilite_regionale" value="mobilite_regionale" @if($candidate->mobilite_regionale) checked @endif/>
+                            <input class="my-1" type="checkbox" name="mobilite_nationale" value="mobilite_nationale" @if($candidate->mobilite_nationale) checked @endif/>
+                            <input class="my-1" type="checkbox" name="mobilite_internationale" value="mobilite_internationale" @if($candidate->mobilite_internationale) checked @endif/>
                         </div>
                     </div>
                     <div class="col-md-8 d-flex flex-row justify-content-between my-3">
                         <label class="title" for="">Handicap : </label>
                         <div class="d-flex flex-row align-items-center">
-                            @if($candidate->handicap == false)
                                 <div class="mr-5">
                                     <span class="title">Oui </span>
-                                    <input type="radio" id="handicap" name="oui" value="false">
+                                    <input type="radio" id="handicap" name="handicap" value="1" @if($candidate->handicap == true) checked @endif>
                                 </div>
                                 <div>
                                     <span class="title">Non </span>
-                                    <input type="radio" id="nonHandicap" name="non" value="true" checked>
+                                    <input type="radio" id="nonHandicap" name="handicap" value="0" @if($candidate->handicap == false) checked @endif>
                                 </div>
-                            @else
-                                <div class="mr-5">
-                                    <span class="title">Oui </span>
-                                    <input type="radio" id="handicap" name="oui" value="true" checked>
-                                </div>
-                                <div>
-                                    <span class="title">Non </span>
-                                    <input type="radio" id="nonHandicap" name="non" value="false">
-                                </div>
-                            @endif
                         </div>
                     </div>
                     <div class="col-md-8 d-flex flex-row justify-content-between align-items-start">
                         <label class="title" for="">Nature du handicap</label>
-                        @if($candidate->handicap == true)
-                            <select id="nature" class="rounded-0 w-40" name="situation_prof">
-                                <option value="{{ old('nature_handicap', $candidate->nature_handicap ?? null) }}">{{ old('nature_handicap', $candidate->nature_handicap ?? null) }}</option>
+                        @if($candidate->handicap == false)
+                            <select id="nature" class="rounded-0 w-40" name="nature_handicap" disabled>
+                                <option value="{{ $candidate->nature_handicap }}">{{ old('nature_handicap', $candidate->nature_handicap ?? '[Spécifier la nature de handicap]') }}</option>
+                                <option>Aveugle</option>
+                                <option>Moteur</option>
+                                <option>Sourd muet</option>
+                                <option>Mental</option>
+                            </select>
+                        @else
+                            <select id="nature" class="rounded-0 w-40" name="nature_handicap">
+                                <option value="{{ $candidate->nature_handicap }}">{{ old('nature_handicap', $candidate->nature_handicap ?? '[Spécifier la nature de handicap]') }}</option>
                                 <option>Aveugle</option>
                                 <option>Moteur</option>
                                 <option>Sourd muet</option>
@@ -400,7 +403,7 @@
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Expérience</span>
                         </div>
-                        <div class="d-flex flex-column p-4">
+                        <div id="global" class="d-flex flex-column p-4">
                             <div class="d-flex flex-row">
                                 @foreach ($candidate->experiences as $experience)
                                 <div class="d-flex flex-column justify-content-between align-items-center">
@@ -427,14 +430,14 @@
                                 </div>
                                 @endforeach
                             </div>
-                            {{-- <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-sm">
+                            <div class="d-flex justify-content-end">
+                                <button id="add" type="button" class="btn btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
                                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                     </svg>
                                 </button>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 @else
@@ -824,7 +827,7 @@
                 <!--/Cv personnel-->
 
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-dark nav-bg border-0 btn-sm my-2 shadow-xl">Update</button>
+                    <button id="update" type="submit" class="btn btn-dark nav-bg border-0 btn-sm my-2 shadow-xl">Update</button>
                 </div>
             </form>
         </div>
@@ -841,17 +844,53 @@
             }
         };
 
+        let handicap = document.getElementById('handicap');
         let nature = document.getElementById('nature');
         let nonHandicap = document.getElementById('nonHandicap');
+        let update = document.getElementById('update');
+        let cin = document.getElementById('cin');
+        let province = document.getElementById('province');
+        let commune = document.getElementById('commune');
+        let email = document.getElementById('email');
+        let situation = document.getElementById('situation');
+        let au_chomage = document.getElementById('au_chomage');
+        let add = document.getElementById('add');
+        let experience = document.getElementById('experience');
+        let global = document.getElementById('global');
 
         handicap.addEventListener("click", function(){
+            handicap.checked = true;
             nonHandicap.checked = false;
             nature.disabled = false;
         });
 
         nonHandicap.addEventListener("click", function(){
+            nonHandicap.checked = true;
             handicap.checked = false;
             nature.disabled = true;
+            nature.value = null;
         });
+
+        update.addEventListener("click", function(){
+            cin.disabled = false;
+            province.disabled = false;
+            commune.disabled = false;
+            email.disabled = false;
+            au_chomage.disabled = false;
+        });
+
+        situation.addEventListener("click", function(){
+            if (situation.value == 'Sans emploi') {
+                au_chomage.disabled = false;
+            }else{
+                au_chomage.disabled = true;
+                au_chomage.value = null;
+            }
+        });
+
+        $('#add').click(function(){
+            $('#global').append('<div class="d-flex flex-column justify-content-between align-items-start"><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date fin :</label><input type="date" name="date_fin" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Entreprise :</label><input type="text" name="entreprise" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Intitulé du poste :</label><input type="text" name="intitule_poste" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center my-1"><label class="title" for="">Description :</label><textarea class="w-area" name="description" rows="4" value=""></textarea></div></div>')
+        });
+
     </script>
 @endsection
