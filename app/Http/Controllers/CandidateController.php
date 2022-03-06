@@ -387,18 +387,8 @@ class CandidateController extends Controller
         }
         // Update Experience
         if ($request->date_debut != null) {
-            if ($candidate->experiences->count() != 0) {
-                foreach($candidate->experiences as $experience){
-                    $experience->candidate_id = $candidate->id;
-                    $experience->date_debut = $request->date_debut;
-                    $experience->date_fin = $request->date_fin;
-                    $experience->entreprise = $request->entreprise;
-                    $experience->intitule_poste = $request->intitule_poste;
-                    $experience->description = $request->description;
-                    $experience->save();
-                }
-            }else{
-                $experience = new Experience();
+            // if ($candidate->experiences->count() != 0) { 
+            foreach($candidate->experiences as $experience){
                 $experience->candidate_id = $candidate->id;
                 $experience->date_debut = $request->date_debut;
                 $experience->date_fin = $request->date_fin;
@@ -407,6 +397,15 @@ class CandidateController extends Controller
                 $experience->description = $request->description;
                 $experience->save();
             }
+        }else{
+            $experience = new Experience();
+            // $experience->candidate_id = $candidate->id;
+            $experience->date_debut = $request->date_debut;
+            $experience->date_fin = $request->date_fin;
+            $experience->entreprise = $request->entreprise;
+            $experience->intitule_poste = $request->intitule_poste;
+            $experience->description = $request->description;
+            $candidate->experiences()->save($experience);
         }
         // Update Competence
         if ($request->langue != '[Langue]') {

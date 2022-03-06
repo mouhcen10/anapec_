@@ -205,10 +205,10 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Situation actuelle :<span class="text-danger">*</span></label>
-                        <select id="situation" class="rounded-0 w-40" name="situation_prof">
+                        <select id="situation" class="situation rounded-0 w-40" name="situation_prof">
                             <option value="{{ $candidate->situation_prof }}">{{ old('situation_prof', $candidate->situation_prof ?? null) }}</option>
-                            <option>Avec emploi</option>
-                            <option>Sans emploi</option>
+                            <option value="Avec emploi">Avec emploi</option>
+                            <option value="Sans emploi">Sans emploi</option>
                         </select>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
@@ -398,14 +398,14 @@
 
                 <!--Expériences-->
                 @if(\App\Models\Experience::where('candidate_id',$candidate->id)->count() != 0)
-                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                    <div id="global" class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Expérience</span>
                         </div>
-                        <div id="global" class="d-flex flex-column p-4">
+                        @foreach ($candidate->experiences as $experience)
+                        <div class="d-flex flex-column p-4">
                             <div class="d-flex flex-row">
-                                @foreach ($candidate->experiences as $experience)
                                 <div class="d-flex flex-column justify-content-between align-items-center">
                                     <div class="d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Date début :</label>
@@ -428,16 +428,16 @@
                                         <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
                                     </div>
                                 </div>
-                                @endforeach
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <button id="add" type="button" class="btn btn-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
-                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                    </svg>
-                                </button>
-                            </div>
+                        </div>
+                        @endforeach
+                        <div class="d-flex justify-content-end">
+                            <button id="add" type="button" class="btn btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 @else
@@ -837,6 +837,9 @@
 
 @section('script')
     <script>
+        let situation = document.getElementById('situation');
+        let au_chomage = document.getElementById('au_chomage');
+
         imgInp.onchange = evt => {
             const [file] = imgInp.files
             if (file) {
@@ -844,39 +847,25 @@
             }
         };
 
-        let handicap = document.getElementById('handicap');
-        let nature = document.getElementById('nature');
-        let nonHandicap = document.getElementById('nonHandicap');
-        let update = document.getElementById('update');
-        let cin = document.getElementById('cin');
-        let province = document.getElementById('province');
-        let commune = document.getElementById('commune');
-        let email = document.getElementById('email');
-        let situation = document.getElementById('situation');
-        let au_chomage = document.getElementById('au_chomage');
-        let add = document.getElementById('add');
-        let experience = document.getElementById('experience');
-        let global = document.getElementById('global');
-
-        handicap.addEventListener("click", function(){
-            handicap.checked = true;
-            nonHandicap.checked = false;
-            nature.disabled = false;
+        $("#handicap").click(function(){
+            $("#handicap").prop('checked', true);
+            $("#nonHandicap").prop('checked', false);
+            $("#nature").prop('disabled', false);
         });
 
-        nonHandicap.addEventListener("click", function(){
-            nonHandicap.checked = true;
-            handicap.checked = false;
-            nature.disabled = true;
-            nature.value = null;
+        $("#nonHandicap").click(function(){
+            $("#nonHandicap").prop('checked', true);
+            $("#handicap").prop('checked', false);
+            $("#nature").prop('disabled', true);
+            $("#nature").val() = null;
         });
 
-        update.addEventListener("click", function(){
-            cin.disabled = false;
-            province.disabled = false;
-            commune.disabled = false;
-            email.disabled = false;
-            au_chomage.disabled = false;
+        $('#update').click(function(){
+            $("#cin").prop('disabled', false);
+            $("#province").prop('disabled', false);
+            $("#commune").prop('disabled', false);
+            $("#email").prop('disabled', false);
+            $("#au_chomage").prop('disabled', false);
         });
 
         situation.addEventListener("click", function(){
@@ -889,7 +878,7 @@
         });
 
         $('#add').click(function(){
-            $('#global').append('<div class="d-flex flex-column justify-content-between align-items-start"><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date fin :</label><input type="date" name="date_fin" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Entreprise :</label><input type="text" name="entreprise" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Intitulé du poste :</label><input type="text" name="intitule_poste" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center my-1"><label class="title" for="">Description :</label><textarea class="w-area" name="description" rows="4" value=""></textarea></div></div>')
+            $('#global').append('<div class="d-flex flex-column justify-content-between align-items-start"><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date début :</label><input type="date" name="date_debut" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date fin :</label><input type="date" name="date_fin" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Entreprise :</label><input type="text" name="entreprise" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Intitulé du poste :</label><input type="text" name="intitule_poste" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center my-1"><label class="title" for="">Description :</label><textarea class="w-area" name="description" rows="4" value=""></textarea></div></div>')
         });
 
     </script>
