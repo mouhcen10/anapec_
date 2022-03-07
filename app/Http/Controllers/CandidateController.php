@@ -358,23 +358,20 @@ class CandidateController extends Controller
             }
         }
         // Update Formation
-        if ($request->diplome !='[Type de diplome]') {
-            
-            if ($candidate->formations->count() != 0) {
-                foreach($candidate->formations as $formation){
-                    $formation->candidate_id = $candidate->id;
-                    $formation->diplome = $request->diplome;
-                    $formation->specialite = $request->specialite;
-                    $formation->option = $request->option;
-                    $formation->grp_etab = $request->grp_etab;
-                    $formation->etab = $request->etab;
-                    $formation->annee_obt = $request->annee_obt;
-                    $formation->commentaire = $request->commentaire;
-                    $formation->save();
-                }
-            } else {
-                $formation = new Formation();
-                $formation->candidate_id = $candidate->id;
+        if ($request->diplome_n != null) {
+            $formation = new Formation();
+            $formation->diplome = $request->diplome_n;
+            $formation->specialite = $request->specialite_n;
+            $formation->option = $request->option_n;
+            $formation->grp_etab = $request->grp_etab_n;
+            $formation->etab = $request->etab_n;
+            $formation->annee_obt = $request->annee_obt_n;
+            $formation->commentaire = $request->commentaire_n;
+            $candidate->formations()->save($formation);
+                
+        }
+        else {
+            foreach($candidate->formations as $formation){
                 $formation->diplome = $request->diplome;
                 $formation->specialite = $request->specialite;
                 $formation->option = $request->option;
@@ -382,30 +379,29 @@ class CandidateController extends Controller
                 $formation->etab = $request->etab;
                 $formation->annee_obt = $request->annee_obt;
                 $formation->commentaire = $request->commentaire;
-                $formation->save();
-            }
+                $candidate->formation()->save($formation);
+            }  
         }
         // Update Experience
-        if ($request->date_debut != null) {
-            // if ($candidate->experiences->count() != 0) { 
+        if ($request->date_debut_n != null) {
+            $experience = new Experience();
+            $experience->date_debut = $request->date_debut_n;
+            $experience->date_fin = $request->date_fin_n;
+            $experience->entreprise = $request->entreprise_n;
+            $experience->intitule_poste = $request->intitule_poste_n;
+            $experience->description = $request->description_n;
+            $candidate->experiences()->save($experience);
+            
+        }
+        else{
             foreach($candidate->experiences as $experience){
-                $experience->candidate_id = $candidate->id;
                 $experience->date_debut = $request->date_debut;
                 $experience->date_fin = $request->date_fin;
                 $experience->entreprise = $request->entreprise;
                 $experience->intitule_poste = $request->intitule_poste;
                 $experience->description = $request->description;
-                $experience->save();
+                $candidate->experiences()->save($experience);
             }
-        }else{
-            $experience = new Experience();
-            // $experience->candidate_id = $candidate->id;
-            $experience->date_debut = $request->date_debut;
-            $experience->date_fin = $request->date_fin;
-            $experience->entreprise = $request->entreprise;
-            $experience->intitule_poste = $request->intitule_poste;
-            $experience->description = $request->description;
-            $candidate->experiences()->save($experience);
         }
         // Update Competence
         if ($request->langue != '[Langue]') {

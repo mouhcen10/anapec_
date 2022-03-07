@@ -273,64 +273,73 @@
                 <!--Formation-->
                 @if(\App\Models\Formation::where('candidate_id',$candidate->id)->count() != 0)
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                            <span class="text-grey">Formation</span>
-                        </div>
-                        <div class="d-flex flex-column p-4">
+                        <div id="formation">
+                            <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                                <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                                <span class="text-grey">Formation</span>
+                            </div>
                             @foreach ($candidate->formations as $formation)
-                            <div class="d-flex flex-column  justify-content-between align-items-start">
-                                <div class="d-flex flex-row justify-content-around align-items-center">
-                                    <label class="title" for="">Diplôme :</label>
-                                    <div class="d-flex flex-column">
-                                        <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
-                                        <select class="rounded-0 w-40 my-2" name="diplome">
-                                            <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
-                                            <option>Bac +2</option>
-                                            <option>Bac +3</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 my-2" name="specialite">
-                                            <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
-                                            <option>Développement Informatique</option>
-                                            <option>Graphic Design</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 my-2" name="option">
-                                            <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
-                                            <option>Développement Informatique</option>
-                                            <option>Graphic Design</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 my-2" name="grp_etab">
-                                            <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
-                                            <option>OFPPT</option>
-                                            <option>ENCG</option>
-                                            <option>EMSI</option>
-                                        </select>
-                                        <select class="rounded-0 w-40 my-2" name="etab">
-                                            <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
-                                            <option>Institut Spécialisé des Technologies Appliquées</option>
-                                            <option>IGA</option>
-                                            <option>Lycée</option>
-                                        </select>
+                            <div class="d-flex flex-row justify-content-between p-4">
+                                <div class="d-flex flex-column  justify-content-between align-items-start">
+                                    <div class="d-flex flex-row justify-content-around align-items-center">
+                                        <label class="title" for="">Diplôme :</label>
+                                        <div class="d-flex flex-column">
+                                            <select class="rounded-0 w-40 my-2" name="diplome">
+                                                <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
+                                                <option>Bac +2</option>
+                                                <option>Bac +3</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 my-2" name="specialite">
+                                                <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
+                                                <option>Développement Informatique</option>
+                                                <option>Graphic Design</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 my-2" name="option">
+                                                <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
+                                                <option>Développement Informatique</option>
+                                                <option>Graphic Design</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                                <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
+                                                <option>OFPPT</option>
+                                                <option>ENCG</option>
+                                                <option>EMSI</option>
+                                            </select>
+                                            <select class="rounded-0 w-40 my-2" name="etab">
+                                                <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
+                                                <option>Institut Spécialisé des Technologies Appliquées</option>
+                                                <option>IGA</option>
+                                                <option>Lycée</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                        <label class="title" for="">Année d’obtention :</label>
+                                        <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
+                                    </div>
+                                    <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                        <label class="title" for="">Commentaire :</label>
+                                        <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
                                     </div>
                                 </div>
-                                <div class="d-flex flex-row justify-content-between align-items-center my-2">
-                                    <label class="title" for="">Année d’obtention :</label>
-                                    <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
-                                </div>
-                                <div class="d-flex flex-row  justify-content-between align-items-center my-3">
-                                    <label class="title" for="">Commentaire :</label>
-                                    <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
+                                <div class="d-flex flex-row justify-content-start h-25">
+                                    <a href="#" class="text-green" data-toggle="tooltip" data-placement="bottom" title="Supprimer Formation">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
+                            <hr class="w-100 text-grey">
                             @endforeach
-                            {{-- <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-sm">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
-                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                    </svg>
-                                </button>
-                            </div> --}}
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button id="addFormation" type="button" class="btn btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 @else
@@ -398,41 +407,51 @@
 
                 <!--Expériences-->
                 @if(\App\Models\Experience::where('candidate_id',$candidate->id)->count() != 0)
-                    <div id="global" class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
-                        <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
-                            <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                            <span class="text-grey">Expérience</span>
-                        </div>
-                        @foreach ($candidate->experiences as $experience)
-                        <div class="d-flex flex-column p-4">
-                            <div class="d-flex flex-row">
-                                <div class="d-flex flex-column justify-content-between align-items-center">
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Date début :</label>
-                                        <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $experience->date_debut ?? null) }}">
+                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                        <div id="global">
+                            <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
+                                <img class="mx-2" src="/storage/images/arrow.png" alt="">
+                                <span class="text-grey">Expérience</span>
+                            </div>
+                            @foreach ($candidate->experiences as $experience)
+                            <div class="d-flex flex-column p-4">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <div class="d-flex flex-column justify-content-between align-items-center">
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <label class="title" for="">Date début :</label>
+                                            <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $experience->date_debut ?? null) }}">
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <label class="title" for="">Date fin :</label>
+                                            <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $experience->date_fin ?? null) }}">
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <label class="title" for="">Entreprise :</label>
+                                            <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $experience->entreprise ?? null) }}">
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <label class="title" for="">Intitulé du poste :</label>
+                                            <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ old('intitule_poste', $experience->intitule_poste ?? null) }}">
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center my-1">
+                                            <label class="title" for="">Description :</label>
+                                            <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
+                                        </div>
                                     </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Date fin :</label>
-                                        <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $experience->date_fin ?? null) }}">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Entreprise :</label>
-                                        <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $experience->entreprise ?? null) }}">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
-                                        <label class="title" for="">Intitulé du poste :</label>
-                                        <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ old('intitule_poste', $experience->intitule_poste ?? null) }}">
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center my-1">
-                                        <label class="title" for="">Description :</label>
-                                        <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
+                                    <div class="d-flex flex-row justify-content-start h-25">
+                                        <a href="#" class="text-green" data-toggle="tooltip" data-placement="left" title="Supprimer Expérience">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+                            <hr class="w-100 text-grey">
+                            @endforeach
                         </div>
-                        @endforeach
                         <div class="d-flex justify-content-end">
-                            <button id="add" type="button" class="btn btn-sm">
+                            <button id="addExperience" type="button" class="btn btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
                                     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -847,6 +866,10 @@
             }
         };
 
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+
         $("#handicap").click(function(){
             $("#handicap").prop('checked', true);
             $("#nonHandicap").prop('checked', false);
@@ -877,8 +900,12 @@
             }
         });
 
-        $('#add').click(function(){
-            $('#global').append('<div class="d-flex flex-column justify-content-between align-items-start"><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date début :</label><input type="date" name="date_debut" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date fin :</label><input type="date" name="date_fin" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Entreprise :</label><input type="text" name="entreprise" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Intitulé du poste :</label><input type="text" name="intitule_poste" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center my-1"><label class="title" for="">Description :</label><textarea class="w-area" name="description" rows="4" value=""></textarea></div></div>')
+        $('#addExperience').click(function(){
+            $('#global').append('<div class="d-flex flex-column justify-content-between align-items-start ml-4"><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date début :</label><input type="date" name="date_debut_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date fin :</label><input type="date" name="date_fin_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Entreprise :</label><input type="text" name="entreprise_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Intitulé du poste :</label><input type="text" name="intitule_poste_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center my-1"><label class="title" for="">Description :</label><textarea class="w-area" name="description_n" rows="4" value=""></textarea></div></div><hr class="w-100 text-grey">')
+        });
+
+        $('#addFormation').click(function(){
+            $('#formation').append('<div class="d-flex flex-column p-4"><div class="d-flex flex-column justify-content-between align-items-start"><div class="d-flex flex-row justify-content-around align-items-center"><label class="title" for="">Diplôme :</label><div class="d-flex flex-column"><select class="rounded-0 w-40 my-2" name="diplome_n"><option value="">[Type de diplome]</option><option>Bac +2</option><option>Bac +3</option></select><select class="rounded-0 w-40 my-2" name="specialite_n"><option value="">[Spécialistes]</option><option>Développement Informatique</option><option>Graphic Design</option></select><select class="rounded-0 w-40 my-2" name="option_n"><option value="">[Option]</option><option>Développement Informatique</option><option>Graphic Design</option></select><select class="rounded-0 w-40 my-2" name="grp_etab_n"><option value="">[Groupe d’établissement]</option><option>OFPPT</option><option>ENCG</option><option>EMSI</option></select><select class="rounded-0 w-40 my-2" name="etab_n"><option value="">[Etablissement]</option><option>Institut Spécialisé des Technologies Appliquées</option><option>IGA</option><option>Lycée</option></select></div></div><div class="d-flex flex-row justify-content-between align-items-center my-2"><label class="title" for="">Année d’obtention :</label><input class="rounded-0 w-40" name="annee_obt_n" type="number" min="1970" max="2022" step="1"  value="2022" /></div><div class="d-flex flex-row  justify-content-between align-items-center my-3"><label class="title" for="">Commentaire :</label><textarea class="w-area" name="commentaire_n" rows="4" value=""></textarea></div></div></div><hr class="w-100 text-grey">')
         });
 
     </script>

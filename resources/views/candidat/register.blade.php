@@ -88,14 +88,6 @@
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Identification</span>
                         </div>
-                        {{-- <div class="col-md-8 d-flex flex-row justify-content-center m-4">
-                            <div class="mr-3">
-                                <input type="radio" name="check_cin" id="" checked> cin
-                            </div>
-                            <div>
-                                <input type="radio" name="check_sejour" id=""> carte séjour
-                            </div>
-                        </div> --}}
                         <div class="d-flex flex-row mt-5 mx-3">
                             <div class="d-flex flex-column justify-content-between align-items-center mb-1">
                                 <div class="d-flex flex-row justify-content-between align-items-center">
@@ -254,7 +246,6 @@
                                 <div class="d-flex flex-row justify-content-around align-items-center">
                                     <label class="title" for="">Diplôme :</label>
                                     <div class="d-flex flex-column">
-                                        <span class="text-green small">Si vous n’avez aucun diplôme, choisissez « Sans diplôme » dans la liste</span>
                                         <select class="rounded-0 w-40 my-2" name="diplome">
                                             <option>[Type de diplome]</option>
                                             <option>Bac +2</option>
