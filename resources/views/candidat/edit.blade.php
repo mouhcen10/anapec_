@@ -269,7 +269,11 @@
                     </div>
                 </div>
                 <!--/Identification-->
-
+                
+                <div class="d-flex justify-content-end">
+                    <button id="update" type="submit" class="btn btn-dark nav-bg border-0 btn-sm my-2 shadow-xl">Update</button>
+                </div>
+            </form>
                 <!--Formation-->
                 @if(\App\Models\Formation::where('candidate_id',$candidate->id)->count() != 0)
                     <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
@@ -280,58 +284,114 @@
                             </div>
                             @foreach ($candidate->formations as $formation)
                             <div class="d-flex flex-row justify-content-between p-4">
-                                <div class="d-flex flex-column  justify-content-between align-items-start">
-                                    <div class="d-flex flex-row justify-content-around align-items-center">
-                                        <label class="title" for="">Diplôme :</label>
-                                        <div class="d-flex flex-column">
-                                            <select class="rounded-0 w-40 my-2" name="diplome">
-                                                <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
-                                                <option>Bac +2</option>
-                                                <option>Bac +3</option>
-                                            </select>
-                                            <select class="rounded-0 w-40 my-2" name="specialite">
-                                                <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
-                                                <option>Développement Informatique</option>
-                                                <option>Graphic Design</option>
-                                            </select>
-                                            <select class="rounded-0 w-40 my-2" name="option">
-                                                <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
-                                                <option>Développement Informatique</option>
-                                                <option>Graphic Design</option>
-                                            </select>
-                                            <select class="rounded-0 w-40 my-2" name="grp_etab">
-                                                <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
-                                                <option>OFPPT</option>
-                                                <option>ENCG</option>
-                                                <option>EMSI</option>
-                                            </select>
-                                            <select class="rounded-0 w-40 my-2" name="etab">
-                                                <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
-                                                <option>Institut Spécialisé des Technologies Appliquées</option>
-                                                <option>IGA</option>
-                                                <option>Lycée</option>
-                                            </select>
+                                <form method="POST" action="{{ route('formations.update', ['formation' => $formation->id]) }}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="d-flex flex-column justify-content-between align-items-end">
+                                        <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+                                        <div class="d-flex flex-row justify-content-around align-items-center">
+                                            <label class="title" for="">Diplôme :</label>
+                                            <div class="d-flex flex-column">
+                                                <select class="rounded-0 w-40 my-2" name="diplome">
+                                                    <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
+                                                    <option>Bac +2</option>
+                                                    <option>Bac +3</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="specialite">
+                                                    <option value="{{ $formation->specialite ?? null }}">{{ $formation->specialite ?? null }}</option>
+                                                    <option>Développement Informatique</option>
+                                                    <option>Graphic Design</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="option">
+                                                    <option value="{{ $formation->option ?? null }}">{{ $formation->option ?? null }}</option>
+                                                    <option>Développement Informatique</option>
+                                                    <option>Graphic Design</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                                    <option value="{{ $formation->grp_etab ?? null }}">{{ $formation->grp_etab ?? null }}</option>
+                                                    <option>OFPPT</option>
+                                                    <option>ENCG</option>
+                                                    <option>EMSI</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="etab">
+                                                    <option value="{{ $formation->etab ?? null }}">{{ $formation->etab ?? null }}</option>
+                                                    <option>Institut Spécialisé des Technologies Appliquées</option>
+                                                    <option>IGA</option>
+                                                    <option>Lycée</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                            <label class="title" for="">Année d’obtention :</label>
+                                            <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
+                                        </div>
+                                        <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                            <label class="title" for="">Commentaire :</label>
+                                            <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
+                                        </div>
+                                        <div class="my-2">
+                                            <button class="nav-bg text-white border-0 shadow-xl" type="submit">update</button>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center my-2">
-                                        <label class="title" for="">Année d’obtention :</label>
-                                        <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
-                                    </div>
-                                    <div class="d-flex flex-row  justify-content-between align-items-center my-3">
-                                        <label class="title" for="">Commentaire :</label>
-                                        <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
-                                    </div>
-                                </div>
+                                </form>
                                 <div class="d-flex flex-row justify-content-start h-25">
-                                    <a href="#" class="text-green" data-toggle="tooltip" data-placement="bottom" title="Supprimer Formation">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                        </svg>
-                                    </a>
+                                    @include('candidat.deleteform')
                                 </div>
                             </div>
                             <hr class="w-100 text-grey">
                             @endforeach
+                            <div id="newForm" class="d-none p-4">
+                                <form method="POST" action="{{ route('formations.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="d-flex flex-column justify-content-between align-items-end">
+                                        <div class="d-flex flex-row justify-content-around align-items-center">
+                                            <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+                                            <label class="title" for="">Diplôme :</label>
+                                            <div class="d-flex flex-column">
+                                                <select class="rounded-0 w-40 my-2" name="diplome">
+                                                    <option>[Type de diplome]</option>
+                                                    <option>Bac +2</option>
+                                                    <option>Bac +3</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="specialite">
+                                                    <option>[Spécialistes]</option>
+                                                    <option>Développement Informatique</option>
+                                                    <option>Graphic Design</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="option">
+                                                    <option>[Option]</option>
+                                                    <option>Développement Informatique</option>
+                                                    <option>Graphic Design</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                                    <option>[Groupe d'établissement]</option>
+                                                    <option>OFPPT</option>
+                                                    <option>ENCG</option>
+                                                    <option>EMSI</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 my-2" name="etab">
+                                                    <option>[Etablissement]</option>
+                                                    <option>Institut Spécialisé des Technologies Appliquées</option>
+                                                    <option>IGA</option>
+                                                    <option>Lycée</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                            <label class="title" for="">Année d’obtention :</label>
+                                            <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="2022" />
+                                        </div>
+                                        <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                            <label class="title" for="">Commentaire :</label>
+                                            <textarea class="w-area" name="commentaire" rows="4" value=""></textarea>
+                                        </div>
+                                        <div class="my-2">
+                                            <button class="nav-bg text-white border-0 shadow-xl" type="submit">Enregistrer</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr id="hrf" class="w-100 text-grey d-none">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button id="addFormation" type="button" class="btn btn-sm">
@@ -416,39 +476,80 @@
                             @foreach ($candidate->experiences as $experience)
                             <div class="d-flex flex-column p-4">
                                 <div class="d-flex flex-row justify-content-between">
-                                    <div class="d-flex flex-column justify-content-between align-items-center">
-                                        <div class="d-flex flex-row justify-content-between align-items-center">
-                                            <label class="title" for="">Date début :</label>
-                                            <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $experience->date_debut ?? null) }}">
+                                    <form method="POST" action="{{ route('experiences.update', ['experience' => $experience->id]) }}" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="d-flex flex-column justify-content-between align-items-end">
+                                            <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Date début :</label>
+                                                <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $experience->date_debut ?? null) }}">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Date fin :</label>
+                                                <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $experience->date_fin ?? null) }}">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Entreprise :</label>
+                                                <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $experience->entreprise ?? null) }}">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Intitulé du poste :</label>
+                                                <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ old('intitule_poste', $experience->intitule_poste ?? null) }}">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center my-1">
+                                                <label class="title" for="">Description :</label>
+                                                <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
+                                            </div>
+                                            <div class="my-2">
+                                                <button class="nav-bg text-white border-0 shadow-xl" type="submit">update</button>
+                                            </div>
                                         </div>
-                                        <div class="d-flex flex-row justify-content-between align-items-center">
-                                            <label class="title" for="">Date fin :</label>
-                                            <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $experience->date_fin ?? null) }}">
-                                        </div>
-                                        <div class="d-flex flex-row justify-content-between align-items-center">
-                                            <label class="title" for="">Entreprise :</label>
-                                            <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $experience->entreprise ?? null) }}">
-                                        </div>
-                                        <div class="d-flex flex-row justify-content-between align-items-center">
-                                            <label class="title" for="">Intitulé du poste :</label>
-                                            <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ old('intitule_poste', $experience->intitule_poste ?? null) }}">
-                                        </div>
-                                        <div class="d-flex flex-row justify-content-between align-items-center my-1">
-                                            <label class="title" for="">Description :</label>
-                                            <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
-                                        </div>
-                                    </div>
+                                    </form>
                                     <div class="d-flex flex-row justify-content-start h-25">
-                                        <a href="#" class="text-green" data-toggle="tooltip" data-placement="left" title="Supprimer Expérience">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                            </svg>
-                                        </a>
+                                        @include('candidat.form')
                                     </div>
                                 </div>
                             </div>
                             <hr class="w-100 text-grey">
                             @endforeach
+                            <div id="newExp" class="d-none p-4">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <form method="POST" action="{{ route('experiences.store') }}" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="d-flex flex-column justify-content-between align-items-end">
+                                            <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Date début :</label>
+                                                <input type="date" name="date_debut" class="rounded-0 w-40" value="">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Date fin :</label>
+                                                <input type="date" name="date_fin" class="rounded-0 w-40" value="">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Entreprise :</label>
+                                                <input type="text" name="entreprise" class="rounded-0 w-40" value="">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                                <label class="title" for="">Intitulé du poste :</label>
+                                                <input type="text" name="intitule_poste" class="rounded-0 w-40" value="">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-between align-items-center my-1">
+                                                <label class="title" for="">Description :</label>
+                                                <textarea class="w-area" name="description" rows="4" value=""></textarea>
+                                            </div>
+                                            <div class="my-2">
+                                                <button class="nav-bg text-white border-0 shadow-xl" type="submit">Enregistrer</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="d-flex flex-row justify-content-start h-25">
+                                        {{-- @include('candidat.form') --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr id="hr" class="w-100 text-grey d-none">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button id="addExperience" type="button" class="btn btn-sm">
@@ -845,10 +946,6 @@
                 @endif
                 <!--/Cv personnel-->
 
-                <div class="d-flex justify-content-end">
-                    <button id="update" type="submit" class="btn btn-dark nav-bg border-0 btn-sm my-2 shadow-xl">Update</button>
-                </div>
-            </form>
         </div>
     </div>
   </div>
@@ -901,11 +998,15 @@
         });
 
         $('#addExperience').click(function(){
-            $('#global').append('<div class="d-flex flex-column justify-content-between align-items-start ml-4"><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date début :</label><input type="date" name="date_debut_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Date fin :</label><input type="date" name="date_fin_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Entreprise :</label><input type="text" name="entreprise_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center"><label class="title" for="">Intitulé du poste :</label><input type="text" name="intitule_poste_n" class="rounded-0 w-40" value=""></div><div class="d-flex flex-row justify-content-between align-items-center my-1"><label class="title" for="">Description :</label><textarea class="w-area" name="description_n" rows="4" value=""></textarea></div></div><hr class="w-100 text-grey">')
+            $('#newExp').removeClass('d-none')
+            $('#newExp').addClass('d-flex flex-column')
+            $('#hr').removeClass('d-none')
         });
 
         $('#addFormation').click(function(){
-            $('#formation').append('<div class="d-flex flex-column p-4"><div class="d-flex flex-column justify-content-between align-items-start"><div class="d-flex flex-row justify-content-around align-items-center"><label class="title" for="">Diplôme :</label><div class="d-flex flex-column"><select class="rounded-0 w-40 my-2" name="diplome_n"><option value="">[Type de diplome]</option><option>Bac +2</option><option>Bac +3</option></select><select class="rounded-0 w-40 my-2" name="specialite_n"><option value="">[Spécialistes]</option><option>Développement Informatique</option><option>Graphic Design</option></select><select class="rounded-0 w-40 my-2" name="option_n"><option value="">[Option]</option><option>Développement Informatique</option><option>Graphic Design</option></select><select class="rounded-0 w-40 my-2" name="grp_etab_n"><option value="">[Groupe d’établissement]</option><option>OFPPT</option><option>ENCG</option><option>EMSI</option></select><select class="rounded-0 w-40 my-2" name="etab_n"><option value="">[Etablissement]</option><option>Institut Spécialisé des Technologies Appliquées</option><option>IGA</option><option>Lycée</option></select></div></div><div class="d-flex flex-row justify-content-between align-items-center my-2"><label class="title" for="">Année d’obtention :</label><input class="rounded-0 w-40" name="annee_obt_n" type="number" min="1970" max="2022" step="1"  value="2022" /></div><div class="d-flex flex-row  justify-content-between align-items-center my-3"><label class="title" for="">Commentaire :</label><textarea class="w-area" name="commentaire_n" rows="4" value=""></textarea></div></div></div><hr class="w-100 text-grey">')
+            $('#newForm').removeClass('d-none')
+            $('#newForm').addClass('d-flex flex-row justify-content-between')
+            $('#hrf').removeClass('d-none')
         });
 
     </script>

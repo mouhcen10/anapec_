@@ -318,7 +318,7 @@
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Intitulé du poste :</label>
-                                    <input type="text" name="intitule" class="rounded-0 w-40">
+                                    <input type="text" name="intitule_poste" class="rounded-0 w-40">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                     <label class="title" for="">Description :</label>

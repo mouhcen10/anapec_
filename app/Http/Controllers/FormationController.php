@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Experience;
+use App\Models\Formation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ExperienceController extends Controller
+class FormationController extends Controller
 {
-    public function __construct() 
-    {
-    //   $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +37,7 @@ class ExperienceController extends Controller
     {
         $input = $request->all();
 
-        Experience::create($input);
+        Formation::create($input);
 
         return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
     }
@@ -73,18 +68,20 @@ class ExperienceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Experience  $experience
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Experience  $experience)
+    public function update(Request $request, Formation $formation)
     {
-        $experience->candidate_id = $request->candidate_id;
-        $experience->date_debut = $request->date_debut;
-        $experience->date_fin = $request->date_fin;
-        $experience->entreprise = $request->entreprise;
-        $experience->intitule_poste = $request->intitule_poste;
-        $experience->description = $request->description;
-        $experience->save();
+        $formation->candidate_id = $request->candidate_id;
+        $formation->diplome = $request->diplome;
+        $formation->specialite = $request->specialite;
+        $formation->option = $request->option;
+        $formation->grp_etab = $request->grp_etab;
+        $formation->etab = $request->etab;
+        $formation->annee_obt = $request->annee_obt;
+        $formation->commentaire = $request->commentaire;
+        $formation->save();
 
         return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
     }
@@ -92,13 +89,12 @@ class ExperienceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Experience  $experience
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $id)
     {
-        // dd($experience);
-        Experience::findOrFail($id)->delete();
+        Formation::findOrFail($id)->delete();
 
         return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id]);
     }

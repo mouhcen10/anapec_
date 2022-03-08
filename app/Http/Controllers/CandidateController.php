@@ -72,6 +72,7 @@ class CandidateController extends Controller
             $user->name = $request->nom;
             $user->email = $request->email;
             $user->password = Crypt::encrypt($request->password);
+            $user->user_type = 'candidat';
             $user->save();
 
             $candidate = new Candidate();
@@ -298,6 +299,7 @@ class CandidateController extends Controller
         $user->name = $request->nom;
         $user->email = $request->email;
         $user->password = Crypt::encrypt($request->password);
+        $user->user_type = 'candidat';
         $user->save();
 
         $candidate->user_id = $user->id;
@@ -379,7 +381,7 @@ class CandidateController extends Controller
                 $formation->etab = $request->etab;
                 $formation->annee_obt = $request->annee_obt;
                 $formation->commentaire = $request->commentaire;
-                $candidate->formation()->save($formation);
+                $candidate->formations()->save($formation);
             }  
         }
         // Update Experience
@@ -589,8 +591,12 @@ class CandidateController extends Controller
      * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Candidate $candidate)
+    public function destroy($id)
     {
-        //
+        // $experience = Experience::findOrFail($id);
+        // dd($experience);
+        // $experience->delete();
+
+        // return redirect()->route('candidates.edit', ['candidate' => $experience->candidate_id]);
     }
 }

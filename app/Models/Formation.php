@@ -9,6 +9,17 @@ class Formation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'candidate_id',
+        'diplome',
+        'specialite',
+        'option',
+        'grp_etab',
+        'etab',
+        'annee_obt',
+        'commentaire'
+    ];
+
     public function candidate() {
         return $this->belongsTo(Candidate::class);
     }

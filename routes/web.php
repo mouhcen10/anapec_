@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\FormationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +28,18 @@ Route::get('/candidat', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/profile/{id}', [App\Http\Controllers\CandidateController::class, 'show'])->name('profile');
-// Route::get('/candidates/{id}/edit', [App\Http\Controllers\CandidateController::class, 'edit'])->name('candidates.edit');
-// Route::patch('/candidates/{id}/edit', [App\Http\Controllers\CandidateController::class, 'update'])->name('candidates.update');
-// Route::post('/candidates', [App\Http\Controllers\CandidateController::class, 'store'])->name('candidates.store');
+Route::group(['prefix' => 'experiences'], function () {
+    Route::post('/', [ExperienceController::class, 'store'])->name('experiences.store');
+    Route::put('/{experience}', [ExperienceController::class, 'update'])->name('experiences.update');
+    Route::delete('/{experience}', [ExperienceController::class, 'destroy'])->name('experiences.destroy');
+});
+
+Route::group(['prefix' => 'formations'], function () {
+    Route::post('/', [FormationController::class, 'store'])->name('formations.store');
+    Route::put('/{formation}', [FormationController::class, 'update'])->name('formations.update');
+    Route::delete('/{formation}', [FormationController::class, 'destroy'])->name('formations.destroy');
+});
+
 Route::resource('candidates', CandidateController::class);
 
 Auth::routes();
