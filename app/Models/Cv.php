@@ -9,6 +9,11 @@ class Cv extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'candidate_id',
+        'file'
+    ];
+
     public function candidate() {
         return $this->belongsTo(Candidate::class);
     }
