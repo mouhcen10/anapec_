@@ -10045,8 +10045,17 @@ body {
   box-shadow: 2px black;
 }
 
+.modal-header {
+  border-bottom: 4px solid #292828 !important;
+}
+
 .nav-bg {
   background: #9db22b !important;
+}
+
+.w-120 {
+  width: 120px;
+  height: 130px;
 }
 
 .w-h-78 {

@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'experiences'], function () {
     Route::post('/', [ExperienceController::class, 'store'])->name('experiences.store');
@@ -53,8 +53,10 @@ Route::group(['prefix' => 'cvs'], function () {
     Route::post('/', [CvController::class, 'store'])->name('cvs.store');
     Route::put('/{cv}', [CvController::class, 'update'])->name('cvs.update');
     Route::delete('/{cv}', [CvController::class, 'destroy'])->name('cvs.destroy');
+    Route::get('/download/{cv}', [CvController::class, 'download'])->name('download');
 });
 
 Route::resource('candidates', CandidateController::class);
+
 
 Auth::routes();

@@ -67,7 +67,7 @@ class CandidateController extends Controller
             $user->cin = $request->cin;
             $user->name = $request->nom;
             $user->email = $request->email;
-            $user->password = Crypt::encrypt($request->password);
+            $user->password = Hash::make($request->password);
             $user->user_type = 'candidat';
             $user->save();
 
@@ -75,7 +75,7 @@ class CandidateController extends Controller
 
             $candidate->user_id = $user->id;
             $candidate->cin = $request->cin;
-            $candidate->password = Crypt::encrypt($request->password);
+            $candidate->password = Hash::make($request->password);
             $candidate->nom = $request->nom;
             $candidate->prenom = $request->prenom;
             $candidate->sexe = $request->sexe;
@@ -180,13 +180,13 @@ class CandidateController extends Controller
         $user->cin = $request->cin;
         $user->name = $request->nom;
         $user->email = $request->email;
-        $user->password = Crypt::encrypt($request->password);
+        $user->password = Hash::make($request->password);
         $user->user_type = 'candidat';
         $user->save();
 
         $candidate->user_id = $user->id;
         $candidate->cin = $request->cin;
-        $candidate->password = Crypt::encrypt($request->password);
+        $candidate->password = Hash::make($request->password);
         $candidate->nom = $request->nom;
         $candidate->prenom = $request->prenom;
         $candidate->sexe = $request->sexe;

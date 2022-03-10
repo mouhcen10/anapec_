@@ -94,6 +94,9 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
+            <?php
+                $candidate = Auth::user()->candidate; 
+            ?>
             <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3">Bienvenue {{ $candidate->prenom }} {{ $candidate->nom }}</span>
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
@@ -162,13 +165,15 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white">Visualiser votre cv</button>
+                    <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white" data-toggle="modal" data-target="#staticBackdrop">Visualiser votre cv</button>
                     <a href="{{ route('candidates.edit', ['candidate' => $candidate->id]) }}" class="btn m-2 btn-secondary border-0 btn-sm shadow">Actualiser votre cv</a>
                     <button type="submit" class="btn m-2 btn-warning border-0 btn-sm text-white shadow">Actualiser votre situation</button>
                 </div>
-                {{-- @include('candidat.modal') --}}
             </div>
             <!--/Informations-->
+            <div class="">
+                @include('candidat.modal')
+            </div>
             
             <!--/Statistiques-->
             <div class="d-flex flex-row justify-content-between mt-3">

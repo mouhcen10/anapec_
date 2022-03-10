@@ -115,13 +115,11 @@
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Mot de passe :<span class="text-danger">*</span></label>
-                                    <?php use Illuminate\Support\Facades\Crypt;?>
-                                    <?php $password = Crypt::decrypt($candidate->password);?>
-                                    <input type="password" name="password" class="rounded-0 w-40 ml-72" value="{{ $password }}">
+                                    <input type="password" name="password" class="rounded-0 w-40 ml-72" value="{{ $candidate->password }}">
                                 </div>
                                 <div class="d-flex flex-row justify-content-between align-items-center">
                                     <label class="title" for="">Confirmation Mot de passe :<span class="text-danger">*</span></label>
-                                    <input type="password" name="confrmPass" class="rounded-0 w-40 ml-72" value="{{ $password }}">
+                                    <input type="password" name="confrmPass" class="rounded-0 w-40 ml-72" value="{{ $candidate->password }}">
                                 </div>
                             </div>
                             <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
@@ -978,6 +976,10 @@
                                 <div class="d-flex flex-column justify-content-start">
                                     <span class="small my-1">Joindre votre CV personnel :</span>
                                     <input class="form-control" type="file" name="file" value="{{ $cv->file ?? null }}">
+                                    <div class="d-flex flex-column align-items-center my-1">
+                                        <img style="width: 30px;height:30px;" src="/storage/images/cv.png" alt="">
+                                        <a class="nav-link" href="{{ route('download', ['cv' => $cv->id]) }}">Télécharger</a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="my-2 float-right">

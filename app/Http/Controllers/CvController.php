@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidate;
 use App\Models\Cv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class CvController extends Controller
 {
@@ -35,9 +40,17 @@ class CvController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        // Upload Cv PDF for current Candidate
+        if($request->hasFile('file')) {
+            
+            $path = $request->file('file')->store('pdfs');
 
-        Cv::create($input);
+            $cv = new Cv();
+            $cv->file = $path;
+            $cv->candidate_id = $request->candidate_id;
+
+            $cv->save();
+        }
 
         return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
     }
@@ -73,8 +86,22 @@ class CvController extends Controller
      */
     public function update(Request $request, Cv $cv)
     {
-        $input = $request->all();
-        $cv->fill($input)->save();
+        $cv = Cv::where('candidate_id', $request->candidate_id)->first();
+        
+        // Upload Cv PDF for current Candidate
+        if($request->hasFile('file')) {
+        
+            $path = $request->file('file')->store('pdfs');
+
+            if($cv) {
+                Storage::delete($cv->file);
+                $cv->file = $path;
+                $cv->save();
+            }
+            else {
+                $cv->save(Cv::make(['file' => $path]));
+            }
+        }
 
         return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
     }
@@ -88,7 +115,14 @@ class CvController extends Controller
     public function destroy(Request $request, $id)
     {
         Cv::findOrFail($id)->delete();
-        
         return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id]);
+    }
+
+    public function download($id)
+    {
+        $cv = Cv::findOrFail($id);
+        $url = $cv->file;
+
+        return Storage::download($url);
     }
 }

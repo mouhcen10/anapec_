@@ -6,7 +6,7 @@
           <div class="col-md-9 pl-0">
             <div class="d-flex flex-column bg-white rounded-top-right p-0 shadow-sm">
                 <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                  <img class="mx-3" src="images/arrow.png" alt="">
+                  <img class="mx-3" src="/storage/images/arrow.png" alt="">
                   Trouver un emploi
                 </div>
                 <div class="d-flex flex-row my-3">
@@ -48,31 +48,31 @@
                       </div>
                   </form>
                   <div class="p-2">
-                      <img src="images/map.png" alt="map">
+                      <img src="/storage/images/map.png" alt="map">
                   </div>
                 </div>
               </div>
               <div class="d-flex flex-row justify-content-between mt-4">
                   <div class="col-md-5 p-0 bg-white rounded-top-right shadow-sm">
                     <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                      <img class="mx-3" src="images/arrow.png" alt="">
+                      <img class="mx-3" src="/storage/images/arrow.png" alt="">
                       Les entreprises qui recrutent
                     </div>
                     <div class="d-flex flex-row flex-wrap justify-content-between p-3">
-                      <img class="w-h-78 m-2" src="images/img1.png" alt="">
-                      <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img1.png" alt="">
-                      <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
                     </div>
                   </div>
                   <div class="col-md-6 p-0 bg-white rounded-top-right shadow-sm">
                     <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                      <img class="mx-3" src="images/arrow.png" alt="">
+                      <img class="mx-3" src="/storage/images/arrow.png" alt="">
                       Les dernières offres
                     </div>
                     <div>
@@ -104,7 +104,7 @@
           </div>
           <div class="col-md-3 bg-white p-0 rounded-top-right shadow-sm">
               <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                <img class="mx-3" src="images/arrow.png" alt="">
+                <img class="mx-3" src="/storage/images/arrow.png" alt="">
                 Connexion
               </div>
               <form method="POST" action="{{ route('login') }}" class="card-body pt-4 px-4">
