@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Cv;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use File;
 
@@ -125,4 +123,11 @@ class CvController extends Controller
 
         return Storage::download($url);
     }
+
+    // public function convertToPdf(Request $request)
+    // {
+    //     $candidate = Candidate::where('id', $request->candidate_id)->first();
+    //     $pdf = PDF::loadView('candidat.modal');
+    //     return $pdf->download($candidate->nom.'_'.$candidate->prenom.'.pdf');
+    // }
 }

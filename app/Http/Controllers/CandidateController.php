@@ -2,17 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
 use App\Models\Candidate;
-use App\Models\Competence;
-use App\Models\Cv;
-use App\Models\Experience;
-use App\Models\Formation;
 use App\Models\Image;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -132,7 +125,7 @@ class CandidateController extends Controller
                 $image->save();
             }
 
-            return redirect()->route('candidates.show', ['candidate' => $candidate->id]);
+            return redirect()->route('login');
         }
 
     }
@@ -180,13 +173,23 @@ class CandidateController extends Controller
         $user->cin = $request->cin;
         $user->name = $request->nom;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        if($user->password == $request->password){
+            $user->password == $request->password;
+        }
+        else{
+            $user->password = Hash::make($request->password);
+        }
         $user->user_type = 'candidat';
         $user->save();
 
         $candidate->user_id = $user->id;
         $candidate->cin = $request->cin;
-        $candidate->password = Hash::make($request->password);
+        if($candidate->password == $request->password){
+            $candidate->password == $request->password;
+        }
+        else{
+            $candidate->password = Hash::make($request->password);
+        }
         $candidate->nom = $request->nom;
         $candidate->prenom = $request->prenom;
         $candidate->sexe = $request->sexe;

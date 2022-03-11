@@ -14,6 +14,7 @@
                     <span><i class="fa fa-envelope mr-2"></i>{{ $candidate->email }}</span>
                     <span><i class="fa fa-phone mr-2"></i>{{ $candidate->gsm_1 }}</span>
                 </div>
+                {{-- <input type="hidden" name="candidate_id" value="{{ $candidate->id }}"> --}}
                 <a href=""><i class="fa fa-print text-dark"></i></a>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

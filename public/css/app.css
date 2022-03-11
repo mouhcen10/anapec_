@@ -10058,6 +10058,11 @@ body {
   height: 130px;
 }
 
+.w-pic {
+  width: 120px;
+  height: 120px;
+}
+
 .w-h-78 {
   width: 78px;
   height: 78px;
@@ -10174,6 +10179,11 @@ body {
   border-bottom-left-radius: 50px;
   height: 32px;
   box-shadow: 1px 3px #9db22b;
+}
+
+.border-shadow {
+  border: 1px solid #ccc;
+  box-shadow: 1px 0px 4px #9db22b;
 }
 
 .text-grey {

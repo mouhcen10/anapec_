@@ -6,6 +6,7 @@ use App\Http\Controllers\FormationController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CvController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//Candidat Routes:
 Route::group(['prefix' => 'experiences'], function () {
     Route::post('/', [ExperienceController::class, 'store'])->name('experiences.store');
     Route::put('/{experience}', [ExperienceController::class, 'update'])->name('experiences.update');
@@ -55,8 +55,10 @@ Route::group(['prefix' => 'cvs'], function () {
     Route::delete('/{cv}', [CvController::class, 'destroy'])->name('cvs.destroy');
     Route::get('/download/{cv}', [CvController::class, 'download'])->name('download');
 });
+// Route::get('/convert-to-pdf', [CvController::class, 'convertToPdf'])->name('convert');
 
 Route::resource('candidates', CandidateController::class);
-
+Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//End Candidat Routes
 
 Auth::routes();
