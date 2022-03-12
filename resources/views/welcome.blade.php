@@ -62,12 +62,12 @@
                       <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
                       <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
                       <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img9.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img8.jpg" alt="">
                       <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
-                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
-                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img7.jpg" alt="">
                       <img class="w-h-78 m-2" src="/storage/images/img3.jpg" alt="">
-                      <img class="w-h-78 m-2" src="/storage/images/img1.png" alt="">
+                      <img class="w-h-78 m-2" src="/storage/images/img2.jpg" alt="">
                     </div>
                   </div>
                   <div class="col-md-6 p-0 bg-white rounded-top-right shadow-sm">
@@ -139,7 +139,7 @@
                 </form>
                 <div class="d-flex flex-column align-items-center">
                     <a href="{{ route('candidates.create') }}" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
-                    <a href="#" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
+                    <a href="{{ route('professionals.create') }}" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
                 </div>
               @else
                 <div class="d-flex flex-column align-items-center p-2">

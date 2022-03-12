@@ -98,7 +98,7 @@
                 $candidate = Auth::user()->candidate; 
             ?>
             <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
-                <span class="ml-3">Bienvenue {{ $candidate->prenom }} {{ $candidate->nom }}</span>
+                <span class="ml-3">Bienvenue {{ Str::upper($candidate->prenom) }} {{ Str::upper($candidate->nom) }} à votre espace personnel</span>
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

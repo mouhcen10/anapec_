@@ -25,16 +25,6 @@ class Candidate extends Model
         'gsm_1',
         'situation_prof',
     ];
-    
-    public function setMobiliteAttribute($value)
-    {
-        $this->attributes['mobilite'] = json_encode($value);
-    }
-
-    public function getMobiliteAttribute($value)
-    {
-        return $this->attributes['mobilite'] = json_decode($value);
-    }
 
     public function image(){
         return $this->hasOne(Image::class);

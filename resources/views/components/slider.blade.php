@@ -3,16 +3,28 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="/storage/images/img1.png" class="d-block w-100" alt="...">
+      <div class="carousel-item h-390 active">
+        <img src="/storage/images/img1.png" class="d-block w-100 h100" alt="...">
       </div>
-      <div class="carousel-item">
-        <img src="/storage/images/img2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-item h-390">
+        <img src="/storage/images/img2.jpg" class="d-block w-100 h100" alt="...">
       </div>
-      <div class="carousel-item">
-        <img src="/storage/images/img3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-item h-390">
+        <img src="/storage/images/img3.jpg" class="d-block w-100 h100" alt="...">
+      </div>
+      <div class="carousel-item h-390">
+        <img src="/storage/images/img7.jpg" class="d-block w-100 h-100" alt="...">
+      </div>
+      <div class="carousel-item h-390">
+        <img src="/storage/images/img8.jpg" class="d-block w-100 h-100" alt="...">
+      </div>
+      <div class="carousel-item h-390">
+        <img src="/storage/images/img9.jpg" class="d-block w-100 h-100" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev rounded-circle" type="button" data-target="#carouselExampleIndicators" data-slide="prev">

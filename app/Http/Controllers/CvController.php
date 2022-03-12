@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Cv;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use File;
+use PDF;
 
 class CvController extends Controller
 {
@@ -124,10 +126,10 @@ class CvController extends Controller
         return Storage::download($url);
     }
 
-    // public function convertToPdf(Request $request)
-    // {
-    //     $candidate = Candidate::where('id', $request->candidate_id)->first();
-    //     $pdf = PDF::loadView('candidat.modal');
-    //     return $pdf->download($candidate->nom.'_'.$candidate->prenom.'.pdf');
-    // }
+    public function convertToPdf(Request $request)
+    {
+        // $candidate = Candidate::where('id', $request->candidate_id)->first();
+        $pdf = FacadePdf::loadView('candidat.modal');
+        return $pdf->download('test.pdf');
+    }
 }

@@ -137,8 +137,8 @@
                   @endif
               </form>
               <div class="d-flex flex-column align-items-center">
-                  <a href="/candidat" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
-                  <a href="/candidat" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
+                  <a href="{{ route('candidates.create') }}" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
+                  <a href="{{ route('professionals.create') }}" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
               </div>
               <x-slider></x-slider>
           </div>

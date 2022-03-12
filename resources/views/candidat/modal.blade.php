@@ -3,6 +3,9 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header d-flex flex-row justify-content-between nav-bg b-bottom">
+                <?php 
+                    $candidate = Auth::user()->candidate;    
+                ?>
                 <div class="border rounded my-2 p-1 w-120">
                     <img class="img-fluid w-100 h-100" src="{{ Storage::url($candidate->image->path ?? 'images/avatar.jpg') }}" alt="avatar">
                 </div>
@@ -14,8 +17,7 @@
                     <span><i class="fa fa-envelope mr-2"></i>{{ $candidate->email }}</span>
                     <span><i class="fa fa-phone mr-2"></i>{{ $candidate->gsm_1 }}</span>
                 </div>
-                {{-- <input type="hidden" name="candidate_id" value="{{ $candidate->id }}"> --}}
-                <a href=""><i class="fa fa-print text-dark"></i></a>
+                <a href="{{ route('convert') }}"><i class="fa fa-print text-dark"></i></a>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -27,6 +27,9 @@ class User extends Authenticatable
     public function candidate() {
         return $this->hasOne(Candidate::class);
     }
+    public function professional() {
+        return $this->hasOne(Professional::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -59,6 +59,9 @@ body{
 .borded{
     border-top: 3px solid #9db22b;
 }
+.borded-blue{
+    border-top: 3px solid #1e83bd;
+}
 .w-40{
     width: 260px;
     font-size: 11px;
@@ -140,6 +143,12 @@ body{
     height: 32px;
     box-shadow: 1px 3px #9db22b;
 }
+.rounded-half-blue{
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    height: 32px;
+    box-shadow: 1px 3px #1e83bd;
+}
 .border-shadow{
     border: 1px solid #ccc;
     box-shadow: 1px 0px 4px#9db22b;
@@ -148,6 +157,13 @@ body{
     font-size: 18px;
     color: #666666;
     font-weight: normal;
+}
+.text-blue{
+    color: #1e83bd !important;
+}
+.blue-bg{
+    background: #1e83bd !important;
+    color: #fff !important;
 }
 .list-group>.text-grey:hover{
     color: #000;
@@ -158,13 +174,21 @@ body{
 .rounded-top-right{
     border-top-right-radius: 32px;
 }
+.h-390{
+    height: 390px !important;
+}
 .shadow-xl{
     box-shadow: 1px 1px rgb(58, 58, 58);
 }
 .bg-green-light{
     background-color: #e9f0c6 !important;
 }
-
+.bg-blue-light{
+    background-color: #92d6fd !important;
+}
+.bg-grey{
+    background: #eaeaea !important;
+}
 .border-b-dashed {
     border-bottom: 2px dashed #fff;
 }
@@ -176,6 +200,14 @@ body{
     border-top: 0px;
     border-radius: 50px;
     box-shadow: 1px 0px 4px#9db22b;
+}
+.bloc-bienvenue-blue{
+    background: url('/storage/images/bg-repeat.jpg') repeat-x center #fff;
+    border: 2px solid #e0dfdf;
+    width: 696px!important;
+    border-top: 0px;
+    border-radius: 50px;
+    box-shadow: 1px 0px 4px#1e83bd;
 }
 .f-90{
     font-size: 12px;

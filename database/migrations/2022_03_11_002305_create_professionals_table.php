@@ -15,6 +15,7 @@ class CreateProfessionalsTable extends Migration
     {
         Schema::create('professionals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable(true)->constrained();
             $table->string('raison_sociale');
             $table->string('secteur');
             $table->string('cin')->unique();
