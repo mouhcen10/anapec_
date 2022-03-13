@@ -10228,6 +10228,12 @@ body {
   height: 390px !important;
 }
 
+.small-puce {
+  color: #000;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 .shadow-xl {
   box-shadow: 1px 1px #3a3a3a;
 }

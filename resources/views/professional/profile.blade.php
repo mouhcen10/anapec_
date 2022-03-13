@@ -31,7 +31,7 @@
                             Vos offres d’emploi
                         </a>
                         <div class="collapse p-2" id="navbarToggleExternalContent1">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Créer une nouvelle offre</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.create') }}">Créer une nouvelle offre</a></li>
                             <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Gérer vos offres d'emploi</a></li>
                         </div>
                     </div>
@@ -114,15 +114,15 @@
                 <div class="d-flex flex-column mt-3">
                     <ul class="d-flex flex-row justify-content-between mb-0 py-2 px-4 bg-grey">
                         <span class="text-grey small">Offres déposées</span>
-                        <span class="f-90 ml-3">0</span>
+                        <span class="f-90 ml-3">{{ count($professional->offres) }}</span>
                         <span class="text-grey small mr-2">Offres en cours</span>
-                        <span class="f-90">0</span>
+                        <span class="f-90">{{ $en_cours }}</span>
                     </ul>
                     <ul class="d-flex flex-row justify-content-between mt-0 py-2 px-4">
                         <span class="text-grey small">Offres suspendues</span>
-                        <span class="f-90">0</span>
+                        <span class="f-90">{{ $suspendue }}</span>
                         <span class="text-grey small">Offres conclues</span>
-                        <span class="f-90">0</span>
+                        <span class="f-90">{{ $conclue }}</span>
                     </ul>
                 </div>
             </div>

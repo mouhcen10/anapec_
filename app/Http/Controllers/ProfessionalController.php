@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfessionalRequest;
+use App\Models\Offre;
 use App\Models\Professional;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -79,8 +80,14 @@ class ProfessionalController extends Controller
     public function show($id)
     {
         $professional = Professional::findOrFail($id);
+        $en_cours = Offre::where('professional_id', $id)->where('etat','En cours')->count();
+        $suspendue = Offre::where('professional_id', $id)->where('etat','Suspendue')->count();
+        $conclue = Offre::where('professional_id', $id)->where('etat','Conclue')->count();
         return view('professional.profile', [
-            'professional' => $professional
+            'professional' => $professional,
+            'en_cours' => $en_cours,
+            'suspendue' => $suspendue,
+            'conclue' => $conclue
         ]);
     }
 

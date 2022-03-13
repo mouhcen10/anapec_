@@ -6,6 +6,7 @@ use App\Http\Controllers\FormationController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CvController;
+use App\Http\Controllers\OffreController;
 use App\Http\Controllers\ProfessionalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,5 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->n
 //End Candidat Routes
 
 Route::resource('professionals', ProfessionalController::class);
-Route::get('professionals/{id}', [ProfessionalController::class, 'show'])->name('show');
-// Route::put('professionals/{id}/edit', [ProfessionalController::class, 'update'])->name('update');
+Route::resource('offres', OffreController::class);
 Auth::routes();

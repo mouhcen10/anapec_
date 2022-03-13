@@ -24,8 +24,11 @@ class Professional extends Model
         'commune'
     ];
 
-    
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function offres() {
+        return $this->hasMany(Offre::class);
     }
 }
