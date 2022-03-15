@@ -64,6 +64,14 @@
                                 <option>Stage Rémunéré</option>
                                 <option>Stage Non Rémunéré</option>
                                 <option>Stage pré-embouche</option>
+                                <option>Offre d'emploi</option>
+                                <option>Freelance</option>
+                            </select>
+                        </div>
+                        <div class="d-flex flex-row align-items-start">
+                            <label class="title" for="">Type de contrat :</label>
+                            <select class="rounded-0 text-blue w-40 ml-72" name="contrat">
+                                <option>[Choisissez le type de contrat]</option>
                                 <option>CDI</option>
                                 <option>CDD</option>
                             </select>
@@ -86,8 +94,8 @@
                             </select>
                         </div>
                         <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Traitement :<span class="text-danger">*</span></label>
-                            <input type="text" name="traitement" class="rounded-0 text-blue w-40 ml-72" required>
+                            <label class="title" for="">Description :<span class="text-danger">*</span></label>
+                            <textarea name="description" cols="32" rows="5" class="rounded-0 text-blue ml-72 mb-2" required></textarea>
                         </div>
                         <div class="d-flex flex-row align-items-start">
                             <label class="title" for="">Nbr postes :<span class="text-danger">*</span></label>

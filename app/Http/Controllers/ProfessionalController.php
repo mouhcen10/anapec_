@@ -21,6 +21,20 @@ class ProfessionalController extends Controller
         //
     }
 
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listOffres($id)
+    {
+        $professional = Professional::with('offres')->findOrFail($id);
+        return view('professional.listOffres', [
+            'professional' => $professional
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,12 +61,13 @@ class ProfessionalController extends Controller
         $user->name = $request->nom;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->user_type = 'professionnel';
+        $user->is_prof = true;
         $user->save();
 
         $professional = new Professional();
         $professional->user_id = $user->id;
         $professional->raison_sociale = $request->raison_sociale;
+        $professional->entreprise = $request->entreprise;
         $professional->secteur = $request->secteur;
         $professional->cin = $request->cin;
         $professional->nom = $request->nom;
@@ -124,11 +139,12 @@ class ProfessionalController extends Controller
         else{
             $user->password = Hash::make($request->password);
         }
-        $user->user_type = 'professionnel';
+        $user->is_prof = true;
         $user->save();
 
         $professional->user_id = $user->id;
         $professional->raison_sociale = $request->raison_sociale;
+        $professional->entreprise = $request->entreprise;
         $professional->secteur = $request->secteur;
         $professional->cin = $request->cin;
         $professional->nom = $request->nom;

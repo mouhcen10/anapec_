@@ -94,6 +94,10 @@
                             <input type="text" name="raison_sociale" class="rounded-0 text-blue w-40 ml-72" required>
                         </div>
                         <div class="d-flex flex-row align-items-start">
+                            <label class="title" for="">Entreprise :<span class="text-danger">*</span></label>
+                            <input type="text" name="entreprise" class="rounded-0 text-blue w-40 ml-72" required>
+                        </div>
+                        <div class="d-flex flex-row align-items-start">
                             <label class="title" for="">Secteur activité :<span class="text-danger">*</span></label>
                             <select class="rounded-0 text-blue w-40 ml-72" name="secteur" required>
                                 <option>[Choisissez votre secteur]</option>

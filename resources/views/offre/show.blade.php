@@ -19,7 +19,7 @@
                             Recherche des offres
                         </a>
                         <div class="collapse p-2" id="navbarToggleExternalContent">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Consulter la banque d'offres</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.index') }}">Consulter la banque d'offres</a></li>
                             <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Consulter les offres International</a></li>
                             <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Offres correspandant à votre profil</a></li>
                         </div>
@@ -110,7 +110,7 @@
             <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2">
                 <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
                     <img class="mx-2" src="/storage/images/arrow.png" alt="">
-                    <span class="text-grey">Vos Informations personnelles</span>
+                    <span class="text-grey">Détails de l'offre</span>
                 </div>
                 <div class="d-flex flex-column align-items-center mt-5">
                     <li class="d-flex flex-row align-items-center m-0"><span class="small-puce">Référence de l’offre:</span><span class="mx-1">{{ $offre->ref }}</span></li>
@@ -125,9 +125,9 @@
                     <li class="d-flex flex-row align-items-center"><span class="small-puce">Secteur d’activité :</span><span class="mx-1">{{ $offre->professional->secteur }}</span></li>
                     <h5 class="text-green my-3">Description de Poste</h5>
                     <li class="d-flex flex-row align-items-center"><span class="small-puce">Date de début :</span><span class="mx-1">{{ $offre->date }}</span></li>
-                    <li class="d-flex flex-row align-items-center"><span class="small-puce">Type de contrat :</span><span class="mx-1">{{ $offre->type }}</span></li>
+                    <li class="d-flex flex-row align-items-center"><span class="small-puce">Type de contrat :</span><span class="mx-1">{{ $offre->contrat }}</span></li>
                     <li class="d-flex flex-row align-items-center"><span class="small-puce">Lieu de travail :</span><span class="mx-1">{{ $offre->lieu_travail }}</span></li>
-                    <li class="d-flex flex-row align-items-center"><span class="small-puce">Caractéristiques du poste :</span><span class="mx-1">{{ $offre->traitement }}</span></li>
+                    <li class="d-flex flex-column align-items-start"><span class="small-puce">Caractéristiques du poste :</span><span class="mx-1">{{ $offre->description }}</span></li>
 
                 </div>
             </div>

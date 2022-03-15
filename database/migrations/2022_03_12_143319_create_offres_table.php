@@ -21,7 +21,8 @@ class CreateOffresTable extends Migration
             $table->string('poste');
             $table->date('date');
             $table->string('etat');
-            $table->string('traitement');
+            $table->string('contrat');
+            $table->longText('description');
             $table->integer('nbr_postes');
             $table->string('lieu_travail');
             $table->timestamps();

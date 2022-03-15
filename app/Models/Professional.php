@@ -12,6 +12,7 @@ class Professional extends Model
     protected $fillable = [
         'user_id',
         'raison_sociale',
+        'entreprise',
         'secteur',
         'cin',
         'nom',

@@ -61,7 +61,7 @@ class CandidateController extends Controller
             $user->name = $request->nom;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->user_type = 'candidat';
+            $user->is_prof = false;
             $user->save();
 
             $candidate = new Candidate();
@@ -179,7 +179,7 @@ class CandidateController extends Controller
         else{
             $user->password = Hash::make($request->password);
         }
-        $user->user_type = 'candidat';
+        $user->is_prof = false;
         $user->save();
 
         $candidate->user_id = $user->id;

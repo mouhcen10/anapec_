@@ -13,10 +13,11 @@ class Offre extends Model
         'professional_id',
         'ref',
         'type',
+        'contrat',
         'poste',
         'date',
         'etat',
-        'traitement',
+        'description',
         'nbr_postes',
         'lieu_travail',
     ];

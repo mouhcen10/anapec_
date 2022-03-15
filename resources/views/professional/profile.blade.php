@@ -20,7 +20,7 @@
                         </a>
                         <div class="collapse p-2" id="navbarToggleExternalContent">
                             <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Modifier Votre Entreprise</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Modifier Votre Compte Employeur</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('professionals.edit', ['professional' =>$professional->id]) }}">Modifier Votre Compte Employeur</a></li>
                         </div>
                     </div>
                     <div class="my-1">
@@ -32,7 +32,7 @@
                         </a>
                         <div class="collapse p-2" id="navbarToggleExternalContent1">
                             <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.create') }}">Créer une nouvelle offre</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Gérer vos offres d'emploi</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('profOffres', ['professional' => $professional->id]) }}">Gérer vos offres d'emploi</a></li>
                         </div>
                     </div>
                 </ul>
@@ -43,6 +43,9 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
+            <?php
+                $professional = Auth::user()->professional; 
+            ?>
             <div class="bloc-bienvenue-blue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3"><b>Bienvenue {{ Str::upper($professional->prenom) }} {{ Str::upper($professional->nom) }}  à votre espace personnel</b></span>
                 <a class="nav-link text-blue p-0 mr-3" href="{{ route('logout') }}"
@@ -138,19 +141,21 @@
                     <img class="mx-2" src="/storage/images/dernier-offre-blue.png" alt="">
                 </div>
                 <div>
+                    {{-- @foreach ($professional->offres as $offre) --}}
                     <table class="table table-sm my-4">
                         <thead class="blue-bg text-white small">
                             <th>Référence</th>
                             <th>Poste</th>
                             <th>Date</th>
                             <th>Etat</th>
-                            <th>Traitement</th>
+                            <th>Description</th>
                             <th>Nbr postes</th>
                             <th>CV</th>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
+                    {{-- @endforeach --}}
                     <div class="d-flex justify-content-end my-3">
                         <a class="btn blue-bg border-0 btn-sm shadow-xl text-white" href="#">Voir toutes les offres</a>
                     </div>

@@ -17,6 +17,7 @@ class CreateProfessionalsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable(true)->constrained();
             $table->string('raison_sociale');
+            $table->string('entreprise');
             $table->string('secteur');
             $table->string('cin')->unique();
             $table->string('nom');

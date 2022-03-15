@@ -620,59 +620,59 @@
                                 @method('PUT')
                                 <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                                 <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
-                                        <div class="d-flex flex-row justify-content-around align-items-center">
-                                            <label class="title" for="">Langue :</label>
-                                            <div class="d-flex flex-column">
-                                                <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                                    <select class="rounded-0 w-40" name="langue_1">
-                                                        <option value="{{ $competence->langue_1 ?? null }}">{{ old('langue_1', $competence->langue_1 ?? null) }}</option>
-                                                        <option>Arabe</option>
-                                                        <option>Français</option>
-                                                        <option>Anglais</option>
-                                                    </select>
-                                                    <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
-                                                        <option value="{{ $competence->niveau_langue_1 ?? null }}">{{ old('niveau_langue_1', $competence->niveau_langue_1 ?? null) }}</option>
-                                                        <option>Langue maternelle</option>
-                                                        <option>Courant</option>
-                                                        <option>Bon</option>
-                                                        <option>Moyen</option>
-                                                        <option>Notions</option>
-                                                    </select>
-                                                </div>
-                                                <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                                    <select class="rounded-0 w-40" name="langue_2">
-                                                        <option value="{{ $competence->langue_2 ?? null }}">{{ old('langue_2', $competence->langue_2 ?? null) }}</option>
-                                                        <option>Arabe</option>
-                                                        <option>Français</option>
-                                                        <option>Anglais</option>
-                                                    </select>
-                                                    <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
-                                                        <option value="{{ $competence->niveau_langue_2 ?? null }}">{{ old('niveau_langue_2', $competence->niveau_langue_2 ?? null) }}</option>
-                                                        <option>Langue maternelle</option>
-                                                        <option>Courant</option>
-                                                        <option>Bon</option>
-                                                        <option>Moyen</option>
-                                                        <option>Notions</option>
-                                                    </select>
-                                                </div>
-                                                <div class="d-flex flex-row justify-content-around align-items-center my-2">
-                                                    <select class="rounded-0 w-40" name="langue_3">
-                                                        <option value="{{ $competence->langue_3 ?? null }}">{{ old('langue_3', $competence->langue_3 ?? null) }}</option>
-                                                        <option>Arabe</option>
-                                                        <option>Français</option>
-                                                        <option>Anglais</option>
-                                                    </select>
-                                                    <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
-                                                        <option value="{{ $competence->niveau_langue_3 ?? null }}">{{ old('niveau_langue_3', $competence->niveau_langue_3 ?? null) }}</option>
-                                                        <option>Langue maternelle</option>
-                                                        <option>Courant</option>
-                                                        <option>Bon</option>
-                                                        <option>Moyen</option>
-                                                        <option>Notions</option>
-                                                    </select>
-                                                </div>
+                                    <div class="d-flex flex-row justify-content-around align-items-center">
+                                        <label class="title" for="">Langue :</label>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                                <select class="rounded-0 w-40" name="langue_1">
+                                                    <option value="{{ $competence->langue_1 ?? null }}">{{ old('langue_1', $competence->langue_1 ?? null) }}</option>
+                                                    <option>Arabe</option>
+                                                    <option>Français</option>
+                                                    <option>Anglais</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
+                                                    <option value="{{ $competence->niveau_langue_1 ?? null }}">{{ old('niveau_langue_1', $competence->niveau_langue_1 ?? null) }}</option>
+                                                    <option>Langue maternelle</option>
+                                                    <option>Courant</option>
+                                                    <option>Bon</option>
+                                                    <option>Moyen</option>
+                                                    <option>Notions</option>
+                                                </select>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                                <select class="rounded-0 w-40" name="langue_2">
+                                                    <option value="{{ $competence->langue_2 ?? null }}">{{ old('langue_2', $competence->langue_2 ?? null) }}</option>
+                                                    <option>Arabe</option>
+                                                    <option>Français</option>
+                                                    <option>Anglais</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
+                                                    <option value="{{ $competence->niveau_langue_2 ?? null }}">{{ old('niveau_langue_2', $competence->niveau_langue_2 ?? null) }}</option>
+                                                    <option>Langue maternelle</option>
+                                                    <option>Courant</option>
+                                                    <option>Bon</option>
+                                                    <option>Moyen</option>
+                                                    <option>Notions</option>
+                                                </select>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                                <select class="rounded-0 w-40" name="langue_3">
+                                                    <option value="{{ $competence->langue_3 ?? null }}">{{ old('langue_3', $competence->langue_3 ?? null) }}</option>
+                                                    <option>Arabe</option>
+                                                    <option>Français</option>
+                                                    <option>Anglais</option>
+                                                </select>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
+                                                    <option value="{{ $competence->niveau_langue_3 ?? null }}">{{ old('niveau_langue_3', $competence->niveau_langue_3 ?? null) }}</option>
+                                                    <option>Langue maternelle</option>
+                                                    <option>Courant</option>
+                                                    <option>Bon</option>
+                                                    <option>Moyen</option>
+                                                    <option>Notions</option>
+                                                </select>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex flex-row justify-content-start align-items-center my-3">
                                     <label class="title" for="">Bureautique:</label>

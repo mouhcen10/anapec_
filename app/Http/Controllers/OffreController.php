@@ -41,9 +41,9 @@ class OffreController extends Controller
     {
         // dd($request->professional_id);
         $input = $request->all();
-        $input['professional_id'] = Auth::user();
+        $input['professional_id'] = Auth::user()->professional->id;
         Offre::create($input);
-        return redirect()->route('professionals.show', ['professional' =>1]);
+        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id]);
     }
 
     /**
@@ -55,7 +55,9 @@ class OffreController extends Controller
     public function show($id)
     {
         $offre = Offre::findOrFail($id);
-        return view('offre.show', compact("offre"));
+        return view('offre.show', [
+            'offre' => $offre
+        ]);
     }
 
     /**
@@ -67,7 +69,9 @@ class OffreController extends Controller
     public function edit($id)
     {
         $offre = Offre::findOrFail($id);
-        return view('offre.edit', ['offre' =>$offre->id]);
+        return view('offre.edit', [
+            'offre' => $offre
+        ]);
     }
 
     /**
@@ -77,9 +81,12 @@ class OffreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Offre $offre)
     {
-        //
+        $input = $request->all();
+        $offre->fill($input)->save();
+
+        return redirect()->route('offres.show', ['offre' => $offre->id]);
     }
 
     /**
@@ -90,7 +97,9 @@ class OffreController extends Controller
      */
     public function destroy($id)
     {
+        dd($id);
         $offre = Offre::findOrFail($id);
         $offre->delete();
+        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id]);
     }
 }
