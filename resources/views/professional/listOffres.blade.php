@@ -19,8 +19,8 @@
                             Gérer vos comptes
                         </a>
                         <div class="collapse p-2" id="navbarToggleExternalContent">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Modifier Votre Entreprise</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Modifier Votre Compte Employeur</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('professionals.edit', ['professional' =>$professional->id]) }}">Modifier Votre Entreprise</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('professionals.edit', ['professional' =>$professional->id]) }}">Modifier Votre Compte Employeur</a></li>
                         </div>
                     </div>
                     <div class="my-1">
@@ -31,8 +31,8 @@
                             Vos offres d’emploi
                         </a>
                         <div class="collapse p-2" id="navbarToggleExternalContent1">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Créer une nouvelle offre</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Gérer vos offres d'emploi</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.create') }}">Créer une nouvelle offre</a></li>
+                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('profOffres', ['professional' => $professional->id]) }}">Gérer vos offres d'emploi</a></li>
                         </div>
                     </div>
                 </ul>
@@ -43,6 +43,23 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
+            <div class="bloc-bienvenue-blue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
+                <span class="ml-3"><b>Bienvenue {{ Str::upper($professional->prenom) }} {{ Str::upper($professional->nom) }}  à votre espace personnel</b></span>
+                <a class="nav-link text-blue p-0 mr-3" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    <img class="pb-1" src="/storage/images/logout.png" alt="">
+                    {{ __('Déconnexion') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+            <div class="d-flex flex-row align-items-center my-2">
+                <a href="/"><i class="fa fa-home text-dark mx-1"></i></a>/
+                <a class="text-dark text-decoration-none f-90 mx-1" href="{{ route('professionals.show', ['professional' =>$professional->id]) }}">Espace personnel</a>/ 
+                <span class="f-90 mx-1 text-secondary">Vos Offres</span>
+            </div>
             <!--Identification-->
             <div class="d-flex flex-column rounded-0 borded-blue bg-white shadow-sm p-2">
                 <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
@@ -70,12 +87,16 @@
                                     <td>{{ $offre->poste }}</td>
                                     <td>{{ $offre->date }}</td>
                                     <td>{{ $offre->etat }}</td>
-                                    <td>{{ $offre->description }}</td>
+                                    <td>{{ substr($offre->description,0,30) }}...</td>
                                     <td>{{ $offre->nbr_postes }}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-info" href="{{ route('offres.show', ['offre' =>$offre->id]) }}"><i class="fa fa-eye"></i></a>
+                                    <td class="d-flex flex-row justify-content-between">
+                                        <a class="btn btn-sm btn-info" href="{{ route('show-offre', [$professional->id,'offre' =>$offre->id]) }}"><i class="fa fa-eye"></i></a>
                                         <a class="btn btn-sm btn-warning" href="{{ route('offres.edit', ['offre' =>$offre->id]) }}"><i class="fa fa-edit"></i></a>
-                                        <a class="btn btn-sm btn-danger" href="{{ route('offres.destroy', ['offre' =>$offre->id]) }}"><i class="fa fa-trash"></i></a>
+                                        <form method="POST" class="fm-inline" action="{{ route('offres.destroy', ['offre' =>$offre->id]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>  
                             @endforeach

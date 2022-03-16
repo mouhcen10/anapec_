@@ -94,11 +94,8 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
-            <?php
-                $candidate = Auth::user()->candidate; 
-            ?>
             <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
-                <span class="ml-3">Bienvenue {{ Str::upper($candidate->prenom) }} {{ Str::upper($candidate->nom) }} à votre espace personnel</span>
+                <span class="ml-3"><b>Bienvenue {{ Str::upper($candidate->prenom) }} {{ Str::upper($candidate->nom) }} à votre espace personnel</b></span>
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -109,6 +106,10 @@
                     @csrf
                 </form>
             </div>
+            <div class="d-flex flex-row align-items-center my-2">
+                <a href="/"><i class="fa fa-home text-dark mx-1"></i></a>/
+                <span class="f-90 mx-1 text-secondary">Espace personnel</span>
+            </div>
             <!--Informations-->
             <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2">
                 <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
@@ -117,7 +118,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-between mt-5">
                     <div class="px-2">
-                        <img style="width: 140px;height: 150px" class="mx-4" src="{{ Storage::url($candidate->image->path ?? 'images/avatar.jpg') }}" alt="">
+                        <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="{{ Storage::url($candidate->image->path ?? 'images/avatar.jpg') }}" alt="">
                     </div>
                     <div class="bg-green-light mx-2 w-100 h-100">
                         <ul class="list-group d-flex flex-column">

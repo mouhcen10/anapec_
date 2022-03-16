@@ -65,6 +65,7 @@ Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->n
 
 Route::resource('professionals', ProfessionalController::class);
 Route::get('professionals/{professional}/offres', [ProfessionalController::class, 'listOffres'])->name('profOffres');
+Route::get('professionals/{id}/offres/{offre}', [ProfessionalController::class, 'showOffre'])->name('show-offre');
 Route::resource('offres', OffreController::class);
 
 Auth::routes();

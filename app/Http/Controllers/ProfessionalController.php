@@ -7,6 +7,7 @@ use App\Models\Offre;
 use App\Models\Professional;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfessionalController extends Controller
@@ -35,6 +36,19 @@ class ProfessionalController extends Controller
         ]);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showOffre($prof_id ,$id)
+    {
+        $professional = Professional::where('id', $prof_id)->first();
+        $offre = Offre::where('professional_id',$professional->id)->where('id', $id)->first();
+        return view('offre.offreProf', [
+            'offre' => $offre
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

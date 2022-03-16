@@ -55,7 +55,7 @@ class LoginController extends Controller
                 return redirect()->route('professionals.show', ['professional' =>auth()->user()->professional->id]);
             }
             else {
-                return redirect()->route('home');
+                return redirect()->route('candidates.show', ['candidate' =>auth()->user()->candidate->id]);
             }
         }else{
             return redirect()->route('login')

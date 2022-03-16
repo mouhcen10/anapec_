@@ -97,7 +97,6 @@ class OffreController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
         $offre = Offre::findOrFail($id);
         $offre->delete();
         return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id]);

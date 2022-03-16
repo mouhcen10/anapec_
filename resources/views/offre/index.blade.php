@@ -4,14 +4,13 @@
     <div class="container p-0">
         <div class="principal col-md-12 d-flex flex-row p-0">
             <div class="first col-md-9 pl-0">
-                <div class="w-100 p-0 bg-white rounded-top-right shadow-sm">
+                <div class="w-100 p-0 pb-4 bg-white rounded-top-right shadow-sm">
                     <div class="rounded-half mb-4 d-flex justify-content-start align-items-center bg-dark text-white">
                         <img class="mx-3" src="/storage/images/arrow.png" alt="">
                         Nos dernières offres
                     </div>
                     <span class="text-green my-5 px-3">Nombre d'offres emploi : <b>{{ count($offres) }}</b></span>
-                    {{-- <span>{{ $ref }}</span> --}}
-                    <div class="my-3">
+                    <div class="mt-3">
                         <table class="table table-sm my-3">
                             <thead class="nav-bg text-white text-center small">
                                 <th>Référence</th>

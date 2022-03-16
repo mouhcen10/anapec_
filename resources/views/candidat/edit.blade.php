@@ -94,6 +94,23 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
+            <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
+                <span class="ml-3"><b>Bienvenue {{ Str::upper($candidate->prenom) }} {{ Str::upper($candidate->nom) }} à votre espace personnel</b></span>
+                <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    <img class="pb-1" src="/storage/images/logout.png" alt="">
+                    {{ __('Déconnexion') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+            <div class="d-flex flex-row align-items-center my-2">
+                <a href="/"><i class="fa fa-home text-dark mx-1"></i></a>/
+                <a href="{{ route('candidates.show', ['candidate' =>$candidate->id]) }}" class="f-90 mx-1 text-dark text-decoration-none">Espace personnel</a href="{{ route('candidates.show', ['candidate' =>$candidate->id]) }}">/
+                <span class="f-90 mx-1 text-secondary">Editer votre compte</span>
+            </div>
                 <!--Identification-->
                 <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2">
                     <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
