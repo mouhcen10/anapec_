@@ -25,4 +25,8 @@ class Offre extends Model
     public function professional(){
         return $this->belongsTo(Professional::class);
     }
+
+    public function postulations(){
+        return $this->hasMany(Postulation::class);
+    }
 }

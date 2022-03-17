@@ -5,92 +5,8 @@
     <div class="col-md-12 d-flex flex-row m-0 p-0">
         <!--Connexion-->
         <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
-            <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white">
-                <img class="mx-3" src="/storage/images/arrow.png" alt="">
-                Votre espace personnel
-            </div>
-            <div class="d-flex flex-row justify-content-start align-items-start mt-4">
-                <ul class="list-group w-100">
-                    <div>
-                        <a class="nav-link text-grey rounded-0 border-0 bg-green-light small" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-right text-grey" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                            Recherche des offres
-                        </a>
-                        <div class="collapse p-2" id="navbarToggleExternalContent">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.index') }}">Consulter la banque d'offres</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Consulter les offres International</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Offres correspandant à votre profil</a></li>
-                        </div>
-                    </div>
-                    <div class="my-1">
-                        <a class="nav-link text-grey rounded-0 border-0 bg-green-light small" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent1" aria-controls="navbarToggleExternalContent1" aria-expanded="false" aria-label="Toggle navigation">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-right text-grey" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                            Vos alertes aux offres
-                        </a>
-                        <div class="collapse p-2" id="navbarToggleExternalContent1">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Créer alertes</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Gérer les alertes</a></li>
-                        </div>
-                    </div>
-                    <div>
-                        <a class="nav-link text-grey rounded-0 border-0 bg-green-light small" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent2" aria-expanded="false" aria-label="Toggle navigation">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-chevron-right text-grey" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                            </svg>
-                            Votre Historique
-                        </a>
-                        <div class="collapse p-2" id="navbarToggleExternalContent2">
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Vos candidatures</a></li>
-                            <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-green"></i><a class="nav-link text-grey mx-2  p-0 small" href="">Offres mémorisées</a></li>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-            <div class="rounded-half d-flex justify-content-start align-items-center bg-dark text-white mt-3">
-                <img class="mx-3" src="/storage/images/arrow.png" alt="">
-                Ateliers
-            </div>
-            <div class="atelier m-2 p-2">
-                <li class="d-flex flex-row justify-content-between align-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-right m-2" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-                    </svg>
-                    <a class="m-0" href="/candidat">Identifier et mettre en valeur ses compétences</a>
-                </li>
-                <li class="d-flex flex-row justify-content-between align-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-right m-2" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-                    </svg>
-                    <a class="m-0" href="/candidat">Oganiser sa recherche d'emploi et connaître le marché du travail</a>
-                </li>
-                <li class="d-flex flex-row justify-content-between align-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-right m-2" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-                    </svg>
-                    <a class="m-0" href="/candidat">Rédiger son CV</a>
-                </li>
-                <li class="d-flex flex-row justify-content-between align-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-right m-2" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-                    </svg>
-                    <a class="m-0" href="/candidat">Rédiger ses lettres de motivation</a>
-                </li>
-                <li class="d-flex flex-row justify-content-between align-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-right m-2" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-                    </svg>
-                    <a class="m-0" href="/candidat">Se préparer à un entretien d'embauche</a></li>
-                <li class="d-flex flex-row justify-content-between align-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-right m-2" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-                    </svg>
-                    <a class="m-0" href="/candidat">Prospecter les entreprises par téléphone</a>
-                </li>
-            </div>
+            <x-candidate-menu></x-candidate-menu>
+            <x-atelier></x-atelier>
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
@@ -138,10 +54,11 @@
                     <li class="d-flex flex-column align-items-start"><span class="small-puce">Caractéristiques du poste :</span><span class="mx-1">{{ $offre->description }}</span></li>
                 </div>
                 <div class="d-flex flex-row justify-content-end p-2">
-                    <a class="btn btn-sm nav-bg shadow-xl text-white" href="">Postuler</a>
+                    <button type="button" class="btn btn-sm nav-bg shadow-xl text-white" data-toggle="modal" data-target="#postuler">Postuler</button>
                 </div>
             </div>
             <!--/Informations-->
+            @include('postulation.modal')
         </div>
     </div>
   </div>

@@ -98,7 +98,7 @@ body{
     border: 1px solid #cccccc;
 }
 .text-green{
-    color: #9db22b;
+    color: #9db22b !important;
 }
 .title{
     width: 182px;
@@ -152,6 +152,10 @@ body{
 .border-shadow{
     border: 1px solid #ccc;
     box-shadow: 1px 0px 4px#9db22b;
+}
+.border-shadow-blue{
+    border: 1px solid #ccc;
+    box-shadow: 1px 0px 4px#1e83bd;
 }
 .text-grey{
     font-size: 18px;

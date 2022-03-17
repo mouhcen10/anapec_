@@ -6,6 +6,7 @@ use App\Http\Requests\ProfessionalRequest;
 use App\Models\Offre;
 use App\Models\Professional;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -112,11 +113,13 @@ class ProfessionalController extends Controller
         $en_cours = Offre::where('professional_id', $id)->where('etat','En cours')->count();
         $suspendue = Offre::where('professional_id', $id)->where('etat','Suspendue')->count();
         $conclue = Offre::where('professional_id', $id)->where('etat','Conclue')->count();
+        $lastOffres = Offre::where('professional_id', $id)->where('created_at', '>', Carbon::now()->subDays(5))->get();
         return view('professional.profile', [
             'professional' => $professional,
             'en_cours' => $en_cours,
             'suspendue' => $suspendue,
-            'conclue' => $conclue
+            'conclue' => $conclue,
+            'lastOffres' => $lastOffres
         ]);
     }
 

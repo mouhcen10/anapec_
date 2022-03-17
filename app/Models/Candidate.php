@@ -47,4 +47,8 @@ class Candidate extends Model
     public function cvs() {
         return $this->hasMany(Cv::class);
     }
+
+    public function postulations(){
+        return $this->hasMany(Postulation::class);
+    }
 }

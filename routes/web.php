@@ -7,6 +7,7 @@ use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\OffreController;
+use App\Http\Controllers\PostulationController;
 use App\Http\Controllers\ProfessionalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,5 +68,6 @@ Route::resource('professionals', ProfessionalController::class);
 Route::get('professionals/{professional}/offres', [ProfessionalController::class, 'listOffres'])->name('profOffres');
 Route::get('professionals/{id}/offres/{offre}', [ProfessionalController::class, 'showOffre'])->name('show-offre');
 Route::resource('offres', OffreController::class);
+Route::resource('postulations', PostulationController::class);
 
 Auth::routes();

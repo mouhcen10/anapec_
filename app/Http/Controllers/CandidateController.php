@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\Formation;
 use App\Models\Image;
+use App\Models\Offre;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -140,9 +142,13 @@ class CandidateController extends Controller
     public function show($id)
     {
         //->pluck('nom','prenom','email','gsm_1','updated_at','province')->all();
-        $candidate = Candidate::findOrFail($id);
+        $candidate = Candidate::with('formations')->findOrFail($id);
+        foreach($candidate->formations as $formation){
+            $offres = Offre::where('poste','like','%'.$formation->diplome.'%')->get();
+        }
         return view('candidat.profile', [
-            'candidate' => $candidate
+            'candidate' => $candidate,
+            'offres' => $offres
         ]);
     }
 
