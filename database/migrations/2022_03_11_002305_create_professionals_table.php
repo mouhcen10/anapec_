@@ -31,6 +31,7 @@ class CreateProfessionalsTable extends Migration
             $table->string('gsm');
             $table->string('ville');
             $table->string('commune');
+            $table->string('logo');
             $table->timestamps();
         });
     }

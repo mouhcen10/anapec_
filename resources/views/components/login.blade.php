@@ -39,10 +39,6 @@
             </a>
         @endif
     </form>
-    <div class="d-flex flex-column align-items-center border-top pt-1">
-      <a href="{{ route('candidates.create') }}" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
-      <a href="{{ route('professionals.create') }}" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
-    </div>
 @else
     <div class="d-flex flex-column align-items-center p-2">
         <?php 

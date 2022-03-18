@@ -5,14 +5,8 @@
     <div class="col-md-12 d-flex flex-row p-0">
         <!--Connexion-->
         <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
-            <div class="rounded-half-blue d-flex justify-content-start align-items-center bg-dark text-white">
-                <img class="mx-3" src="/storage/images/arrow-blue.png" alt="">
-                Votre espace personnel
-            </div>
             <x-profess-menu></x-profess-menu>
-            <div class="slider-2 mt-5">
-                <x-slider></x-slider>
-            </div>
+            <x-slider></x-slider>
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
@@ -43,27 +37,35 @@
                     @csrf
                     @method('PUT')
                     <div class="d-flex flex-column m-5">
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Raison sociale :<span class="text-danger">*</span></label>
-                            <input type="text" name="raison_sociale" class="rounded-0 text-blue w-40 ml-72" value="{{ old('raison_sociale', $professional->raison_sociale ?? null) }}" required>
-                        </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Entreprise :<span class="text-danger">*</span></label>
-                            <input type="text" name="entreprise" class="rounded-0 text-blue w-40 ml-72" value="{{ old('entreprise', $professional->entreprise ?? null) }}" required>
-                        </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Secteur activité :<span class="text-danger">*</span></label>
-                            <select class="rounded-0 text-blue w-40 ml-72" name="secteur" required>
-                                <option value="{{ old('secteur', $professional->secteur ?? null) }}">{{ $professional->secteur ?? null }}</option>
-                                <option>Activités des ménages </option>
-                                <option>Développement et Multimédia</option>
-                                <option>Internet</option>
-                                <option>Infographie</option>
-                            </select>
-                        </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">CIN :<span class="text-danger">*</span></label>
-                            <input id="cin" type="text" name="cin" class="rounded-0 text-blue w-40 ml-72" value="{{ old('cin', $professional->cin ?? null) }}" required disabled>
+                        <div class="d-flex flex-row justify-content-between align-items-start">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex flex-row align-items-start">
+                                    <label class="title" for="">Raison sociale :<span class="text-danger">*</span></label>
+                                    <input type="text" name="raison_sociale" class="rounded-0 text-blue w-40 ml-72" value="{{ old('raison_sociale', $professional->raison_sociale ?? null) }}" required>
+                                </div>
+                                <div class="d-flex flex-row align-items-start">
+                                    <label class="title" for="">Entreprise :<span class="text-danger">*</span></label>
+                                    <input type="text" name="entreprise" class="rounded-0 text-blue w-40 ml-72" value="{{ old('entreprise', $professional->entreprise ?? null) }}" required>
+                                </div>
+                                <div class="d-flex flex-row align-items-start">
+                                    <label class="title" for="">Secteur activité :<span class="text-danger">*</span></label>
+                                    <select class="rounded-0 text-blue w-40 ml-72" name="secteur" required>
+                                        <option value="{{ old('secteur', $professional->secteur ?? null) }}">{{ $professional->secteur }}</option>
+                                        <option>Activités des ménages </option>
+                                        <option>Développement et Multimédia</option>
+                                        <option>Internet</option>
+                                        <option>Infographie</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex flex-row align-items-start">
+                                    <label class="title" for="">CIN :<span class="text-danger">*</span></label>
+                                    <input type="text" name="cin" class="rounded-0 text-blue w-40 ml-72" value="{{ old('cin', $professional->cin ?? null) }}" required>
+                                </div>
+                            </div>
+                            <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
+                                <img class="avatar mx-5" src="{{ Storage::url($professional->logo ?? 'images/avatar.jpg') }}" alt="" id="imgSelected">
+                                <input class="small" type="file" name="logo" id="imgInp">
+                            </div>
                         </div>
                         <div class="d-flex flex-row align-items-start">
                             <label class="title" for="">Nom :<span class="text-danger">*</span></label>
@@ -149,5 +151,12 @@
         $("#ville").prop('disabled', false);
         $("#commune").prop('disabled', false);
     });
+
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            imgSelected.src = URL.createObjectURL(file)
+        }
+    };
 </script>
 @endsection

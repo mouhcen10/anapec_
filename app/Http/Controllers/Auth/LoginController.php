@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -43,19 +44,19 @@ class LoginController extends Controller
     public function login(Request $request)
     {   
         $input = $request->all();
-   
+        
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-   
+        
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->is_prof == 1) {
-                return redirect()->route('professionals.show', ['professional' =>auth()->user()->professional->id]);
+            if (auth()->user()->is_prof == 0) {
+                return redirect()->route('candidates.show', ['candidate' =>auth()->user()->candidate->id]);
             }
             else {
-                return redirect()->route('candidates.show', ['candidate' =>auth()->user()->candidate->id]);
+                return redirect()->route('professionals.show', ['professional' =>auth()->user()->professional->id]);
             }
         }else{
             return redirect()->route('login')

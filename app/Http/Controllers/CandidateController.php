@@ -141,15 +141,21 @@ class CandidateController extends Controller
      */
     public function show($id)
     {
-        //->pluck('nom','prenom','email','gsm_1','updated_at','province')->all();
         $candidate = Candidate::with('formations')->findOrFail($id);
         foreach($candidate->formations as $formation){
             $offres = Offre::where('poste','like','%'.$formation->diplome.'%')->get();
         }
-        return view('candidat.profile', [
-            'candidate' => $candidate,
-            'offres' => $offres
-        ]);
+        if(count($candidate->formations) != 0){
+            return view('candidat.profile', [
+                'candidate' => $candidate,
+                'offres' => $offres
+            ]);
+        }
+        else{
+            return view('candidat.profile', [
+                'candidate' => $candidate,
+            ]);
+        }
     }
 
     /**

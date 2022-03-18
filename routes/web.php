@@ -27,6 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/reset', function () {
+    return view('resetPassword');
+});
+
 //Candidat Routes:
 Route::group(['prefix' => 'experiences'], function () {
     Route::post('/', [ExperienceController::class, 'store'])->name('experiences.store');

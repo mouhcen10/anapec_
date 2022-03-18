@@ -10,6 +10,9 @@
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
+            <div class="d-flex flex-row align-items-center my-2">
+                <a href="/"><i class="fa fa-home text-dark mx-1"></i></a>
+            </div>
             <form method="POST" action="{{ route('candidates.store') }}" enctype="multipart/form-data" class="d-flex flex-column">
                 @csrf
                 <!--Identification-->

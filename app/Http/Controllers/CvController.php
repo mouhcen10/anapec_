@@ -8,6 +8,7 @@ use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use File;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class CvController extends Controller
@@ -43,9 +44,9 @@ class CvController extends Controller
         // Upload Cv PDF for current Candidate
         if($request->hasFile('file')) {
             
-            $path = $request->file('file')->store('pdfs');
-
+            $ext = $request->file('file')->extension();
             $cv = new Cv();
+            $path = $request->file('file')->storeAs('pdfs',Auth::user()->name.'_'.Auth::user()->cin.'.'.$ext);
             $cv->file = $path;
             $cv->candidate_id = $request->candidate_id;
 
@@ -90,8 +91,8 @@ class CvController extends Controller
         
         // Upload Cv PDF for current Candidate
         if($request->hasFile('file')) {
-        
-            $path = $request->file('file')->store('pdfs');
+            $ext = $request->file('file')->extension();
+            $path = $request->file('file')->storeAs('pdfs',Auth::user()->name.'_'.Auth::user()->cin.'.'.$ext);
 
             if($cv) {
                 Storage::delete($cv->file);

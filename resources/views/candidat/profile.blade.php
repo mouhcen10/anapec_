@@ -161,15 +161,17 @@
                             <th>Lieu de travail</th>
                         </thead>
                         <tbody>
-                            @foreach ($offres as $offre)
-                                <tr>
-                                    <td>{{ $offre->ref }}</td>
-                                    <td>{{ $offre->date }}</td>
-                                    <td>{{ $offre->poste }}</td>
-                                    <td>{{ $offre->professional->entreprise }}</td>
-                                    <td>{{ $offre->lieu_travail }}</td>
-                                </tr>
-                            @endforeach
+                            @if(count($candidate->formations) != 0)
+                                @foreach ($offres as $offre)
+                                    <tr>
+                                        <td>{{ $offre->ref }}</td>
+                                        <td>{{ $offre->date }}</td>
+                                        <td>{{ $offre->poste }}</td>
+                                        <td>{{ $offre->professional->entreprise }}</td>
+                                        <td>{{ $offre->lieu_travail }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end my-3">

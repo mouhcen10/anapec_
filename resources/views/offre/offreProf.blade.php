@@ -5,14 +5,8 @@
     <div class="col-md-12 d-flex flex-row m-0 p-0">
         <!--Connexion-->
         <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
-            <div class="rounded-half-blue d-flex justify-content-start align-items-center bg-dark text-white">
-                <img class="mx-3" src="/storage/images/arrow-blue.png" alt="">
-                Votre espace personnel
-            </div>
             <x-profess-menu></x-profess-menu>
-            <div class="slider-2 mt-5">
-                <x-slider></x-slider>
-            </div>
+            <x-slider></x-slider>
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">

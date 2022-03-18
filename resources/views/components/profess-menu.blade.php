@@ -1,3 +1,7 @@
+<div class="rounded-half-blue d-flex justify-content-start align-items-center bg-dark text-white">
+    <img class="mx-3" src="/storage/images/arrow-blue.png" alt="">
+    Votre espace personnel
+</div>
 <div class="d-flex flex-row justify-content-start align-items-start mt-4">
     <ul class="list-group w-100">
         <?php 
@@ -35,7 +39,7 @@
                 Postulations
             </a>
             <div class="collapse p-2" id="navbarToggleExternalContent3">
-                <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.create') }}">Liste des postulations</a></li>
+                <li class="list-group-item border-0 py-1 px-2 d-flex flex-row justify-content-start align-items-center"><i class="fa fa-caret-right text-blue"></i><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('postulations.index') }}">Liste des postulations</a></li>
             </div>
         </div>
     </ul>

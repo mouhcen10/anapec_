@@ -96,6 +96,13 @@ class ProfessionalController extends Controller
         $professional->gsm = $request->gsm;
         $professional->ville = $request->ville;
         $professional->commune = $request->commune;
+        
+        // Upload logo for current professional
+        if($request->hasFile('logo')) {
+            $path = $request->file('logo')->store('logos');
+            $professional->logo = $path;
+        }
+
         $professional->save();
 
         return redirect()->route('login');
@@ -182,6 +189,19 @@ class ProfessionalController extends Controller
         $professional->gsm = $request->gsm;
         $professional->ville = $request->ville;
         $professional->commune = $request->commune;
+
+        // Upload logo for current professional
+        if($request->hasFile('logo')) {
+        
+            $path = $request->file('logo')->store('logos');
+
+            if($professional->logo) {
+                $professional->logo = $path;
+            }
+            else {
+                $professional->logo = $professional->logo;
+            }
+        }
         $professional->save();
 
         return redirect()->route('professionals.show', ['professional' =>$professional->id]);

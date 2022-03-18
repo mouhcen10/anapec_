@@ -5,14 +5,8 @@
     <div class="col-md-12 d-flex flex-row m-0 p-0">
         <!--Connexion-->
         <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
-            <div class="rounded-half-blue d-flex justify-content-start align-items-center bg-dark text-white">
-                <img class="mx-3" src="/storage/images/arrow-blue.png" alt="">
-                Votre espace personnel
-            </div>
             <x-profess-menu></x-profess-menu>
-            <div class="slider-2 mt-5">
-                <x-slider></x-slider>
-            </div>
+            <x-slider></x-slider>
         </div>
         <!--/Connexion-->
         <div class="col-md-9 pr-0">
@@ -40,7 +34,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-between mt-5">
                     <div class="px-2">
-                        <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="{{ Storage::url($professional->image->path ?? 'images/avatar.jpg') }}" alt="">
+                        <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="{{ Storage::url($professional->logo ?? 'images/avatar.jpg') }}" alt="">
                     </div>
                     <div class="bg-grey mx-2 w-100 h-100">
                         <ul class="list-group d-flex flex-column">
@@ -72,9 +66,9 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white" data-toggle="modal" data-target="#staticBackdrop">Modifier infos  E/se</button>
-                    <button type="submit" class="btn m-2 btn-warning border btn-sm text-white shadow-lg">Actualiser description E/se</button>
-                    <a href="{{ route('professionals.edit', ['professional' => $professional->id]) }}" class="btn m-2 blue-bg border-0 btn-sm shadow">Modifier votre compte</a>
+                    {{-- <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white" data-toggle="modal" data-target="#staticBackdrop">Modifier infos  E/se</button>
+                    <button type="submit" class="btn m-2 btn-warning border btn-sm text-white shadow-lg">Actualiser description E/se</button> --}}
+                    <a href="{{ route('professionals.edit', ['professional' => $professional->id]) }}" class="btn m-2 blue-bg border-0 btn-sm shadow-xl">Modifier votre compte</a>
                 </div>
             </div>
             <!--/Informations-->
