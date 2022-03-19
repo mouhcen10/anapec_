@@ -2,14 +2,16 @@
 
 @section('content')
 <div class="container p-0">
-    <div class="col-md-12 d-flex flex-row p-0">
+    <div class="glb col-md-12 d-flex flex-row p-0">
         <!--Connexion-->
-        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+        <div class="frst col-md-3 rounded-top-right bg-white shadow-sm p-0">
             <x-candidate-menu></x-candidate-menu>
-            <x-atelier></x-atelier>
+            <div class="slider-2">
+                <x-atelier></x-atelier>
+            </div>
         </div>
         <!--/Connexion-->
-        <div class="col-md-9 pr-0">
+        <div class="scnd col-md-9 pr-0">
             <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3"><b>Bienvenue {{ Str::upper($candidate->prenom) }} {{ Str::upper($candidate->nom) }} à votre espace personnel</b></span>
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
@@ -946,7 +948,7 @@
 
         </div>
     </div>
-  </div>
+</div>
 @endsection
 
 @section('script')

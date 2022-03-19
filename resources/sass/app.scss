@@ -206,9 +206,11 @@ body{
     background: #eaeaea !important;
 }
 .border-b-dashed {
-    border-bottom: 2px dashed #fff;
+    border-bottom: 2px dashed #fff !important;
 }
-
+.collapse a:hover{
+    color: rgba(255, 188, 2, 0.966) !important;
+}
 .bloc-bienvenue{
     background: url('/storage/images/bg-repeat.jpg') repeat-x center #fff;
     border: 2px solid #e0dfdf;
@@ -283,6 +285,74 @@ body{
     .one, .two, .three{
         border-top: 1px dashed #cccccc;
         border-right: none !important;
+    }
+    //======
+    .glb{
+        width: 100%;
+        display: flex;
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 15px;
+        margin-right: 15px !important;
+    }
+    .bloc-bienvenue>a{
+        margin-left: auto !important;
+    }
+    .bloc-bienvenue{
+        display: flex;
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-end !important;
+        background: url('/storage/images/bg-repeat.jpg') repeat-x center #fff;
+        border: 2px solid #e0dfdf;
+        width: 696px !important;
+        border-top: 0px;
+        border-radius: 5px;
+        box-shadow: 1px 0px 4px #9db22b;
+    }
+    .glb>.frst{
+        width: 90% !important;
+        margin-left: 10px !important;
+    }
+    .info{
+        width: 100% !important;
+        display: flex;
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 15px;
+    }
+    .photo{
+        padding-left: 3rem !important;
+    }
+    .statut{
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+    .statut>li{
+        border-bottom: 2px dashed #fff !important;
+        width: 100% !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+    .stc{
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px;
+    }
+    .stc>.one{
+        width: 100% !important;
+    }
+    .stc>.two{
+        width: 100% !important;
     }
  }
 

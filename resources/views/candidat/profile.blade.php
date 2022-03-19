@@ -2,14 +2,16 @@
 
 @section('content')
 <div class="container p-0">
-    <div class="col-md-12 d-flex flex-row m-0 p-0">
+    <div class="glb col-md-12 d-flex flex-row m-0 p-0">
         <!--Connexion-->
-        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+        <div class="frst col-md-3 rounded-top-right bg-white shadow-sm p-0">
             <x-candidate-menu></x-candidate-menu>
-            <x-atelier></x-atelier>
+            <div class="slider-2">
+                <x-atelier></x-atelier>
+            </div>
         </div>
         <!--/Connexion-->
-        <div class="col-md-9 pr-0">
+        <div class="scnd col-md-9 pr-0">
             <div class="bloc-bienvenue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3"><b>Bienvenue {{ Str::upper($candidate->prenom) }} {{ Str::upper($candidate->nom) }} à votre espace personnel</b></span>
                 <a class="nav-link text-green p-0 mr-3" href="{{ route('logout') }}"
@@ -32,8 +34,8 @@
                     <img class="mx-2" src="/storage/images/arrow.png" alt="">
                     <span class="text-grey">Vos Informations personnelles</span>
                 </div>
-                <div class="d-flex flex-row justify-content-between mt-5">
-                    <div class="px-2">
+                <div class="info d-flex flex-row justify-content-between mt-5">
+                    <div class="photo">
                         <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="{{ Storage::url($candidate->image->path ?? 'images/avatar.jpg') }}" alt="">
                     </div>
                     <div class="bg-green-light mx-2 w-100 h-100">
@@ -68,7 +70,7 @@
                                     <span class="f-90">Déclaratif</span>
                                 </li>
                             </div>
-                            <div class="d-flex flex-row justify-content-center border-b-dashed">
+                            <div class="statut d-flex flex-row justify-content-center border-b-dashed">
                                 <li class="m-2 bg-green-light border-0 d-flex w-50 flex-row justify-content-start align-items-center">
                                     <span class="text-grey small">Statut de positionnement :</span>
                                     <span class="f-90">Non positionné</span>
@@ -92,8 +94,8 @@
             </div>
             
             <!--/Statistiques-->
-            <div class="d-flex flex-row justify-content-between mt-3">
-                <div class="w-50 p-2 rounded-0 borded bg-white shadow-sm">
+            <div class="stc d-flex flex-row justify-content-between mt-3">
+                <div class="one w-50 p-2 rounded-0 borded bg-white shadow-sm">
                     <div class="rounded-0 mx-2 d-flex justify-content-between align-items-center">
                         <div>
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
@@ -112,7 +114,7 @@
                         </div>
                     </ul>
                 </div>
-                <div class="w-50 p-2 ml-1 rounded-0 borded bg-white shadow-sm">
+                <div class="two w-50 p-2 ml-1 rounded-0 borded bg-white shadow-sm">
                     <div class="rounded-0 mx-2 d-flex justify-content-between align-items-center">
                         <div>
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">

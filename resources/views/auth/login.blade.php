@@ -17,30 +17,26 @@
                 </div>
               @endif
               <div class="search d-flex flex-row my-3">
-                <form class="frm-search card-body px-4 d-flex flex-row">
+                <form method="GET" action="{{ route('offres-query') }}" class="frm-search card-body px-4 d-flex flex-row">
+                  {{-- @csrf --}}
                     <div class="form-group d-flex flex-column">
                       <div>
                         <label for="">Mot clé:</label>
-                        <input type="text" name="query" class="form-control rounded-0">
+                        <input type="text" name="motCle" class="form-control rounded-0">
                       </div>
-                      <div>
-                        <label for="">Entreprise:</label>
-                        <input type="text" name="society" class="form-control rounded-0">
-                      </div>
-                      <button style="background: var(--bg-green);" type="submit" class="btn btn-sm w-50 text-white my-3">Ok</button>
-                    </div>
-                    <div class="form-group d-flex flex-column ml-3">
-                      <div>
-                        <label for="">Secteur d'activité:</label>
-                        <select class="form-control rounded-0" name="secteur">
-                            <option>Tout</option>
-                            <option>Informatique et Multimedia</option>
-                            <option>Services Doméstique</option>
-                            <option>Construction</option>
-                            <option>Santé</option>
-                            <option>Assurance</option>
+                      <div class="mb-3">
+                        <label for="">Type:</label>
+                        <select class="form-control rounded-0" name="type">
+                            <option>Type</option>
+                            <option>Stage pré-embouche</option>
+                            <option>Stage Rémunéré</option>
+                            <option>Stage Non Rémunéré</option>
+                            <option>Freelance</option>
+                            <option>Offre d'emploi</option>
                         </select>
                       </div>
+                    </div>
+                    <div class="form-group d-flex flex-column align-items-end ml-3">
                       <div class="mb-3">
                         <label for="">Ville:</label>
                         <select class="form-control rounded-0" name="ville">
@@ -52,6 +48,7 @@
                             <option>Tanger</option>
                         </select>
                       </div>
+                      <button style="background: var(--bg-green);" type="submit" class="btn btn-sm text-white my-4 w-25"><i class="fa fa-search"></i></button>
                     </div>
                 </form>
                 <div class="map px-2">
@@ -109,7 +106,7 @@
         <div class="second col-md-3 bg-white p-0 rounded-top-right shadow-sm">
           <x-login></x-login>
           @if(!Auth::user())
-          <div class="d-flex flex-column align-items-center border-top pt-1">
+          <div class="d-flex flex-column align-items-center border-top pt-2">
             <a href="{{ route('candidates.create') }}" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
             <a href="{{ route('professionals.create') }}" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
           </div>
