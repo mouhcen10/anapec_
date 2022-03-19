@@ -9,6 +9,7 @@ use App\Http\Controllers\CvController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\PostulationController;
 use App\Http\Controllers\ProfessionalController;
+use App\Http\Controllers\UpdatePasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,11 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/reset', function () {
-    return view('resetPassword');
-});
+})->name('welcome');
 
 //Candidat Routes:
 Route::group(['prefix' => 'experiences'], function () {
@@ -66,12 +63,15 @@ Route::get('/convert-to-pdf', [CvController::class, 'convertToPdf'])->name('conv
 
 Route::resource('candidates', CandidateController::class);
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/reset', [UpdatePasswordController::class, 'resetPassword'])->name('reset-password');
+Route::put('/update-password', [UpdatePasswordController::class, 'updatePassword'])->name('update-password');
 //End Candidat Routes
 
 Route::resource('professionals', ProfessionalController::class);
 Route::get('professionals/{professional}/offres', [ProfessionalController::class, 'listOffres'])->name('profOffres');
 Route::get('professionals/{id}/offres/{offre}', [ProfessionalController::class, 'showOffre'])->name('show-offre');
 Route::resource('offres', OffreController::class);
+Route::get('/offres-query', [OffreController::class, 'listOffres'])->name('offres-query');
 Route::resource('postulations', PostulationController::class);
 
 Auth::routes();

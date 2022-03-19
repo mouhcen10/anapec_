@@ -10,13 +10,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item h-390 active">
-          <img src="/storage/images/img1.png" class="d-block w-100 h100" alt="...">
+          <img src="/storage/images/img1.png" class="d-block w-100 h-100" alt="...">
         </div>
         <div class="carousel-item h-390">
-          <img src="/storage/images/img2.jpg" class="d-block w-100 h100" alt="...">
+          <img src="/storage/images/img2.jpg" class="d-block w-100 h-100" alt="...">
         </div>
         <div class="carousel-item h-390">
-          <img src="/storage/images/img3.jpg" class="d-block w-100 h100" alt="...">
+          <img src="/storage/images/img3.jpg" class="d-block w-100 h-100" alt="...">
         </div>
         <div class="carousel-item h-390">
           <img src="/storage/images/img7.jpg" class="d-block w-100 h-100" alt="...">

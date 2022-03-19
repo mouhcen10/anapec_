@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Candidate;
-use App\Models\Formation;
 use App\Models\Offre;
+use App\Models\Professional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +20,36 @@ class OffreController extends Controller
         return view('offre.index', [
             'offres' => $offres
         ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listOffres(Request $request)
+    {
+        if($request->motCle != null){
+            $query = $request->motCle;
+            $offres = Offre::where('poste','like','%'.$query.'%')->orWhere('description','like','%'.$query.'%')->get();
+            return view('offre.offres', [
+                'offres' => $offres
+            ]);
+        }elseif($request->entreprise != null){
+            $professional = Professional::where('entreprise',$request->entreprise)->first();
+            $offres = Offre::where('professional_id',$professional->id)->get();
+            return view('offre.offres', [
+                'offres' => $offres
+            ]);
+        }elseif($request->secteur != null || $request->ville != null){
+            $prof = Professional::where('secteur',$request->secteur)->orWhere('ville',$request->ville)->first();
+            $offres = Offre::where('professional_id',$prof->id)->get();
+            return view('offre.offres', [ 
+                'offres' => $offres
+            ]);
+        }
+        
+        
     }
 
     /**

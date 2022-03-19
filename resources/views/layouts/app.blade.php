@@ -55,17 +55,18 @@
                 <div class="">
                     <ul class="d-flex justify-content-center align-items-center nav">
                         <li class="nav-item separator"><a class="nav-link text-white" href="/">Accueil</a></li>
-                        <li class="nav-item separator"><a class="nav-link text-white" href="#" id="">Offres d'emploi</a>            </li>
-                        <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Espace personnel</a></li>
+                        <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
+                        <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('professionals.show',['professional' =>Auth::user()->professional->id]) }}" 0="0">Espace personnel</a></li>
                         <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Conseils et infos</a></li>
-                        <li class="nav-item last separator"><a class="nav-link text-white" href="mailto:econtact@anapec.org">Contact</a></li>
-                        <li class="nav-item">
+                        <li class="nav-item last"><a class="nav-link text-white" href="#">Contact</a></li>
+                        {{-- mailto:econtact@anapec.org --}}
+                        {{-- <li class="nav-item">
                             <a class="btn btn-light btn-sm shadow-sm mx-3" href="#" 1="">Accès Professionnel</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </nav>
-        @else
+        @elseif(Auth::user() && Auth::user()->is_prof == 0)
             <nav class="shadow-sm nav-bg">
                 {{-- <button class="navbar-toggler shadow-lg w-10 px-2 float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon d-flex align-items-center pl-1">
@@ -77,8 +78,8 @@
                 <div class="">
                     <ul class="d-flex justify-content-center align-items-center nav">
                         <li class="nav-item separator"><a class="nav-link text-white" href="/">Accueil</a></li>
-                        <li class="nav-item separator"><a class="nav-link text-white" href="#" id="">Offres d'emploi</a>            </li>
-                        <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Espace personnel</a></li>
+                        <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
+                        <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('candidates.show',['candidate' =>Auth::user()->candidate->id]) }}" 0="0">Espace personnel</a></li>
                         <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Conseils et infos</a></li>
                         <li class="nav-item last separator"><a class="nav-link text-white" href="mailto:econtact@anapec.org">Contact</a></li>
                         <li class="nav-item">
@@ -87,9 +88,39 @@
                     </ul>
                 </div>
             </nav>
+        @else
+        <nav class="shadow-sm nav-bg">
+            {{-- <button class="navbar-toggler shadow-lg w-10 px-2 float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon d-flex align-items-center pl-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </span>
+            </button> --}}
+            <div class="">
+                <ul class="d-flex justify-content-center align-items-center nav">
+                    <li class="nav-item separator"><a class="nav-link text-white" href="/">Accueil</a></li>
+                    <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
+                    <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('login') }}" 0="0">Espace personnel</a></li>
+                    <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Conseils et infos</a></li>
+                    <li class="nav-item last separator"><a class="nav-link text-white" href="mailto:econtact@anapec.org">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-light btn-sm shadow-sm mx-3" href="#" 1="">Accès Professionnel</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         @endif
         <!--/Navbar-->
-
+        @if(session('success'))
+            <div class="alert alert-success mx-5 my-1">
+                {{ session('success') }}
+            </div>
+        @elseif(session('danger'))
+            <div class="alert alert-danger mx-5 my-1">
+                {{ session('danger') }}
+            </div>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>

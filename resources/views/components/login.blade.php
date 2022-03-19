@@ -10,7 +10,7 @@
     </div>
 @endif
 @if(!Auth::user())
-    <form method="POST" action="{{ route('login') }}" class="card-body pt-4 px-4">
+    <form method="POST" action="{{ route('login') }}" class="pt-4 px-4">
         @csrf
         <div class="form-group">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror rounded-0 h-25" placeholder="Email" required autocomplete="email" autofocus>
@@ -33,12 +33,10 @@
             <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
             <button style="background: var(--bg-green);" type="submit" class="btn btn-sm text-white">Ok</button>
         </div>
-        @if (Route::has('password.request'))
-            <a class="nav-link text-grey small p-0" href="{{ route('password.request') }}">
-                {{ __('Mot de passe oublié ?') }}
-            </a>
-        @endif
     </form>
+    <a class="nav-link text-grey small m-3 p-0" href="{{ route('reset-password') }}">
+        {{ __('Mot de passe oublié ?') }}
+    </a>
 @else
     <div class="d-flex flex-column align-items-center p-2">
         <?php 
