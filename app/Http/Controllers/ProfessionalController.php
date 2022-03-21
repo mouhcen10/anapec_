@@ -68,8 +68,21 @@ class ProfessionalController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $validatedata = $request->validate();
+        $request->validate([
+            'user_id' => 'required',
+            'raison_sociale' => 'required',
+            'entreprise' => 'required',
+            'secteur' => 'required',
+            'cin' => 'required',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email|unique:professionals',
+            'password' => 'required|min:6',
+            'adress' => 'required',
+            'gsm' => 'required',
+            'ville' => 'required',
+            'commune' => 'required'
+        ]);
         
         $user = new User();
         $user->cin = $request->cin;
@@ -105,7 +118,7 @@ class ProfessionalController extends Controller
 
         $professional->save();
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success','Professionnel ajouté avec succès !');
     }
 
     /**
@@ -194,17 +207,11 @@ class ProfessionalController extends Controller
         if($request->hasFile('logo')) {
         
             $path = $request->file('logo')->store('logos');
-
-            if($professional->logo) {
-                $professional->logo = $path;
-            }
-            else {
-                $professional->logo = $professional->logo;
-            }
+            $professional->logo = $path;
         }
         $professional->save();
 
-        return redirect()->route('professionals.show', ['professional' =>$professional->id]);
+        return redirect()->route('professionals.show', ['professional' =>$professional->id])->with('success','Professionnel modifié avec succès !');
     }
 
     /**

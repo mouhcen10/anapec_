@@ -2,14 +2,16 @@
 
 @section('content')
 <div class="container p-0">
-    <div class="col-md-12 d-flex flex-row p-0">
+    <div class="glb col-md-12 d-flex flex-row p-0">
         <!--Connexion-->
-        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+        <div class="frst col-md-3 rounded-top-right bg-white shadow-sm p-0">
             <x-profess-menu></x-profess-menu>
-            <x-slider></x-slider>
+            <div class="slider-2">
+                <x-slider></x-slider>
+            </div>
         </div>
         <!--/Connexion-->
-        <div class="col-md-9 pr-0">
+        <div class="scnd col-md-9 pr-0">
             <div class="bloc-bienvenue-blue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3"><b>Bienvenue {{ Str::upper($professional->prenom) }} {{ Str::upper($professional->nom) }}  à votre espace personnel</b></span>
                 <a class="nav-link text-blue p-0 mr-3" href="{{ route('logout') }}"
@@ -33,7 +35,7 @@
                     <img class="mx-2" src="/storage/images/arrow-blue.png" alt="">
                     <span class="text-grey">Vos offres d'emploi</span>
                 </div>
-                <div class="my-4">
+                <div class="tbl my-4">
                     <a class="btn btn-sm blue-bg text-white my-1" href="{{ route('offres.create') }}"><i class="fa fa-plus"></i></a>
                     <table class="table table-sm">
                         <thead class="thead-inverse blue-bg small">

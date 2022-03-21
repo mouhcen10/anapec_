@@ -317,7 +317,7 @@
                                         </div>
                                         <div class="obt d-flex flex-row  justify-content-between align-items-center my-3">
                                             <label class="title" for="">Commentaire :</label>
-                                            <textarea class="w-area" name="commentaire" rows="4" required></textarea>
+                                            <textarea class="w-area" name="commentaire" rows="4"></textarea>
                                         </div>
                                         <div class="my-2">
                                             <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
@@ -350,29 +350,29 @@
                                     <div class="d-flex flex-row justify-content-around align-items-center">
                                         <label class="title" for="">Diplôme :</label>
                                         <div class="d-flex flex-column">
-                                            <select class="slct rounded-0 w-40 my-2" name="diplome">
-                                                <option>[Type de diplome]</option>
+                                            <select class="slct rounded-0 w-40 my-2" name="diplome" required>
+                                                <option value="">[Type de diplome]</option>
                                                 <option>Bac +2</option>
                                                 <option>Bac +3</option>
                                             </select>
-                                            <select class="slct rounded-0 w-40 my-2" name="specialite">
-                                                <option>[Spécialistes]</option>
+                                            <select class="slct rounded-0 w-40 my-2" name="specialite" required>
+                                                <option value="">[Spécialistes]</option>
                                                 <option>Développement Informatique</option>
                                                 <option>Graphic Design</option>
                                             </select>
-                                            <select class="slct rounded-0 w-40 my-2" name="option">
-                                                <option>[Option]</option>
+                                            <select class="slct rounded-0 w-40 my-2" name="option" required>
+                                                <option value="">[Option]</option>
                                                 <option>Développement Informatique</option>
                                                 <option>Graphic Design</option>
                                             </select>
-                                            <select class="slct rounded-0 w-40 my-2" name="grp_etab">
-                                                <option>[Groupe d'établissement]</option>
+                                            <select class="slct rounded-0 w-40 my-2" name="grp_etab" required>
+                                                <option value="">[Groupe d'établissement]</option>
                                                 <option>OFPPT</option>
                                                 <option>ENCG</option>
                                                 <option>EMSI</option>
                                             </select>
-                                            <select class="slct rounded-0 w-40 my-2" name="etab">
-                                                <option>[Etablissement]</option>
+                                            <select class="slct rounded-0 w-40 my-2" name="etab" required>
+                                                <option value="">[Etablissement]</option>
                                                 <option>Institut Spécialisé des Technologies Appliquées</option>
                                                 <option>IGA</option>
                                                 <option>Lycée</option>
@@ -381,7 +381,7 @@
                                     </div>
                                     <div class="full d-flex flex-row justify-content-between align-items-center my-2">
                                         <label class="title" for="">Année d’obtention :</label>
-                                        <input class="obt rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1" value="2022" />
+                                        <input class="obt rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1" value="2022" required/>
                                     </div>
                                     <div class="full d-flex flex-row  justify-content-between align-items-center my-3">
                                         <label class="title" for="">Commentaire :</label>
@@ -469,7 +469,7 @@
                                             </div>
                                             <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                                 <label class="title" for="">Description :</label>
-                                                <textarea class="w-area" name="description" rows="4" required></textarea>
+                                                <textarea class="w-area" name="description" rows="4"></textarea>
                                             </div>
                                             <div class="my-2">
                                                 <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
@@ -505,19 +505,19 @@
                                 <div class="d-flex flex-column justify-content-between align-items-start">
                                     <div class="full d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Date début :</label>
-                                        <input type="date" name="date_debut" class="full rounded-0 w-40">
+                                        <input type="date" name="date_debut" class="full rounded-0 w-40" required>
                                     </div>
                                     <div class="full d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Date fin :</label>
-                                        <input type="date" name="date_fin" class="full rounded-0 w-40">
+                                        <input type="date" name="date_fin" class="full rounded-0 w-40" required>
                                     </div>
                                     <div class="d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Entreprise :</label>
-                                        <input type="text" name="entreprise" class="full rounded-0 w-40">
+                                        <input type="text" name="entreprise" class="full rounded-0 w-40" required>
                                     </div>
                                     <div class="d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Intitulé du poste :</label>
-                                        <input type="text" name="intitule_poste" class="full rounded-0 w-40">
+                                        <input type="text" name="intitule_poste" class="full rounded-0 w-40" required>
                                     </div>
                                     <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                         <label class="title" for="">Description :</label>
@@ -616,7 +616,7 @@
                                         <input class="my-1" type="checkbox" name="powerpoint" value="powerpoint" @if($competence->powerpoint) checked @endif/>
                                     </div>
                                 </div>
-                                <hr class="w-hr">
+                                <hr class="">
                                 <div class="lng d-flex flex-row justify-content-satrt align-items-center">
                                     <label class="lblcmp title" for="">Compétences spécifiques :</label>
                                     <div class="full d-flex flex-column ml-3 mt-3">
@@ -624,7 +624,7 @@
                                         <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
                                     </div>
                                 </div>
-                                <hr class="w-hr">
+                                <hr class="">
                                 <div class="permis d-flex flex-row justify-content-start align-items-center my-4">
                                     <label class="title" for="">Permis de conduire :</label>
                                     <div class="d-flex flex-column">
@@ -689,14 +689,14 @@
                                         <label class="lbl-langue title" for="">Langue :</label>
                                         <div class="half-w d-flex flex-column">
                                             <div class="half-w d-flex flex-row justify-content-around align-items-center my-2">
-                                                <select class="rounded-0 w-40" name="langue_1">
-                                                    <option>[Langue]</option>
+                                                <select class="rounded-0 w-40" name="langue_1" required>
+                                                    <option value="">[Langue]</option>
                                                     <option>Arabe</option>
                                                     <option>Français</option>
                                                     <option>Anglais</option>
                                                 </select>
-                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_1">
-                                                    <option>[Niveau langue]</option>
+                                                <select class="rounded-0 w-40 mx-2" name="niveau_langue_1" required>
+                                                    <option value="">[Niveau langue]</option>
                                                     <option>Langue maternelle</option>
                                                     <option>Courant</option>
                                                     <option>Bon</option>
@@ -706,13 +706,13 @@
                                             </div>
                                             <div class="half-w d-flex flex-row justify-content-around align-items-center my-2">
                                                 <select class="rounded-0 w-40" name="langue_2">
-                                                    <option>[Langue]</option>
+                                                    <option value="">[Langue]</option>
                                                     <option>Arabe</option>
                                                     <option>Français</option>
                                                     <option>Anglais</option>
                                                 </select>
                                                 <select class="rounded-0 w-40 mx-2" name="niveau_langue_2">
-                                                    <option>[Niveau langue]</option>
+                                                    <option value="">[Niveau langue]</option>
                                                     <option>Langue maternelle</option>
                                                     <option>Courant</option>
                                                     <option>Bon</option>
@@ -722,13 +722,13 @@
                                             </div>
                                             <div class="half-w d-flex flex-row justify-content-around align-items-center my-2">
                                                 <select class="rounded-0 w-40" name="langue_3">
-                                                    <option>[Langue]</option>
+                                                    <option value="">[Langue]</option>
                                                     <option>Arabe</option>
                                                     <option>Français</option>
                                                     <option>Anglais</option>
                                                 </select>
                                                 <select class="rounded-0 w-40 mx-2" name="niveau_langue_3">
-                                                    <option>[Niveau langue]</option>
+                                                    <option value="">[Niveau langue]</option>
                                                     <option>Langue maternelle</option>
                                                     <option>Courant</option>
                                                     <option>Bon</option>
@@ -845,7 +845,7 @@
                                 @csrf
                                 <div class="d-flex flex-column justify-content-between align-items-end">
                                     <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
-                                    <textarea class="form-control rounded-0" name="title" rows="5" value=""></textarea>
+                                    <textarea class="form-control rounded-0" name="title" rows="5" required></textarea>
                                     <div class="my-2">
                                         <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
                                     </div>
@@ -873,7 +873,7 @@
                                 @csrf
                                 <div class="d-flex flex-column justify-content-between align-items-end">
                                     <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
-                                    <textarea class="form-control rounded-0" name="title" rows="5" value=""></textarea>
+                                    <textarea class="form-control rounded-0" name="title" rows="5" required></textarea>
                                     <div class="my-2">
                                         <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
                                     </div>

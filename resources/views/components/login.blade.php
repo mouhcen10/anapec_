@@ -40,10 +40,14 @@
 @else
     <div class="d-flex flex-column align-items-center p-2">
         <?php 
-            $candidate = Auth::user()->candidate;
+            $professional = Auth::user()->professional;
         ?>
         @if(Auth::user()->is_prof == 1)
-            <img class="my-2 p-1 rounded-circle border-shadow-blue w-pic" src="{{ Storage::url($candidate->image->path ?? '/images/avatar.jpg') }}" alt="">
+            @if($professional->logo)
+                <img class="my-2 p-1 rounded-circle border-shadow-blue w-pic" src="{{ Storage::url($professional->logo) }}" alt="">
+            @else
+                <img class="my-2 p-1 rounded-circle border-shadow-blue w-pic" src="/storage/images/avatar.jpg" alt="">
+            @endif
             <div class="d-flex flex-row">
                 <a class="btn btn-sm blue-bg rounded-pill text-white shadow-xl d-flex align-items-center" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
@@ -63,7 +67,14 @@
                 </a>
             </div>
         @else
-            <img class="my-2 p-1 rounded-circle border-shadow w-pic" src="{{ Storage::url($candidate->image->path ?? '/images/avatar.jpg') }}" alt="">
+            <?php 
+                $candidate = Auth::user()->candidate;
+            ?>
+            @if($candidate->image)
+                <img class="my-2 p-1 rounded-circle border-shadow-blue w-pic" src="{{ Storage::url($candidate->image) }}" alt="">
+            @else
+                <img class="my-2 p-1 rounded-circle border-shadow-blue w-pic" src="/storage/images/avatar.jpg" alt="">
+            @endif
             <div class="d-flex flex-row">
             <a class="btn btn-sm nav-bg rounded-pill text-white shadow-xl d-flex align-items-center" href="{{ route('logout') }}"
                 onclick="event.preventDefault();

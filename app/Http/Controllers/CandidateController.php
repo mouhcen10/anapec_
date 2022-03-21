@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class CandidateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +47,7 @@ class CandidateController extends Controller
     {
         $validated = $request->validate([
             'cin' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:6',
             'nom' => 'required',
             'prenom' => 'required',
             'sexe' => 'required',
@@ -127,7 +131,7 @@ class CandidateController extends Controller
                 $image->save();
             }
 
-            return redirect()->route('login');
+            return redirect()->route('login')->with('success','Candidat Ajouté avec succès !');
         }
 
     }
@@ -257,7 +261,7 @@ class CandidateController extends Controller
             }
         }
 
-        return redirect()->route('candidates.show', ['candidate' => $candidate->id]);
+        return redirect()->route('candidates.show', ['candidate' => $candidate->id])->with('success','Candidat modifié avec succès !');
     }
 
     /**

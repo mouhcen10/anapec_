@@ -122,8 +122,8 @@
                         </div>
                         <img class="mx-2" src="/storage/images/dernier_offre.png" alt="">
                     </div>
-                    <div>
-                        <table class="table table-sm table-bordred my-4">
+                    <div class="tbl">
+                        <table class="table table-sm my-4">
                             <thead class="bg-green-light text-secondary">
                                 <th class="text-center f-13">Date</th>
                                 <th class="text-center f-13">Référence</th>
@@ -153,7 +153,7 @@
                     </div>
                     <img class="mx-2" src="/storage/images/candidature.png" alt="">
                 </div>
-                <div>
+                <div class="tbl">
                     <table class="table table-sm my-4">
                         <thead class="nav-bg text-white small">
                             <th>Référence de l'offre</th>

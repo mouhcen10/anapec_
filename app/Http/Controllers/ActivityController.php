@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +43,7 @@ class ActivityController extends Controller
 
         Activity::create($input);
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id])->with('success','Activitée ajoutée avec succès !');
     }
 
     /**
@@ -76,7 +80,7 @@ class ActivityController extends Controller
         $input = $request->all();
         $activity->fill($input)->save();
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id])->with('success','Activité modifiée avec succès !');
     }
 
     /**
@@ -89,6 +93,6 @@ class ActivityController extends Controller
     {
         Activity::findOrFail($id)->delete();
 
-        return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id])->with('success','Activitée supprimée avec succès !');
     }
 }

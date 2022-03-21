@@ -52,25 +52,24 @@
                         <li class="nav-item separator"><a class="nav-link text-white" href="{{ route('professionals.show',['professional' =>Auth::user()->professional->id]) }}" 0="0">Espace personnel</a></li>
                         <li class="nav-item separator"><a class="nav-link text-white" href="#" 0="0">Conseils et infos</a></li>
                         <li class="nav-item last"><a class="nav-link text-white" href="#">Contact</a></li>
-                        {{-- mailto:econtact@anapec.org --}}
                     </ul>
                 </div>
             </nav>
-            <div class="second-menu d-none">
-                <a class="nav-link text-white rounded-0 border-0 blue-bg" href="#" data-toggle="collapse" data-target="#prof" aria-controls="prof" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="menu navbar navbar-expand-lg navbar-light blue-bg p-0 d-none">
+                <a class="nav-link text-white text-right rounded-0 border-0 blue-bg" href="#" data-toggle="collapse" data-target="#prof" aria-controls="prof" aria-expanded="false" aria-label="Toggle navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list text-white border rounded" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                 </a>
-                <div class="collapse" id="prof">
+              
+                <div class="collapse navbar-collapse" id="prof">
                     <li class="list-group-item bg-blue-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="/">Accueil</a></li>
                     <li class="list-group-item bg-blue-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
                     <li class="list-group-item bg-blue-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="{{ route('professionals.show',['professional' =>Auth::user()->professional->id]) }}">Espace personnel</a></li>
                     <li class="list-group-item bg-blue-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="">Conseils et infos</a></li>
                     <li class="list-group-item bg-blue-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="">Contact</a></li>
-                    {{-- mailto:econtact@anapec.org --}}
                 </div>
-            </div>
+            </nav>
         @elseif(Auth::user() && Auth::user()->is_prof == 0)
             <nav class="first-menu shadow-sm nav-bg">
                 <div class="">
@@ -83,21 +82,22 @@
                     </ul>
                 </div>
             </nav>
-            <div class="second-menu d-none">
-                <a class="nav-link rounded-0 border-0 nav-bg" href="#" data-toggle="collapse" data-target="#candidat" aria-controls="candidat" aria-expanded="false" aria-label="Toggle navigation">
+            
+            <nav class="menu navbar navbar-expand-lg navbar-light nav-bg p-0 d-none">
+                <a class="nav-link text-white text-right rounded-0 border-0 nav-bg" href="#" data-toggle="collapse" data-target="#candidat1" aria-controls="candidat1" aria-expanded="false" aria-label="Toggle navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list text-white border rounded" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                 </a>
-                <div class="collapse" id="candidat">
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2  p-0 small" href="/">Accueil</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('candidates.show',['candidate' =>Auth::user()->candidate->id]) }}">Espace personnel</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2  p-0 small" href="">Conseils et infos</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2  p-0 small" href="">Contact</a></li>
-                    {{-- mailto:econtact@anapec.org --}}
+              
+                <div class="collapse navbar-collapse" id="candidat1">
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="/">Accueil</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="{{ route('candidates.show',['candidate' =>Auth::user()->candidate->id]) }}" 0="0">Espace personnel</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="" 0="0">Conseils et infos</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="">Contact</a></li>
                 </div>
-            </div>
+            </nav>
         @else
             <nav class="first-menu shadow-sm nav-bg">
                 <div class="">
@@ -110,21 +110,21 @@
                     </ul>
                 </div>
             </nav>
-            <div class="second-menu d-none">
-                <a class="nav-link rounded-0 border-0 nav-bg" href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="menu navbar navbar-expand-lg navbar-light nav-bg p-0 d-none">
+                <a class="nav-link text-white text-right rounded-0 border-0 nav-bg" href="#" data-toggle="collapse" data-target="#normal" aria-controls="normal" aria-expanded="false" aria-label="Toggle navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list text-white border rounded" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
                     </svg>
                 </a>
-                <div class="collapse nav-bg" id="navbarToggleExternalContent">
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2 p-0 small" href="/">Accueil</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2  p-0 small" href="{{ route('offres.index') }}" id="">Offres d'emploi</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2 p-0 small" href="{{ route('login') }}">Espace personnel</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2 p-0 small" href="">Conseils et infos</a></li>
-                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-grey mx-2 p-0 small" href="">Contact</a></li>
-                    {{-- mailto:econtact@anapec.org --}}
+              
+                <div class="collapse navbar-collapse" id="normal">
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="/">Accueil</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="{{ route('offres.index') }}">Offres d'emploi</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="{{ route('login') }}">Espace personnel</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="">Conseils et infos</a></li>
+                    <li class="list-group-item bg-green-light border-bottom py-2 d-flex flex-row justify-content-start align-items-center"><a class="nav-link text-secondary mx-2  p-0 small" href="">Contact</a></li>
                 </div>
-            </div>
+            </nav>
         @endif
         <!--/Navbar-->
         @if(session('success'))
@@ -204,17 +204,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     @yield('script')
     <script>
-        $(window).resize(function(){
-            if($(window).width()<768){
-                $('.second-menu').removeClass('d-none');
-                $('.first-menu').addClass('d-none');
-                $('.table').addClass('table-responsive');
-            }
-            else{
-                $('.second-menu').addClass('d-none');
-                $('.first-menu').removeClass('d-none');
-                $('.table').removeClass('table-responsive');
-            }
+        $( document ).ready(function() {
+            $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                $(".alert").slideUp(500);
+            });
         });
     </script>
 </body>

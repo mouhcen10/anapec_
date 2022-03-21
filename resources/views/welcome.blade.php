@@ -106,7 +106,7 @@
         <div class="second col-md-3 bg-white p-0 rounded-top-right shadow-sm">
           <x-login></x-login>
           @if(!Auth::user())
-          <div class="d-flex flex-column align-items-center border-top pt-2">
+          <div class="btns d-flex flex-column align-items-center border-top pt-2">
             <a href="{{ route('candidates.create') }}" style="width: 90%;" class="btn btn-info mb-1 rounded-pill">Créer un espace candidat</a>
             <a href="{{ route('professionals.create') }}" style="width: 90%;" class="btn btn-primary mb-1 rounded-pill">Créer un espace professionnel</a>
           </div>

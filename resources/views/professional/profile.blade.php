@@ -2,14 +2,16 @@
 
 @section('content')
 <div class="container p-0">
-    <div class="col-md-12 d-flex flex-row m-0 p-0">
+    <div class="glb col-md-12 d-flex flex-row m-0 p-0">
         <!--Connexion-->
-        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+        <div class="frst col-md-3 rounded-top-right bg-white shadow-sm p-0">
             <x-profess-menu></x-profess-menu>
-            <x-slider></x-slider>
+            <div class="slider-2">
+                <x-slider></x-slider>
+            </div>
         </div>
         <!--/Connexion-->
-        <div class="col-md-9 pr-0">
+        <div class="scnd col-md-9 pr-0">
             <div class="bloc-bienvenue-blue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3"><b>Bienvenue {{ Str::upper($professional->prenom) }} {{ Str::upper($professional->nom) }}  à votre espace personnel</b></span>
                 <a class="nav-link text-blue p-0 mr-3" href="{{ route('logout') }}"
@@ -32,11 +34,15 @@
                     <img class="mx-2" src="/storage/images/arrow-blue.png" alt="">
                     <span class="text-grey">Vos Informations</span>
                 </div>
-                <div class="d-flex flex-row justify-content-between mt-5">
-                    <div class="px-2">
-                        <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="{{ Storage::url($professional->logo ?? 'images/avatar.jpg') }}" alt="">
+                <div class="info d-flex flex-row justify-content-between mt-5">
+                    <div class="photo">
+                        @if($professional->logo != null)
+                            <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="{{ Storage::url($professional->logo) }}" alt="">
+                        @else
+                            <img style="width: 140px;height: 150px" class="mx-4 border shadow" src="/storage/images/avatar.jpg" alt="">
+                        @endif
                     </div>
-                    <div class="bg-grey mx-2 w-100 h-100">
+                    <div class="bg-grey w-100 h-100">
                         <ul class="list-group d-flex flex-column">
                             <div class="border-b-dashed">
                                 <li class="m-2 bg-grey border-0 d-flex flex-row">
@@ -66,9 +72,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    {{-- <button type="submit" class="btn m-2 nav-bg border-0 btn-sm shadow-xl text-white" data-toggle="modal" data-target="#staticBackdrop">Modifier infos  E/se</button>
-                    <button type="submit" class="btn m-2 btn-warning border btn-sm text-white shadow-lg">Actualiser description E/se</button> --}}
-                    <a href="{{ route('professionals.edit', ['professional' => $professional->id]) }}" class="btn m-2 blue-bg border-0 btn-sm shadow-xl">Modifier votre compte</a>
+                    <a href="{{ route('professionals.edit', ['professional' => $professional->id]) }}" class="btn my-2 blue-bg border-0 btn-sm shadow-xl">Modifier votre compte</a>
                 </div>
             </div>
             <!--/Informations-->
@@ -108,7 +112,7 @@
                     </div>
                     <img class="mx-2" src="/storage/images/dernier-offre-blue.png" alt="">
                 </div>
-                <div>
+                <div class="tbl">
                     <table class="table table-sm my-4">
                         <thead class="blue-bg text-white small">
                             <th>Référence</th>

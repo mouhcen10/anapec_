@@ -13,6 +13,10 @@ use PDF;
 
 class CvController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +57,7 @@ class CvController extends Controller
             $cv->save();
         }
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id])->with('success','CV ajouté avec succès !');
     }
 
     /**
@@ -104,7 +108,7 @@ class CvController extends Controller
             }
         }
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id])->with('success','CV modifié avec succès !');
     }
 
     /**
@@ -116,7 +120,7 @@ class CvController extends Controller
     public function destroy(Request $request, $id)
     {
         Cv::findOrFail($id)->delete();
-        return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id])->with('success','CV supprimé avec succès !');
     }
 
     public function download($id)

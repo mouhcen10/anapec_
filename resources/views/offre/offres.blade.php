@@ -10,7 +10,7 @@
                         Nos dernières offres
                     </div>
                     <span class="text-green my-5 px-3">Nombre d'offres emploi : <b>{{ count($offres) }}</b></span>
-                    <div class="mt-3">
+                    <div class="tbl mt-3">
                         <table class="table table-sm my-3">
                             <thead class="nav-bg text-white text-center small">
                                 <th>Référence</th>

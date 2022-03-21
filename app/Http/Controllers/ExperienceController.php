@@ -10,7 +10,7 @@ class ExperienceController extends Controller
 {
     public function __construct() 
     {
-    //   $this->middleware('auth');
+      $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -40,10 +40,20 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        Experience::create($input);
+        $validated = $request->validate([
+            'candidate_id' => 'required',
+            'date_debut' => 'required',
+            'date_fin' => 'required',
+            'entreprise' => 'required',
+            'intitule_poste' => 'required'
+        ]);
 
-        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id]);
+        $input = $request->all();
+        if($validated){
+            Experience::create($input);
+        }
+
+        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id])->with('success','Experience ajoutée avec succès !');
     }
 
     /**
@@ -85,7 +95,7 @@ class ExperienceController extends Controller
         $experience->description = $request->description;
         $experience->save();
 
-        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id]);
+        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id])->with('success','Experience modifiée avec succès !');
     }
 
     /**
@@ -99,6 +109,6 @@ class ExperienceController extends Controller
         // dd($experience);
         Experience::findOrFail($id)->delete();
 
-        return redirect()->route('candidates.edit', ['candidate' => Auth::user()->candidate->id]);
+        return redirect()->route('candidates.edit', ['candidate' => Auth::user()->candidate->id])->with('success','Experience supprimée avec succès !');
     }
 }

@@ -25,19 +25,19 @@
                         <div class="d-flex flex-column justify-content-between align-items-center mb-1">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">CIN :<span class="text-danger">*</span></label>
-                                <input type="text" name="cin" class="rounded-0 w-40 ml-72">
+                                <input type="text" name="cin" class="rounded-0 w-40 ml-72" required>
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">Confirmation CIN:<span class="text-danger">*</span></label>
-                                <input type="text" name="cin" class="rounded-0 w-40 ml-72">
+                                <input type="text" name="cin" class="rounded-0 w-40 ml-72" required>
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">Mot de passe :<span class="text-danger">*</span></label>
-                                <input type="password" name="password" class="rounded-0 w-40 ml-72">
+                                <input type="password" name="password" class="rounded-0 w-40 ml-72" required>
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                 <label class="title" for="">Confirmation Mot de passe :<span class="text-danger">*</span></label>
-                                <input type="password" name="password" class="rounded-0 w-40 ml-72">
+                                <input type="password" name="password" class="rounded-0 w-40 ml-72" required>
                             </div>
                         </div>
                         <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
@@ -47,15 +47,15 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Nom :<span class="text-danger">*</span></label>
-                        <input type="text" name="nom" class="rounded-0 w-40">
+                        <input type="text" name="nom" class="rounded-0 w-40" required>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Prénom :<span class="text-danger">*</span></label>
-                        <input type="text" name="prenom" class="rounded-0 w-40">
+                        <input type="text" name="prenom" class="rounded-0 w-40" required>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Sexe :<span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="sexe">
+                        <select class="rounded-0 w-40" name="sexe" required>
                             <option>[Choisissez votre sexe]</option>
                             <option>Masculin</option>
                             <option>Féminin</option>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Situation familiale :<span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="situation_f">
+                        <select class="rounded-0 w-40" name="situation_f" required>
                             <option>[Choisissez votre situation familiale]</option>
                             <option>Célibataire</option>
                             <option>Marié(e)</option>
@@ -73,15 +73,15 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Date de naissance :<span class="text-danger">*</span></label>
-                        <input type="date" name="date_nais" class="rounded-0 w-40">
+                        <input type="date" name="date_nais" class="rounded-0 w-40" required>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start my-3">
                         <label class="title" for="">Adresse :<span class="text-danger">*</span></label>
-                        <textarea class="w-area" name="adress" rows="4"></textarea>
+                        <textarea class="w-area" name="adress" rows="4" required></textarea>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Province ou préfecture : <span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="province">
+                        <select class="rounded-0 w-40" name="province" required>
                             <option>[Choisissez votre province]</option>
                             <option>Agadir</option>
                             <option>Rabat</option>
@@ -91,21 +91,21 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Commune : <span class="text-danger">*</span></label>
-                        <select class="rounded-0 w-40" name="commune">
+                        <select class="rounded-0 w-40" name="commune" required>
                             <option>[Choisissez votre commune]</option>
                         </select>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Email :<span class="text-danger">*</span></label>
-                        <input type="email" name="email" class="rounded-0 w-40">
+                        <input type="email" name="email" class="rounded-0 w-40" required>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Confirmation Email :<span class="text-danger">*</span></label>
-                        <input type="email" name="confirmEmail" class="rounded-0 w-40">
+                        <input type="email" name="confirmEmail" class="rounded-0 w-40" required>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">GSM 1 :<span class="text-danger">*</span></label>
-                        <input type="tel" name="gsm_1" class="rounded-0 w-40">
+                        <input type="tel" name="gsm_1" class="rounded-0 w-40" required>
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">GSM 2 :</label>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
                         <label class="title" for="">Situation actuelle :<span class="text-danger">*</span></label>
-                        <select id="situation" class="rounded-0 w-40" name="situation_prof">
+                        <select id="situation" class="rounded-0 w-40" name="situation_prof" required>
                             <option>[Choisissez votre situaltio professionnelle]</option>
                             <option>Avec emploi</option>
                             <option>Sans emploi</option>

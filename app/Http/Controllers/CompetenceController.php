@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CompetenceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -103,7 +107,7 @@ class CompetenceController extends Controller
         }
         $competence->save();
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id])->with('success','Compétence ajoutée avec succès !');
     }
 
     /**
@@ -205,7 +209,7 @@ class CompetenceController extends Controller
             }
             $competence->save();
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id])->with('success','Compétence modifiée avec succès !');
     }
 
     /**

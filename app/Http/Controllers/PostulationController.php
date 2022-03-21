@@ -48,7 +48,7 @@ class PostulationController extends Controller
         $input['candidate_id'] = Auth::user()->candidate->id;
         $input['offre_id'] = $request->candidate_id;
         Postulation::create($input);
-        return redirect()->route('candidates.show', ['candidate' =>Auth::user()->candidate->id]);
+        return redirect()->route('candidates.show', ['candidate' =>Auth::user()->candidate->id])->with('success','Postulation ajoutée avec succès !');
     }
 
     /**

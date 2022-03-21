@@ -2,17 +2,19 @@
 
 @section('content')
 <div class="container p-0">
-    <div class="col-md-12 d-flex flex-row p-0">
+    <div class="glb col-md-12 d-flex flex-row p-0">
         <!--Connexion-->
         <?php 
             $professional = Auth::user()->professional;    
         ?>
-        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+        <div class="frst col-md-3 rounded-top-right bg-white shadow-sm p-0">
             <x-profess-menu></x-profess-menu>
-            <x-slider></x-slider>
+            <div class="slider-2">
+                <x-slider></x-slider>
+            </div>
         </div>
         <!--/Connexion-->
-        <div class="col-md-9 pr-0">
+        <div class="scnd col-md-9 pr-0">
             <div class="bloc-bienvenue-blue w-100 mb-3 p-1 d-flex flex-row justify-content-between">
                 <span class="ml-3"><b>Bienvenue {{ Str::upper($professional->prenom) }} {{ Str::upper($professional->nom) }}  à votre espace personnel</b></span>
                 <a class="nav-link text-blue p-0 mr-3" href="{{ route('logout') }}"
@@ -38,15 +40,15 @@
                 </div>
                 <form method="POST" action="{{ route('offres.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="d-flex flex-column m-5">
+                    <div class="box d-flex flex-column mt-5 mx-3">
                         {{-- <input type="hidden" name="professional_id" value="{{ Auth::user()->professional->id }}"> --}}
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Référence :<span class="text-danger">*</span></label>
-                            <input type="text" name="ref" class="rounded-0 text-blue w-40 ml-72 text-uppercase" required>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Référence :<span class="text-danger">*</span></label>
+                            <input type="text" name="ref" class="rounded-0 text-blue w-40 text-uppercase" required>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Type de l'offre :<span class="text-danger">*</span></label>
-                            <select class="rounded-0 text-blue w-40 ml-72" name="type" required>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Type de l'offre :<span class="text-danger">*</span></label>
+                            <select class="rounded-0 text-blue w-40" name="type" required>
                                 <option>[Choisissez le type de l'offre]</option>
                                 <option>Stage Rémunéré</option>
                                 <option>Stage Non Rémunéré</option>
@@ -55,42 +57,42 @@
                                 <option>Freelance</option>
                             </select>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Type de contrat :</label>
-                            <select class="rounded-0 text-blue w-40 ml-72" name="contrat">
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Type de contrat :</label>
+                            <select class="rounded-0 text-blue w-40" name="contrat">
                                 <option>[Choisissez le type de contrat]</option>
                                 <option>CDI</option>
                                 <option>CDD</option>
                             </select>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Intitulé du Poste :<span class="text-danger">*</span></label>
-                            <input type="text" name="poste" class="rounded-0 text-blue w-40 ml-72" required>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Intitulé du Poste :<span class="text-danger">*</span></label>
+                            <input type="text" name="poste" class="rounded-0 text-blue w-40" required>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Date :<span class="text-danger">*</span></label>
-                            <input type="date" name="date" class="rounded-0 text-blue w-40 ml-72" required>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Date :<span class="text-danger">*</span></label>
+                            <input type="date" name="date" class="rounded-0 text-blue w-40" required>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Etat de l'offre :<span class="text-danger">*</span></label>
-                            <select class="rounded-0 text-blue w-40 ml-72" name="etat" required>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Etat de l'offre :<span class="text-danger">*</span></label>
+                            <select class="rounded-0 text-blue w-40" name="etat" required>
                                 <option>[Choisissez l'état de l'offre]</option>
                                 <option>En cours </option>
                                 <option>Suspendue</option>
                                 <option>Conclue</option>
                             </select>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Description :<span class="text-danger">*</span></label>
-                            <textarea name="description" cols="32" rows="5" class="rounded-0 text-blue ml-72 mb-2" required></textarea>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Description :<span class="text-danger">*</span></label>
+                            <textarea name="description" cols="32" rows="5" class="rounded-0 text-blue mb-2" required></textarea>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
-                            <label class="title" for="">Nbr postes :<span class="text-danger">*</span></label>
-                            <input type="number" name="nbr_postes" class="rounded-0 text-blue w-40 ml-72" required>
+                        <div class="item d-flex flex-row align-items-start">
+                            <label class="lbl title" for="">Nbr postes :<span class="text-danger">*</span></label>
+                            <input type="number" name="nbr_postes" class="rounded-0 text-blue w-40" required>
                         </div>
-                        <div class="d-flex flex-row align-items-start">
+                        <div class="item d-flex flex-row align-items-start">
                             <label class="title" for="">Lieu de travail : <span class="text-danger">*</span></label>
-                            <select class="rounded-0 text-blue w-40 ml-72" name="lieu_travail" required>
+                            <select class="rounded-0 text-blue w-40" name="lieu_travail" required>
                                 <option>[Lieu de travail]</option>
                                 <option>Agadir</option>
                                 <option>Rabat</option>

@@ -2,22 +2,28 @@
 
 @section('content')
 <div class="container p-0">
-    <div class="col-md-12 d-flex flex-row m-0 p-0">
+    <div class="glb col-md-12 d-flex flex-row m-0 p-0">
         <!--Connexion-->
-        <div class="col-md-3 rounded-top-right bg-white shadow-sm p-0">
+        <div class="frst col-md-3 rounded-top-right bg-white shadow-sm p-0">
             @if(Auth::user() && Auth::user()->is_prof == 0)
                 <x-candidate-menu></x-candidate-menu>
-                <x-atelier></x-atelier>
+                <div class="slider-2">
+                    <x-atelier></x-atelier>
+                </div>
             @elseif(Auth::user() && Auth::user()->is_prof == 1)
                 <x-profess-menu></x-profess-menu>
-                <x-slider></x-slider>
+                <div class="slider-2">
+                    <x-slider></x-slider>
+                </div>
             @else
-                <x-candidate-menu></x-candidate-menu>
-                <x-atelier></x-atelier>
+                <x-login></x-login>
+                <div class="slider-2">
+                    <x-atelier></x-atelier>
+                </div>
             @endif
         </div>
         <!--/Connexion-->
-        <div class="col-md-9 pr-0">
+        <div class="scnd col-md-9 pr-0">
             @if(Auth::user() && Auth::user()->is_prof == 0)
                 <?php 
                     $candidate = Auth::user()->candidate;    

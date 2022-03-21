@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class OffreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,21 +51,6 @@ class OffreController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function villeOffres(Request $request)
-    {
-        if($request->ville != null){
-            // $prof = Professional::where('secteur',$request->secteur)->orWhere('ville',$request->ville)->first();
-            $offres = Offre::where('lieu_travail',$request->ville)->get();
-            return view('offre.offres', [ 
-                'offres' => $offres
-            ]);
-        }   
-    }
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -83,7 +72,7 @@ class OffreController extends Controller
         $input = $request->all();
         $input['professional_id'] = Auth::user()->professional->id;
         Offre::create($input);
-        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id]);
+        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id])->with('success','Offre crée avec succès !');
     }
 
     /**
@@ -126,7 +115,7 @@ class OffreController extends Controller
         $input = $request->all();
         $offre->fill($input)->save();
 
-        return redirect()->route('offres.show', ['offre' => $offre->id]);
+        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id])->with('success','Offre modifiée avec succès !');
     }
 
     /**
@@ -139,6 +128,6 @@ class OffreController extends Controller
     {
         $offre = Offre::findOrFail($id);
         $offre->delete();
-        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id]);
+        return redirect()->route('professionals.show', ['professional' =>Auth::user()->professional->id])->with('success','Offre supprimée avec succès !');
     }
 }

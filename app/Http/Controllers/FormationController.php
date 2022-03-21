@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Formation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FormationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,11 +40,20 @@ class FormationController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $request->validate([
+            'candidate_id' => 'required',
+            'diplome' => 'required',
+            'specialite' => 'required',
+            'option' => 'required',
+            'grp_etab' => 'required',
+            'etab' => 'required',
+            'annee_obt' => 'required'
+        ]);
 
+        $input = $request->all();
         Formation::create($input);
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id])->with('success','Formation ajoutée avec succès !');
     }
 
     /**
@@ -83,7 +97,7 @@ class FormationController extends Controller
         $formation->commentaire = $request->commentaire;
         $formation->save();
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id])->with('success','Formation modifiée avec succès !');
     }
 
     /**
@@ -96,6 +110,6 @@ class FormationController extends Controller
     {
         Formation::findOrFail($id)->delete();
 
-        return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.edit', ['candidate' => Auth::user()->candidate->id])->with('success','Formation supprimée avec succès !');
     }
 }
