@@ -35,29 +35,29 @@
                         <img class="mx-2" src="/storage/images/arrow.png" alt="">
                         <span class="text-grey">Identification</span>
                     </div>
-                    <form method="POST" action="{{ route('candidates.update', ['candidate' => $candidate->id]) }}" enctype="multipart/form-data" class="d-flex flex-column">
+                    <form class="box d-flex flex-column" method="POST" action="{{ route('candidates.update', ['candidate' => $candidate->id]) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="d-flex flex-row mt-5 mx-3">
-                            <div class="d-flex flex-column justify-content-between align-items-center mb-1">
-                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                    <label class="title" for="">CIN :<span class="text-danger">*</span></label>
-                                    <input id="cin" type="text" name="cin" class="rounded-0 w-40 ml-72" value="{{ old('cin', $candidate->cin ?? null) }}" disabled>
+                        <div class="item d-flex flex-row mt-5 mx-3">
+                            <div class="box d-flex flex-column justify-content-between align-items-center mb-1">
+                                <div class="item d-flex flex-row justify-content-between align-items-center">
+                                    <label class="lbl title" for="">CIN :<span class="text-danger">*</span></label>
+                                    <input id="cin" type="text" name="cin" class="rounded-0 w-40" value="{{ old('cin', $candidate->cin ?? null) }}" disabled>
                                 </div>
-                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                    <label class="title" for="">Confirmation CIN:<span class="text-danger">*</span></label>
-                                    <input type="text" name="confrmCin" class="rounded-0 w-40 ml-72" value="{{ old('cin', $candidate->cin ?? null) }}" disabled>
+                                <div class="item d-flex flex-row justify-content-between align-items-center">
+                                    <label class="lbl title" for="">Confirmation CIN:<span class="text-danger">*</span></label>
+                                    <input type="text" name="confrmCin" class="rounded-0 w-40" value="{{ old('cin', $candidate->cin ?? null) }}" disabled>
                                 </div>
-                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                    <label class="title" for="">Mot de passe :<span class="text-danger">*</span></label>
-                                    <input type="password" name="password" class="rounded-0 w-40 ml-72" value="{{ $candidate->password }}">
+                                <div class="item d-flex flex-row justify-content-between align-items-center">
+                                    <label class="lbl title" for="">Mot de passe :<span class="text-danger">*</span></label>
+                                    <input type="password" name="password" class="rounded-0 w-40" value="{{ $candidate->password }}">
                                 </div>
-                                <div class="d-flex flex-row justify-content-between align-items-center">
-                                    <label class="title" for="">Confirmation Mot de passe :<span class="text-danger">*</span></label>
-                                    <input type="password" name="confrmPass" class="rounded-0 w-40 ml-72" value="{{ $candidate->password }}">
+                                <div class="item d-flex flex-row justify-content-between align-items-center">
+                                    <label class="lbl title" for="">Confirmation Mot de passe :<span class="text-danger">*</span></label>
+                                    <input type="password" name="confrmPass" class="rounded-0 w-40" value="{{ $candidate->password }}">
                                 </div>
                             </div>
-                            <div class="bord-dash d-flex flex-column justify-content-between align-items-start p-2">
+                            <div class="pic bord-dash d-flex flex-column justify-content-between align-items-start p-2">
                                 @if($candidate->image)
                                 <img class="avatar mx-5" src="{{ Storage::url($candidate->image->path) }}" alt="" id="imgSelected">
                                 @else
@@ -66,15 +66,15 @@
                                 <input class="small" type="file" name="picture" id="imgInp">
                             </div>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Nom :<span class="text-danger">*</span></label>
                             <input type="text" name="nom" class="rounded-0 w-40" value="{{ old('nom', $candidate->nom ?? null) }}">
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Prénom :<span class="text-danger">*</span></label>
                             <input type="text" name="prenom" class="rounded-0 w-40" value="{{ old('prenom', $candidate->prenom ?? null) }}">
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Sexe :<span class="text-danger">*</span></label>
                             <select class="rounded-0 w-40" name="sexe">
                                 <option value="{{ $candidate->sexe }}">{{ old('sexe', $candidate->sexe ?? null) }}</option>
@@ -82,7 +82,7 @@
                                 <option>Féminin</option>
                             </select>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Situation familiale :<span class="text-danger">*</span></label>
                             <select class="rounded-0 w-40" name="situation_f">
                                 <option value="{{ $candidate->situation_f }}">{{ old('situation_f', $candidate->situation_f ?? null) }}</option>
@@ -92,15 +92,15 @@
                                 <option>Veuf(e)</option>
                             </select>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Date de naissance :<span class="text-danger">*</span></label>
                             <input type="date" name="date_nais" class="rounded-0 w-40" value="{{ old('date_nais', $candidate->date_nais ?? null) }}">
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start my-3">
+                        <div class="item d-flex flex-row align-items-start px-3 my-3">
                             <label class="title" for="">Adresse :<span class="text-danger">*</span></label>
                             <textarea class="w-area" name="adress" rows="4" value="{{ old('adress', $candidate->adress ?? null) }}">{{ old('adress', $candidate->adress ?? null) }}</textarea>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Province ou préfecture : <span class="text-danger">*</span></label>
                             <select id="province" class="rounded-0 w-40" name="province" disabled>
                                 <option value="{{ old('province', $candidate->province ?? null) }}">{{ old('province', $candidate->province ?? null) }}</option>
@@ -110,33 +110,33 @@
                                 <option>Marrakech</option>
                             </select>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Commune : <span class="text-danger">*</span></label>
                             <select id="commune" class="rounded-0 w-40" name="commune" disabled>
                                 <option value="{{ old('commune', $candidate->commune ?? null) }}">{{ old('commune', $candidate->commune ?? null) }}</option>
                             </select>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Email :<span class="text-danger">*</span></label>
                             <input id="email" type="email" name="email" class="rounded-0 w-40" value="{{ old('email', $candidate->email ?? null) }}" disabled>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Confirmation Email :<span class="text-danger">*</span></label>
                             <input type="email" name="confirmEmail" class="rounded-0 w-40" value="{{ old('email', $candidate->email ?? null) }}" disabled>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">GSM 1 :<span class="text-danger">*</span></label>
                             <input type="tel" name="gsm_1" class="rounded-0 w-40" value="{{ old('gsm_1', $candidate->gsm_1 ?? null) }}">
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">GSM 2 :</label>
                             <input type="tel" name="gsm_2" class="rounded-0 w-40" value="{{ old('gsm_2', $candidate->gsm_2 ?? null) }}">
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Tél :</label>
                             <input type="tel" name="tel" class="rounded-0 w-40" value="{{ old('tel', $candidate->tel ?? null) }}">
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Situation actuelle :<span class="text-danger">*</span></label>
                             <select id="situation" class="situation rounded-0 w-40" name="situation_prof">
                                 <option value="{{ $candidate->situation_prof }}">{{ old('situation_prof', $candidate->situation_prof ?? null) }}</option>
@@ -144,7 +144,7 @@
                                 <option value="Sans emploi">Sans emploi</option>
                             </select>
                         </div>
-                        <div class="col-md-8 d-flex flex-row  justify-content-between align-items-start">
+                        <div class="item d-flex flex-row align-items-start px-3">
                             <label class="title" for="">Au chômage depuis :</label>
                             @if($candidate->situation_prof != 'Sans emploi')
                                 <input id="au_chomage" type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}" disabled>
@@ -152,22 +152,22 @@
                                 <input id="au_chomage" type="date" name="au_chomage" class="rounded-0 w-40" value="{{ old('au_chomage', $candidate->au_chomage ?? null) }}">
                             @endif
                         </div>
-                        <div class="col-md-8 d-flex flex-row justify-content-between align-items-start my-3">
+                        <div class="d-flex flex-row align-items-start px-3 my-3">
                             <label class="title" for="">Mobilité </label>
                             <div class="d-flex flex-column align-items-start">
                                 <span class="ml-4 small text-green">Locale :</span>
                                 <span class="ml-4 small text-green">Régionale :</span>
                                 <span class="ml-4 small text-green">Nationale :</span>
-                                <span class="ml-4 small text-green">Internationale :</span>
+                                <span class="ml-4 small text-green">Internationale:</span>
                             </div>
-                            <div class="d-flex flex-column align-items-start">
+                            <div class="d-flex flex-column align-items-start px-3">
                                 <input class="mb-1" type="checkbox" name="mobilite_locale" value="mobilite_locale" @if($candidate->mobilite_locale) checked @endif/>
                                 <input class="my-1" type="checkbox" name="mobilite_regionale" value="mobilite_regionale" @if($candidate->mobilite_regionale) checked @endif/>
                                 <input class="my-1" type="checkbox" name="mobilite_nationale" value="mobilite_nationale" @if($candidate->mobilite_nationale) checked @endif/>
                                 <input class="my-1" type="checkbox" name="mobilite_internationale" value="mobilite_internationale" @if($candidate->mobilite_internationale) checked @endif/>
                             </div>
                         </div>
-                        <div class="col-md-8 d-flex flex-row justify-content-between my-3">
+                        <div class="item d-flex flex-row px-3 my-3">
                             <label class="title" for="">Handicap : </label>
                             <div class="d-flex flex-row align-items-center">
                                     <div class="mr-5">
@@ -180,7 +180,7 @@
                                     </div>
                             </div>
                         </div>
-                        <div class="col-md-8 d-flex flex-row justify-content-between align-items-start">
+                        <div class="item d-flex flex-row px-3 align-items-start">
                             <label class="title" for="">Nature du handicap</label>
                             @if($candidate->handicap == false)
                                 <select id="nature" class="rounded-0 w-40" name="nature_handicap" disabled>
@@ -217,14 +217,14 @@
                                 <span class="text-grey">Formation</span>
                             </div>
                             @foreach ($candidate->formations as $formation)
-                            <div class="d-flex flex-row justify-content-between p-4">
-                                <form method="POST" action="{{ route('formations.update', ['formation' => $formation->id]) }}" enctype="multipart/form-data">
+                            <div class="formation d-flex flex-row justify-content-between p-4">
+                                <form class="half-w" method="POST" action="{{ route('formations.update', ['formation' => $formation->id]) }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="d-flex flex-column justify-content-between align-items-end">
+                                    <div class="box d-flex flex-column justify-content-between align-items-end">
                                         <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
-                                        <div class="d-flex flex-row justify-content-around align-items-center">
-                                            <label class="title" for="">Diplôme :</label>
+                                        <div class="item d-flex flex-row justify-content-around align-items-center">
+                                            <label class="lbl title" for="">Diplôme :</label>
                                             <div class="d-flex flex-column">
                                                 <select class="rounded-0 w-40 my-2" name="diplome">
                                                     <option value="{{ $formation->diplome ?? null }}">{{ $formation->diplome ?? null }}</option>
@@ -255,20 +255,20 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-row justify-content-between align-items-center my-2">
-                                            <label class="title" for="">Année d’obtention :</label>
+                                        <div class="item d-flex flex-row justify-content-between align-items-center my-2">
+                                            <label class="lbl title" for="">Année d’obtention :</label>
                                             <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="{{ $formation->annee_obt ?? null }}" />
                                         </div>
-                                        <div class="d-flex flex-row  justify-content-between align-items-center my-3">
-                                            <label class="title" for="">Commentaire :</label>
+                                        <div class="item d-flex flex-row  justify-content-between align-items-center my-3">
+                                            <label class="lbl title" for="">Commentaire :</label>
                                             <textarea class="w-area" name="commentaire" rows="4" value="{{ $formation->commentaire ?? null }}">{{ $formation->commentaire ?? null }}</textarea>
                                         </div>
-                                        <div class="my-2">
+                                        <div class="bt my-2">
                                             <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">update</button>
                                         </div>
                                     </div>
                                 </form>
-                                <div class="d-flex flex-row justify-content-start h-25">
+                                <div class="delete d-flex flex-row justify-content-start h-25">
                                     @include('candidat.deleteform')
                                 </div>
                             </div>
@@ -277,33 +277,33 @@
                             <div id="newForm" class="d-none p-4">
                                 <form method="POST" action="{{ route('formations.store') }}" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="d-flex flex-column justify-content-between align-items-end">
-                                        <div class="d-flex flex-row justify-content-around align-items-center">
+                                    <div class="half-w d-flex flex-column justify-content-between align-items-end">
+                                        <div class="obt d-flex flex-row justify-content-around align-items-center">
                                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                                             <label class="title" for="">Diplôme :</label>
                                             <div class="d-flex flex-column">
-                                                <select class="rounded-0 w-40 my-2" name="diplome">
+                                                <select class="obt rounded-0 w-40 my-2" name="diplome" required>
                                                     <option>[Type de diplome]</option>
                                                     <option>Bac +2</option>
                                                     <option>Bac +3</option>
                                                 </select>
-                                                <select class="rounded-0 w-40 my-2" name="specialite">
+                                                <select class="obt rounded-0 w-40 my-2" name="specialite" required>
                                                     <option>[Spécialistes]</option>
                                                     <option>Développement Informatique</option>
                                                     <option>Graphic Design</option>
                                                 </select>
-                                                <select class="rounded-0 w-40 my-2" name="option">
+                                                <select class="obt rounded-0 w-40 my-2" name="option" required>
                                                     <option>[Option]</option>
                                                     <option>Développement Informatique</option>
                                                     <option>Graphic Design</option>
                                                 </select>
-                                                <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                                <select class="obt rounded-0 w-40 my-2" name="grp_etab" required>
                                                     <option>[Groupe d'établissement]</option>
                                                     <option>OFPPT</option>
                                                     <option>ENCG</option>
                                                     <option>EMSI</option>
                                                 </select>
-                                                <select class="rounded-0 w-40 my-2" name="etab">
+                                                <select class="obt rounded-0 w-40 my-2" name="etab" required>
                                                     <option>[Etablissement]</option>
                                                     <option>Institut Spécialisé des Technologies Appliquées</option>
                                                     <option>IGA</option>
@@ -311,13 +311,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                        <div class="obt d-flex flex-row justify-content-between align-items-center my-2">
                                             <label class="title" for="">Année d’obtention :</label>
-                                            <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="2022" />
+                                            <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1"  value="2022" required/>
                                         </div>
-                                        <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                        <div class="obt d-flex flex-row  justify-content-between align-items-center my-3">
                                             <label class="title" for="">Commentaire :</label>
-                                            <textarea class="w-area" name="commentaire" rows="4" value=""></textarea>
+                                            <textarea class="w-area" name="commentaire" rows="4" required></textarea>
                                         </div>
                                         <div class="my-2">
                                             <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
@@ -342,7 +342,7 @@
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Formation</span>
                         </div>
-                        <form method="POST" action="{{ route('formations.store') }}" enctype="multipart/form-data">
+                        <form class="full" method="POST" action="{{ route('formations.store') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                             <div class="d-flex flex-column p-4">
@@ -350,28 +350,28 @@
                                     <div class="d-flex flex-row justify-content-around align-items-center">
                                         <label class="title" for="">Diplôme :</label>
                                         <div class="d-flex flex-column">
-                                            <select class="rounded-0 w-40 my-2" name="diplome">
+                                            <select class="slct rounded-0 w-40 my-2" name="diplome">
                                                 <option>[Type de diplome]</option>
                                                 <option>Bac +2</option>
                                                 <option>Bac +3</option>
                                             </select>
-                                            <select class="rounded-0 w-40 my-2" name="specialite">
+                                            <select class="slct rounded-0 w-40 my-2" name="specialite">
                                                 <option>[Spécialistes]</option>
                                                 <option>Développement Informatique</option>
                                                 <option>Graphic Design</option>
                                             </select>
-                                            <select class="rounded-0 w-40 my-2" name="option">
+                                            <select class="slct rounded-0 w-40 my-2" name="option">
                                                 <option>[Option]</option>
                                                 <option>Développement Informatique</option>
                                                 <option>Graphic Design</option>
                                             </select>
-                                            <select class="rounded-0 w-40 my-2" name="grp_etab">
+                                            <select class="slct rounded-0 w-40 my-2" name="grp_etab">
                                                 <option>[Groupe d'établissement]</option>
                                                 <option>OFPPT</option>
                                                 <option>ENCG</option>
                                                 <option>EMSI</option>
                                             </select>
-                                            <select class="rounded-0 w-40 my-2" name="etab">
+                                            <select class="slct rounded-0 w-40 my-2" name="etab">
                                                 <option>[Etablissement]</option>
                                                 <option>Institut Spécialisé des Technologies Appliquées</option>
                                                 <option>IGA</option>
@@ -379,23 +379,15 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                                    <div class="full d-flex flex-row justify-content-between align-items-center my-2">
                                         <label class="title" for="">Année d’obtention :</label>
-                                        <input class="rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1" value="2022" />
+                                        <input class="obt rounded-0 w-40" name="annee_obt" type="number" min="1970" max="2022" step="1" value="2022" />
                                     </div>
-                                    <div class="d-flex flex-row  justify-content-between align-items-center my-3">
+                                    <div class="full d-flex flex-row  justify-content-between align-items-center my-3">
                                         <label class="title" for="">Commentaire :</label>
-                                        <textarea class="w-area" name="commentaire" rows="4"></textarea>
+                                        <textarea class="obt w-area" name="commentaire" rows="4"></textarea>
                                     </div>
                                 </div>
-                                {{-- <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-sm">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square text-green shadow-sm" viewBox="0 0 16 16">
-                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                        </svg>
-                                    </button>
-                                </div> --}}
                             </div>
                             <div class="my-2 float-right">
                                 <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
@@ -415,30 +407,30 @@
                             </div>
                             @foreach ($candidate->experiences as $experience)
                             <div class="d-flex flex-column p-4">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <form method="POST" action="{{ route('experiences.update', ['experience' => $experience->id]) }}" enctype="multipart/form-data">
+                                <div class="experience d-flex flex-row justify-content-between">
+                                    <form class="half-w" method="POST" action="{{ route('experiences.update', ['experience' => $experience->id]) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
-                                        <div class="d-flex flex-column justify-content-between align-items-end">
+                                        <div class="box d-flex flex-column justify-content-between align-items-end">
                                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
-                                            <div class="d-flex flex-row justify-content-between align-items-center">
-                                                <label class="title" for="">Date début :</label>
+                                            <div class="item d-flex flex-row justify-content-between align-items-center">
+                                                <label class="lbl title" for="">Date début :</label>
                                                 <input type="date" name="date_debut" class="rounded-0 w-40" value="{{ old('date_debut', $experience->date_debut ?? null) }}">
                                             </div>
-                                            <div class="d-flex flex-row justify-content-between align-items-center">
-                                                <label class="title" for="">Date fin :</label>
+                                            <div class="item d-flex flex-row justify-content-between align-items-center">
+                                                <label class="lbl title" for="">Date fin :</label>
                                                 <input type="date" name="date_fin" class="rounded-0 w-40" value="{{ old('date_fin', $experience->date_fin ?? null) }}">
                                             </div>
-                                            <div class="d-flex flex-row justify-content-between align-items-center">
-                                                <label class="title" for="">Entreprise :</label>
+                                            <div class="item d-flex flex-row justify-content-between align-items-center">
+                                                <label class="lbl title" for="">Entreprise :</label>
                                                 <input type="text" name="entreprise" class="rounded-0 w-40" value="{{ old('entreprise', $experience->entreprise ?? null) }}">
                                             </div>
-                                            <div class="d-flex flex-row justify-content-between align-items-center">
-                                                <label class="title" for="">Intitulé du poste :</label>
+                                            <div class="item d-flex flex-row justify-content-between align-items-center">
+                                                <label class="lbl title" for="">Intitulé du poste :</label>
                                                 <input type="text" name="intitule_poste" class="rounded-0 w-40" value="{{ old('intitule_poste', $experience->intitule_poste ?? null) }}">
                                             </div>
-                                            <div class="d-flex flex-row justify-content-between align-items-center my-1">
-                                                <label class="title" for="">Description :</label>
+                                            <div class="item d-flex flex-row justify-content-between align-items-center my-1">
+                                                <label class="lbl title" for="">Description :</label>
                                                 <textarea class="w-area" name="description" rows="4" value="{{ $experience->description ?? null }}">{{ old('description', $experience->description ?? null) }}</textarea>
                                             </div>
                                             <div class="my-2">
@@ -446,7 +438,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="d-flex flex-row justify-content-start h-25">
+                                    <div class="delete d-flex flex-row justify-content-start h-25">
                                         @include('candidat.form')
                                     </div>
                                 </div>
@@ -461,23 +453,23 @@
                                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                                             <div class="d-flex flex-row justify-content-between align-items-center">
                                                 <label class="title" for="">Date début :</label>
-                                                <input type="date" name="date_debut" class="rounded-0 w-40" value="">
+                                                <input type="date" name="date_debut" class="rounded-0 w-40" required>
                                             </div>
                                             <div class="d-flex flex-row justify-content-between align-items-center">
                                                 <label class="title" for="">Date fin :</label>
-                                                <input type="date" name="date_fin" class="rounded-0 w-40" value="">
+                                                <input type="date" name="date_fin" class="rounded-0 w-40" required>
                                             </div>
                                             <div class="d-flex flex-row justify-content-between align-items-center">
                                                 <label class="title" for="">Entreprise :</label>
-                                                <input type="text" name="entreprise" class="rounded-0 w-40" value="">
+                                                <input type="text" name="entreprise" class="rounded-0 w-40" required>
                                             </div>
                                             <div class="d-flex flex-row justify-content-between align-items-center">
                                                 <label class="title" for="">Intitulé du poste :</label>
-                                                <input type="text" name="intitule_poste" class="rounded-0 w-40" value="">
+                                                <input type="text" name="intitule_poste" class="rounded-0 w-40" required>
                                             </div>
                                             <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                                 <label class="title" for="">Description :</label>
-                                                <textarea class="w-area" name="description" rows="4" value=""></textarea>
+                                                <textarea class="w-area" name="description" rows="4" required></textarea>
                                             </div>
                                             <div class="my-2">
                                                 <button class="btn btn-sm nav-bg text-white border-0 shadow-xl" type="submit">Ajouter</button>
@@ -506,30 +498,30 @@
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Expérience</span>
                         </div>
-                        <form method="POST" action="{{ route('experiences.store') }}" enctype="multipart/form-data">
+                        <form class="full" method="POST" action="{{ route('experiences.store') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                             <div class="d-flex flex-column p-4">
                                 <div class="d-flex flex-column justify-content-between align-items-start">
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <div class="full d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Date début :</label>
-                                        <input type="date" name="date_debut" class="rounded-0 w-40">
+                                        <input type="date" name="date_debut" class="full rounded-0 w-40">
                                     </div>
-                                    <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <div class="full d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Date fin :</label>
-                                        <input type="date" name="date_fin" class="rounded-0 w-40">
+                                        <input type="date" name="date_fin" class="full rounded-0 w-40">
                                     </div>
                                     <div class="d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Entreprise :</label>
-                                        <input type="text" name="entreprise" class="rounded-0 w-40">
+                                        <input type="text" name="entreprise" class="full rounded-0 w-40">
                                     </div>
                                     <div class="d-flex flex-row justify-content-between align-items-center">
                                         <label class="title" for="">Intitulé du poste :</label>
-                                        <input type="text" name="intitule" class="rounded-0 w-40">
+                                        <input type="text" name="intitule_poste" class="full rounded-0 w-40">
                                     </div>
                                     <div class="d-flex flex-row justify-content-between align-items-center my-1">
                                         <label class="title" for="">Description :</label>
-                                        <textarea class="w-area" name="description" rows="4"></textarea>
+                                        <textarea class="full w-area" name="description" rows="4"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -543,21 +535,21 @@
 
                 <!--Compétences-->
                 @if(count($candidate->competences) != 0)
-                    <div class="d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
+                    <div class="cmpt d-flex flex-column rounded-0 borded bg-white shadow-sm p-2 mt-3">
                         <div class="rounded-0 mx-2 d-flex justify-content-start align-items-center">
                             <img class="mx-2" src="/storage/images/arrow.png" alt="">
                             <span class="text-grey">Compétences</span>
                         </div>
                         @foreach ($candidate->competences as $competence)
                         <div class="d-flex flex-column justify-content-between align-items-start p-4">
-                            <form method="POST" action="{{ route('competences.update', ['competence' => $competence->id]) }}" enctype="multipart/form-data">
+                            <form class="frm full" method="POST" action="{{ route('competences.update', ['competence' => $competence->id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
-                                <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
-                                    <div class="d-flex flex-row justify-content-around align-items-center">
-                                        <label class="title" for="">Langue :</label>
-                                        <div class="d-flex flex-column">
+                                <div class="clmd d-flex flex-column  justify-content-between align-items-start">
+                                    <div class="grp-lng d-flex flex-row justify-content-around align-items-center">
+                                        <label class="lbl title" for="">Langue :</label>
+                                        <div class="lng d-flex flex-column">
                                             <div class="d-flex flex-row justify-content-around align-items-center my-2">
                                                 <select class="rounded-0 w-40" name="langue_1">
                                                     <option value="{{ $competence->langue_1 ?? null }}">{{ old('langue_1', $competence->langue_1 ?? null) }}</option>
@@ -609,13 +601,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex flex-row justify-content-start align-items-center my-3">
+                                <div class="half-w d-flex flex-row justify-content-start align-items-center my-3">
                                     <label class="title" for="">Bureautique:</label>
                                     <div class="d-flex flex-column align-items-start">
-                                        <span class="ml-4 small text-green">Word :</span>
-                                        <span class="ml-4 small text-green">Excel :</span>
-                                        <span class="ml-4 small text-green">Access :</span>
-                                        <span class="ml-4 small text-green">PowerPoint :</span>
+                                        <span class="lbl ml-4 small text-green">Word :</span>
+                                        <span class="lbl ml-4 small text-green">Excel :</span>
+                                        <span class="lbl ml-4 small text-green">Access :</span>
+                                        <span class="lbl ml-4 small text-green">PowerPoint:</span>
                                     </div>
                                     <div class="d-flex flex-column align-items-start mx-3">
                                         <input class="mb-1" type="checkbox" name="word" value="word" @if($competence->word) checked @endif/>
@@ -624,16 +616,16 @@
                                         <input class="my-1" type="checkbox" name="powerpoint" value="powerpoint" @if($competence->powerpoint) checked @endif/>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="d-flex flex-row justify-content-satrt align-items-center">
-                                    <label class="title" for="">Compétences spécifiques :</label>
-                                    <div class="d-flex flex-column ml-3 mt-3">
+                                <hr class="w-hr">
+                                <div class="lng d-flex flex-row justify-content-satrt align-items-center">
+                                    <label class="lblcmp title" for="">Compétences spécifiques :</label>
+                                    <div class="full d-flex flex-column ml-3 mt-3">
                                         <input type="text" name="comp_specifiques" class="rounded-0 w-40" value="{{ old('comp_specifiques', $competence->comp_specifiques ?? null) }}">
                                         <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="d-flex flex-row justify-content-start align-items-center my-4">
+                                <hr class="w-hr">
+                                <div class="permis d-flex flex-row justify-content-start align-items-center my-4">
                                     <label class="title" for="">Permis de conduire :</label>
                                     <div class="d-flex flex-column">
                                         <div class="d-flex flex-row align-items-center">
@@ -692,11 +684,11 @@
                             @csrf
                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                             <div class="d-flex flex-column p-4">
-                                <div class="col-md-8 d-flex flex-column  justify-content-between align-items-start">
-                                    <div class="d-flex flex-row justify-content-around align-items-center">
-                                        <label class="title" for="">Langue :</label>
-                                        <div class="d-flex flex-column">
-                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                <div class="experience col-md-8 d-flex flex-column justify-content-between align-items-start">
+                                    <div class="full d-flex flex-row justify-content-around align-items-center">
+                                        <label class="lbl-langue title" for="">Langue :</label>
+                                        <div class="half-w d-flex flex-column">
+                                            <div class="half-w d-flex flex-row justify-content-around align-items-center my-2">
                                                 <select class="rounded-0 w-40" name="langue_1">
                                                     <option>[Langue]</option>
                                                     <option>Arabe</option>
@@ -712,7 +704,7 @@
                                                     <option>Notions</option>
                                                 </select>
                                             </div>
-                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                            <div class="half-w d-flex flex-row justify-content-around align-items-center my-2">
                                                 <select class="rounded-0 w-40" name="langue_2">
                                                     <option>[Langue]</option>
                                                     <option>Arabe</option>
@@ -728,7 +720,7 @@
                                                     <option>Notions</option>
                                                 </select>
                                             </div>
-                                            <div class="d-flex flex-row justify-content-around align-items-center my-2">
+                                            <div class="half-w d-flex flex-row justify-content-around align-items-center my-2">
                                                 <select class="rounded-0 w-40" name="langue_3">
                                                     <option>[Langue]</option>
                                                     <option>Arabe</option>
@@ -766,8 +758,8 @@
                                 <div class="d-flex flex-row justify-content-satrt align-items-center">
                                     <label class="title" for="">Compétences spécifiques :</label>
                                     <div class="d-flex flex-column ml-3 mt-3">
-                                        <input type="text" name="comp_specifiques" class="rounded-0 w-40">
-                                        <span class="text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
+                                        <input type="text" name="comp_specifiques" class="full rounded-0 w-40">
+                                        <span class="full text-green small">ex(PhotoShop, DreamWeaver, Flash....)</span>
                                     </div>
                                 </div>
                                 <hr>

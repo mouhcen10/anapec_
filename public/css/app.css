@@ -10433,6 +10433,127 @@ body {
   .stc > .two {
     width: 100% !important;
   }
+
+  .editInfo {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    gap: 15px;
+  }
+
+  .pic {
+    order: -1;
+  }
+
+  .infoCol {
+    width: 60% !important;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    margin-right: 15px !important;
+  }
+
+  .inpt {
+    margin-left: 0px !important;
+  }
+
+  .formation {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+  }
+
+  .slct {
+    width: 100% !important;
+  }
+
+  .obt {
+    width: 100% !important;
+  }
+
+  .half-w {
+    width: 50% !important;
+  }
+
+  .w-hr {
+    display: none !important;
+  }
+
+  .delete {
+    order: -1;
+    margin-bottom: 10px !important;
+  }
+
+  .full {
+    width: 100% !important;
+  }
+
+  .experience {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+  }
+
+  .cmpt > .p-4 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0.5rem !important;
+  }
+
+  .clmd > .flex-row {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .grp-lng > .lng > .flex-row {
+    width: 50% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 15px;
+  }
+
+  .clmd {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .frm > .clmd {
+    width: 50% !important;
+  }
+
+  .lbl {
+    margin-right: auto !important;
+  }
+
+  .frm > .lng {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .lng > .lblcmp {
+    margin-bottom: 0rem !important;
+    margin-right: auto !important;
+  }
+
+  .permis > .mx-5 {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
+  .box > .item {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
 }
 @media (max-width: 768px) {
   .principal {

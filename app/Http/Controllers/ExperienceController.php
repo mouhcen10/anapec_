@@ -43,7 +43,7 @@ class ExperienceController extends Controller
         $input = $request->all();
         Experience::create($input);
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id]);
     }
 
     /**
@@ -85,7 +85,7 @@ class ExperienceController extends Controller
         $experience->description = $request->description;
         $experience->save();
 
-        return redirect()->route('candidates.show', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.show', ['candidate' => Auth::user()->candidate->id]);
     }
 
     /**
@@ -99,6 +99,6 @@ class ExperienceController extends Controller
         // dd($experience);
         Experience::findOrFail($id)->delete();
 
-        return redirect()->route('candidates.edit', ['candidate' => $request->candidate_id]);
+        return redirect()->route('candidates.edit', ['candidate' => Auth::user()->candidate->id]);
     }
 }
