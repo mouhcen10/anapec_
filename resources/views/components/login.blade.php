@@ -33,10 +33,15 @@
             <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
             <button style="background: var(--bg-green);" type="submit" class="btn btn-sm text-white">Ok</button>
         </div>
+        @if (Route::has('password.request'))
+            <a class="nav-link text-grey small p-0" href="{{ route('password.request') }}">
+                {{ __('Mot de passe oublié ?') }}
+            </a>
+        @endif
     </form>
-    <a class="nav-link text-grey small m-3 p-0" href="{{ route('reset-password') }}">
+    {{-- <a class="nav-link text-grey small m-3 p-0" href="{{ route('reset-password') }}">
         {{ __('Mot de passe oublié ?') }}
-    </a>
+    </a> --}}
 @else
     <div class="d-flex flex-column align-items-center p-2">
         <?php 
