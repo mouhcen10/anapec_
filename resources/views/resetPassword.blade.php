@@ -24,15 +24,15 @@
                     @method('PUT')
                     <div class="d-flex flex-row justify-content-start align-items-center ml-72">
                         <label class="title_" for="">Email:<span class="text-danger">*</span></label>
-                        <input type="email" name="email" class="rounded-0 w-40 ml-72">
+                        <input type="email" name="email" class="rounded-0 w-40 ml-72" required>
                     </div>
                     <div class="d-flex flex-row justify-content-start align-items-center ml-72">
                         <label class="title_" for="">Nouveau Mot de passe :<span class="text-danger">*</span></label>
-                        <input type="password" name="nouveau_password" class="rounded-0 w-40 ml-72">
+                        <input type="password" name="nouveau_password" class="rounded-0 w-40 ml-72" required>
                     </div>
                     <div class="d-flex flex-row justify-content-start align-items-center ml-72">
                         <label class="title_" for="">Confirmation Nouveau Mot de passe :<span class="text-danger">*</span></label>
-                        <input type="password" name="c_nouveau_password" class="rounded-0 w-40 ml-72">
+                        <input type="password" name="c_nouveau_password" class="rounded-0 w-40 ml-72" required>
                     </div>
                     <button type="submit" class="btn btn-sm nav-bg shadow-xl text-white float-right px-4 mx-5 mt-3">Reset</button>
                 </form>

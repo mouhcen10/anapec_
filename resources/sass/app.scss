@@ -743,6 +743,11 @@ body{
         flex-direction: row !important;
         gap: 5px;
     }
+    .tbl>.table{
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+    }
 }
 
 // Large devices (desktops, 992px and up)
@@ -763,6 +768,11 @@ body{
     .col-md-6 {
         flex: 0 0 100% !important;
         max-width: 100% !important;
+    }
+    .tbl>.table{
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
     }
 }
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container p-0">
     <div class="col-md-12 d-flex flex-row p-0">
         <div class="second col-md-3 bg-white p-0 rounded-top-right shadow-sm">
             <x-login></x-login>
