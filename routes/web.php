@@ -63,7 +63,7 @@ Route::get('/convert-to-pdf', [CvController::class, 'convertToPdf'])->name('conv
 
 Route::resource('candidates', CandidateController::class);
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/reset', [UpdatePasswordController::class, 'resetPassword'])->name('reset-password');
+// Route::get('/reset', [UpdatePasswordController::class, 'resetPassword'])->name('reset-password');
 Route::put('/update-password', [UpdatePasswordController::class, 'updatePassword'])->name('update-password');
 //End Candidat Routes
 

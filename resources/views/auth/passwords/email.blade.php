@@ -12,10 +12,10 @@
         <div class="first col-md-9">
             <div class="d-flex flex-row align-items-center my-2">
                 <a href="/"><i class="fa fa-home text-dark mx-1"></i></a>/
-                <span class="f-90 mx-1 text-secondary">Envoyer lien de reset mot de passe</span>
+                <span class="f-90 mx-1 text-secondary">Ré-initialiser mot de passe</span>
             </div>
             <div class="rounded-0 borded bg-white">
-                <div class="card-header bg-white rounded-0 border-0 shadow-sm">Reset Mot de passe</div>
+                <div class="card-header bg-white rounded-0 border-0 shadow-sm">Ré-initialiser votre mot de passe</div>
 
                 <div class="p-5">
                     @if (session('status'))
@@ -44,7 +44,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn nav-bg shadow-xl text-white">
-                                    {{ __('Envoyer Lien de reset mot de passe') }}
+                                    {{ __('Ré-initialiser votre mot de passe') }}
                                 </button>
                             </div>
                         </div>

@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UpdatePasswordController extends Controller
 {
-    
-    public function resetPassword()
-    {
-        return view('resetPassword');
-    }
 
     public function updatePassword(Request $request)
     {
@@ -33,13 +28,13 @@ class UpdatePasswordController extends Controller
                 $user->save();
                 $professional->password = Hash::make($request->nouveau_password);
                 $professional->save();
-                return redirect()->route('welcome')->with('success','Votre mot de passe a été changé avec succès !');
+                return redirect()->route('welcome')->with('success','Votre mot de passe a été réinitialisé!');
             }else{
                 $user->password = Hash::make($request->nouveau_password);
                 $user->save();
                 $candidate->password = Hash::make($request->nouveau_password);
                 $candidate->save();
-                return redirect()->route('welcome')->with('success','Votre mot de passe a été changé avec succès !');
+                return redirect()->route('welcome')->with('success','Votre mot de passe a été réinitialisé!');
             }
         }
         return redirect()->back()->with('danger','Nouveau mot de passe et Comfirmation mot de passe doivent être identiques !');
